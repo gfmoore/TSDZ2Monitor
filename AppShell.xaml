@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="TSDZ2Monitor.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:TSDZ2Monitor"
+
+    xmlns:pages="clr-namespace:TSDZ2Monitor.Pages"
+
+    Shell.FlyoutBehavior="Flyout"
+    FlyoutHeaderBehavior="CollapseOnScroll"
+    FlyoutVerticalScrollMode="Enabled"
+    FlyoutBackgroundColor="{StaticResource FlyoutBackgroundColor}">
+
+
+
+  <Shell.FlyoutHeaderTemplate>
+    <DataTemplate>
+      <Grid BackgroundColor="{StaticResource FlyoutBackgroundColor}"
+            HeightRequest="200">
+        <Image 
+               HeightRequest="200"
+               Source="bicycle.svg"
+               Margin="10, 10, 10, 10"
+               Opacity="0.6" />
+        <Label Text="TSDZ2 Monitor"
+               TextColor="White"
+               FontAttributes="Bold" />
+      </Grid>
+    </DataTemplate>
+  </Shell.FlyoutHeaderTemplate>
+
+  <Shell.ItemTemplate>
+    <DataTemplate>
+      <Grid ColumnDefinitions="0.2*, 0.8*">
+        <Image Grid.Column="0" 
+               Source="{Binding FlyoutIcon}"
+               Margin="0, 20, 0, 10"
+               HeightRequest="30" />
+        <Label Grid.Column="1"
+               Text="{Binding Title}"
+               TextColor="Yellow"
+               FontAttributes="Bold"
+               VerticalTextAlignment="Center" />
+      </Grid>
+    </DataTemplate>
+  </Shell.ItemTemplate>
+
+
+  <ShellContent 
+    Title="Display"
+    Icon="speedometer.svg"
+    ContentTemplate="{DataTemplate pages:DisplayPage}" />
+  
+  <ShellContent 
+    Title="Bluetooth"
+    Icon="bluetooth.svg"
+    ContentTemplate="{DataTemplate pages:BluetoothPage}" />
+
+  <ShellContent 
+    Title="Tracks"
+    Icon="tracks.svg"
+    ContentTemplate="{DataTemplate pages:TracksPage}" />
+
+  <ShellContent 
+    Title="Parameters"
+    Icon="parameters.svg"
+    ContentTemplate="{DataTemplate pages:ParametersPage}" />
+
+  <ShellContent 
+    Title="Settings"
+    Icon="settings.svg"
+    ContentTemplate="{DataTemplate pages:SettingsPage}" />
+
+  <ShellContent 
+    Title="About"
+    Icon="about.svg"
+    ContentTemplate="{DataTemplate pages:AboutPage}" />
+
+
+</Shell>
