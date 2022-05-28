@@ -15,7 +15,7 @@
 		<ApplicationTitle>TSDZ2Monitor</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.tsdz2monitor</ApplicationId>
+		<ApplicationId>uk.co.gordonmoore.apps.tsdz2monitor</ApplicationId>
 		<ApplicationIdGuid>7D1492BC-418A-4F64-8588-3EB53EDA517D</ApplicationIdGuid>
 
 		<!-- Versions -->
@@ -32,14 +32,13 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+    <MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#000000" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
-
+    <MauiSplashScreen Include="Resources\Splash\bicycle.svg" Color="#000000" />
+    
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -49,6 +48,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\AppIcon\appiconfg.svg" />
 	  <None Remove="Resources\Images\about.svg" />
 	  <None Remove="Resources\Images\bicycle.svg" />
 	  <None Remove="Resources\Images\bluetooth.svg" />
@@ -56,6 +56,7 @@
 	  <None Remove="Resources\Images\settings.svg" />
 	  <None Remove="Resources\Images\speedometer.svg" />
 	  <None Remove="Resources\Images\tracks.svg" />
+	  <None Remove="Resources\Splash\bicycle.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -86,6 +87,10 @@
 	  <MauiXaml Update="Pages\TracksPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Splash\bicycle.svg" />
 	</ItemGroup>
 
 </Project>
