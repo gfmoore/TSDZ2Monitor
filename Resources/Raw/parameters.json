@@ -1,0 +1,310 @@
+﻿{
+  "Motor": {
+    "Motor_Voltage": [ "18V", "36V", "48V", "56V", "72V" ],
+    "Motor_Power_Max": "low='0' high='2000'",
+    "Motor_Acceleration": "low='0' high='100'",
+    "Motor_Deceleration": "low='0' high='100'",
+    "Motor_Fast_Stop": "true/false",
+    "Motor_Field_Weakening": "true/false"
+  },
+
+  "MotorTemperature": {
+    "MotorTemperature_Feature": [ "Throttle", "Temperature" ],
+    "MotorTemperature_Min_Limit": "low='0' high='500'",
+    "MotorTemperature_Max_Limit": "low='0' high='500'"
+  },
+
+  "TorqueSensor": {
+    "Torque_Assist_wo_pedal": "true/false",
+    "Torque_ADC_Threshold": "",
+    "Torque_Coast_Brake": "true/false",
+    "Torque_Coast_Brake_ADC": "low='5' high='40'",
+    "Torque_Calibration": "true/false",
+    "Torque_ADC_Step": "",
+    "Torque_ADC_Offset": "",
+    "Torque_ADC_Max": "",
+    "Torque_Weight_On_Pedal": "",
+    "Torque_ADC_On_Weight": "",
+    "Torque_Default_Weight": "true/false"
+  },
+
+  "Battery": {
+    "Battery_Max_current": "",
+    "Battery_Low_Cut_Off": "",
+    "Battery_Resistance": "",
+    "Battery_Voltage_Est": "",
+    "Battery_Resistance_Est": "",
+    "Battery_Power_Loss_Est": ""
+  },
+
+  "SoC": {
+    "SoC_Text": [ "Volts", "SoC %", "Disable" ],
+    "SoC_Reset_At_Voltage": "",
+    "SoC_Battery_Total_Wh": "",
+    "SoC_Used": "",
+    "SoC_Manual_Reset": "true/false"
+  },
+
+  "Wheel": {
+    "Wheel_Max_Speed": "",
+    "Wheel_Circumference": ""
+  },
+
+  "TripMemories": {
+    "Trip_Odometer": "0, Reset Odometer",
+    "Trip_A": "0, Reset Trip A",
+    "Trip_B": "0, Reset Trip B",
+    "Trip_A_Auto_Reset": "true/false",
+    "Trip_A_Auto_Reset_Hours": "",
+    "Trip_B_Auto_Reset": "true/false",
+    "Trip_B_Auto_Reset_Hours": ""
+  },
+
+  "AssistLevel": {
+    "Number_Assist_Levels": "9",
+    "Power_Assist": {
+      "Power_Assist_Level_1": "low='0' high='255'",
+      "Power_Assist_Level_2": "low='0' high='255'",
+      "Power_Assist_Level_3": "low='0' high='255'",
+      "Power_Assist_Level_4": "low='0' high='255'",
+      "Power_Assist_Level_5": "low='0' high='255'",
+      "Power_Assist_Level_6": "low='0' high='255'",
+      "Power_Assist_Level_7": "low='0' high='255'",
+      "Power_Assist_Level_8": "low='0' high='255'",
+      "Power_Assist_Level_9": "low='0' high='255'"
+    },
+
+    "Torque_Assist": {
+      "Torque_Assist_Level_1": "low='0' high='255'",
+      "Torque_Assist_Level_2": "low='0' high='255'",
+      "Torque_Assist_Level_3": "low='0' high='255'",
+      "Torque_Assist_Level_4": "low='0' high='255'",
+      "Torque_Assist_Level_5": "low='0' high='255'",
+      "Torque_Assist_Level_6": "low='0' high='255'",
+      "Torque_Assist_Level_7": "low='0' high='255'",
+      "Torque_Assist_Level_8": "low='0' high='255'",
+      "Torque_Assist_Level_9": "low='0' high='255'"
+    },
+
+    "Cadence_Assist": {
+      "Cadence_Assist_Level_1": "low='0' high='254'",
+      "Cadence_Assist_Level_2": "low='0' high='254'",
+      "Cadence_Assist_Level_3": "low='0' high='254'",
+      "Cadence_Assist_Level_4": "low='0' high='254'",
+      "Cadence_Assist_Level_5": "low='0' high='254'",
+      "Cadence_Assist_Level_6": "low='0' high='254'",
+      "Cadence_Assist_Level_7": "low='0' high='254'",
+      "Cadence_Assist_Level_8": "low='0' high='254'",
+      "Cadence_Assist_Level_9": "low='0' high='254'"
+    },
+
+    "EMTB_Assist": {
+      "EMTB_Assist_Level_1": "low='0' high='20'",
+      "EMTB_Assist_Level_2": "low='0' high='20'",
+      "EMTB_Assist_Level_3": "low='0' high='20'",
+      "EMTB_Assist_Level_4": "low='0' high='20'",
+      "EMTB_Assist_Level_5": "low='0' high='20'",
+      "EMTB_Assist_Level_6": "low='0' high='20'",
+      "EMTB_Assist_Level_7": "low='0' high='20'",
+      "EMTB_Assist_Level_8": "low='0' high='20'",
+      "EMTB_Assist_Level_9": "low='0' high='20'"
+    }
+  },
+
+  "WalkAssist": {
+    "Walk_Assist_Walk_Assist": "0",
+    "Walk_Assist_Cruise_Feature": "true/false",
+    "Walk_Assist": {
+      "Walk_Assist_Level_1": "low='0' high='254'",
+      "Walk_Assist_Level_2": "low='0' high='254'",
+      "Walk_Assist_Level_3": "low='0' high='254'",
+      "Walk_Assist_Level_4": "low='0' high='254'",
+      "Walk_Assist_Level_5": "low='0' high='254'",
+      "Walk_Assist_Level_6": "low='0' high='254'",
+      "Walk_Assist_Level_7": "low='0' high='254'",
+      "Walk_Assist_Level_8": "low='0' high='254'",
+      "Walk_Assist_Level_9": "low='0' high='254'"
+    }
+  },
+
+  "StartupBoost": {
+    "Startup_Boost_Startup_Boost": "true/false",
+    "Startup_Boost_Torque_Factor": "low='0'  high='500'",
+    "Startup_Boost_Cadence_Step": "low='10'  high='50'"
+  },
+
+  "StreetMode": {
+    "Street_Mode_Street_Mode": "true/false",
+    "Street_Mode_Enable_At_Startup": "true/false",
+    "Street_Mode_Speed_Limit": "true/false",
+    "Street_Mode_Motor_Power_Limit": "",
+    "Street_Mode_Throttle_Enable": "",
+    "Street_Mode_Cruise_Enable": "true/false",
+    "Street_Mode_Hotkey_Enable": "true/false"
+  },
+
+  "Various": {
+    "Various_Lights_Configuration": [
+      "0 - on",
+      "1 - flashing",
+      "2 - on and fast flashing when braking",
+      "3 - flashing and on when braking",
+      "4 - flashing and fast flashing when braking",
+      "5 - on and on during braking also with light control OFF",
+      "6 - on and fast flashing when braking even with the light control OFF",
+      "7 - flashing and switched on when braking even with the light control OFF",
+      "8 - flashing and fast flashing when braking even with the light control OFF"
+    ],
+    "Various_Assist_With_Error": "true/false",
+    "Various_Virtual_Throttle_Step": "low='0' high='100'"
+  },
+
+  "Display": {
+    "Display_Units": [ "Metric (SI)", "Imperial" ],
+    "Display_Temp_Units": [ "Celsius", "Fahrenheit" ]
+  },
+
+  "Technical": {
+    "Technical_ADC_Battery_Current": "",
+    "Technical_ADC_Throttle_Sensor": "",
+    "Technical_Throttle_Sensor": "",
+    "Technical_ADC_Torque_Sensor": "",
+    "Technical_ADC_Torque_Delta": "",
+    "Technical_ADC_Torque_Boost": "",
+    "Technical_ADC_Torque_Step_Calc": "",
+    "Technical_Pedal_Cadence": "",
+    "Technical_PWM_Duty_Cycle": "",
+    "Technical_Motor_Speed": "",
+    "Technical_Motor_FOC": "",
+    "Technical_Hall_Sensors": ""
+  },
+
+  "GraphVariables": {
+    "Vars_Speed": {
+      "Vars_Speed_Graph_Auto_Max_Min": "",
+      "Vars_Speed_Graph_Max": "",
+      "Vars_Speed_Graph_Min": "",
+      "Vars_Speed_Thresholds": "",
+      "Vars_Speed_Max_Threshold_Red": "",
+      "Vars_Speed_Max_Threshold_Yellow": ""
+    },
+
+    "Vars_Trip": {
+      "Vars_Trip_Dist_Graph_Auto_Max_Min": "",
+      "Vars_Trip_Dist_Graph_Max": "",
+      "Vars_Trip_Dist_Graph_Min": "",
+      "Vars_Trip_Dist_Thresholds": "",
+      "Vars_Trip_Dist_Max_Threshold_Red": "",
+      "Vars_Trip_Dist_Max_Threshold_Yellow": ""
+    },
+
+    "Vars_Cadence": {
+      "Vars_Cadence_Graph_Auto_Max_Min": "",
+      "Vars_Cadence_Graph_Max": "",
+      "Vars_Cadence_Graph_Min": "",
+      "Vars_Cadence_Thresholds": "",
+      "Vars_Cadence_Max_Threshold_Red": "",
+      "Vars_Cadence_Max_Threshold_Yellow": ""
+    },
+
+    "Vars_Human_Power": {
+      "Vars_Human_Power_Graph_Auto_Max_Min": "",
+      "Vars_Human_Power_Graph_Max": "",
+      "Vars_Human_Power_Graph_Min": "",
+      "Vars_Human_Power_Thresholds": "",
+      "Vars_Human_Power_Max_Threshold_Red": "",
+      "Vars_Human_Power_Max_Threshold_Yellow": ""
+    },
+
+    "Vars_Motor_Power": {
+      "Vars_Motor_Power_Graph_Auto_Max_Min": "",
+      "Vars_Motor_Power_Graph_Max": "",
+      "Vars_Motor_Power_Graph_Min": "",
+      "Vars_Motor_Power_Thresholds": "",
+      "Vars_Motor_Power_Max_Threshold_Red": "",
+      "Vars_Motor_Power_Max_Threshold_Yellow": ""
+    },
+
+    "Vars_Watts_Km": {
+      "Vars_Watts_Km_Graph_Auto_Max_Min": "",
+      "Vars_Watts_Km_Graph_Max": "",
+      "Vars_Watts_Km_Graph_Min": "",
+      "Vars_Watts_Km_Thresholds": "",
+      "Vars_Watts_Km_Max_Threshold_Red": "",
+      "Vars_Watts_Km_Max_Threshold_Yellow": ""
+    },
+
+    "Vars_Battery_Voltage": {
+      "Vars_Battery_Voltage_Graph_Auto_Max_Min": "",
+      "Vars_Battery_Voltage_Graph_Max": "",
+      "Vars_Battery_Voltage_Graph_Min": "",
+      "Vars_Battery_Voltage_Thresholds": "",
+      "Vars_Battery_Voltage_Max_Threshold_Red": "",
+      "Vars_Battery_Voltage_Max_Threshold_Yellow": ""
+    },
+
+    "Vars_Battery_Current": {
+      "Vars_Battery_Current_Graph_Auto_Max_Min": "",
+      "Vars_Battery_Current_Graph_Max": "",
+      "Vars_Battery_Current_Graph_Min": "",
+      "Vars_Battery_Current_Thresholds": "",
+      "Vars_Battery_Current_Max_Threshold_Red": "",
+      "Vars_Battery_Current_Max_Threshold_Yellow": ""
+    },
+
+    "Vars_Battery_SoC": {
+      "Vars_Battery_SoC_Graph_Auto_Max_Min": "",
+      "Vars_Battery_SoC_Graph_Max": "",
+      "Vars_Battery_SoC_Graph_Min": "",
+      "Vars_Battery_SoC_Thresholds": "",
+      "Vars_Battery_SoC_Max_Threshold_Red": "",
+      "Vars_Battery_SoC_Max_Threshold_Yellow": ""
+    },
+
+    "Vars_Motor_Current": {
+      "Vars_Motor_Current_Graph_Auto_Max_Min": "",
+      "Vars_Motor_Current_Graph_Max": "",
+      "Vars_Motor_Current_Graph_Min": "",
+      "Vars_Motor_Current_Thresholds": "",
+      "Vars_Motor_Current_Max_Threshold_Red": "",
+      "Vars_Motor_Current_Max_Threshold_Yellow": ""
+    },
+
+    "Vars_Motor_Temp": {
+      "Vars_Motor_Temp_Graph_Auto_Max_Min": "",
+      "Vars_Motor_Temp_Graph_Max": "",
+      "Vars_Motor_Temp_Graph_Min": "",
+      "Vars_Motor_Temp_Thresholds": "",
+      "Vars_Motor_Temp_Max_Threshold_Red": "",
+      "Vars_Motor_Temp_Max_Threshold_Yellow": ""
+    },
+
+    "Vars_Motor_Speed": {
+      "Vars_Motor_Speed_Graph_Auto_Max_Min": "",
+      "Vars_Motor_Speed_Graph_Max": "",
+      "Vars_Motor_Speed_Graph_Min": "",
+      "Vars_Motor_Speed_Thresholds": "",
+      "Vars_Motor_Speed_Max_Threshold_Red": "",
+      "Vars_Motor_Speed_Max_Threshold_Yellow": ""
+    },
+
+    "Vars_Motor_PWM": {
+      "Vars_Motor_PWM_Graph_Auto_Max_Min": "",
+      "Vars_Motor_PWM_Graph_Max": "",
+      "Vars_Motor_PWM_Graph_Min": "",
+      "Vars_Motor_PWM_Thresholds": "",
+      "Vars_Motor_PWM_Max_Threshold_Red": "",
+      "Vars_Motor_PWM_Max_Threshold_Yellow": ""
+    },
+
+    "Vars_Motor_FOC": {
+      "Vars_Motor_FOC_Graph_Auto_Max_Min": "",
+      "Vars_Motor_FOC_Graph_Max": "",
+      "Vars_Motor_FOC_Graph_Min": "",
+      "Vars_Motor_FOC_Thresholds": "",
+      "Vars_Motor_FOC_Max_Threshold_Red": "",
+      "Vars_Motor_FOC_Max_Threshold_Yellow": ""
+    }
+  }
+}
+     
