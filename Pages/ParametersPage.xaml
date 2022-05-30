@@ -2,9 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TSDZ2Monitor.Pages.ParametersPage"
-             Title="ParametersPage">
+             Title="Parameters Page">
     <StackLayout>
-        <Label Text="Welcome to .NET MAUI!"
+        <Label Text="Parameters"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
     </StackLayout>
