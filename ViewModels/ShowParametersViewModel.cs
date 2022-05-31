@@ -13,7 +13,7 @@ namespace TSDZ2Monitor
   {
     public event PropertyChangedEventHandler PropertyChanged;
 
-    bool showParameters = true;
+    bool showParameters;
     public bool ShowParameters
     {
       get { return showParameters; }
@@ -22,6 +22,7 @@ namespace TSDZ2Monitor
         if (value == showParameters) return;
         showParameters = value;
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ShowParameters"));
+        //((App)Application.Current).ForcePageLayout();
       }
     }
 
