@@ -8,6 +8,9 @@
     xmlns:local="clr-namespace:TSDZ2Monitor"
 
     xmlns:pages="clr-namespace:TSDZ2Monitor.Pages"
+    xmlns:parameters="clr-namespace:TSDZ2Monitor.Pages.Parameters"
+    xmlns:assistlevels="clr-namespace:TSDZ2Monitor.Pages.Parameters.AssistLevels"
+    xmlns:graphvariables="clr-namespace:TSDZ2Monitor.Pages.Parameters.GraphVariables"
   
     Shell.FlyoutBehavior="Flyout"
     FlyoutHeaderBehavior="Default"
@@ -15,7 +18,7 @@
     FlyoutBackgroundColor="{StaticResource FlyoutBackgroundColor}">
 
   <Shell.BindingContext>
-    <local:ShowParametersViewModel  ShowParameters="true"/>
+    <local:ControlMenuViewModel />
   </Shell.BindingContext>
 
   <Shell.FlyoutHeaderTemplate>
@@ -48,7 +51,6 @@
     </DataTemplate>
   </Shell.FlyoutFooterTemplate>
 
-
   <Shell.ItemTemplate>
     <DataTemplate>
       <Grid ColumnDefinitions="0.2*, 0.8*">
@@ -71,35 +73,196 @@
   <ShellContent 
     Title="Display"
     Icon="speedometer.svg"
+    IsVisible="{Binding ShowMainMenu}"
     ContentTemplate="{DataTemplate pages:DisplayPage}" />
   
   <ShellContent 
     Title="Bluetooth"
     Icon="bluetooth.svg"
-    IsVisible="{Binding ShowParameters}"
+    IsVisible="{Binding ShowMainMenu}"
     ContentTemplate="{DataTemplate pages:BluetoothPage}" />
 
   <ShellContent 
     Title="Tracks"
     Icon="tracks.svg"
+    IsVisible="{Binding ShowMainMenu}"
     ContentTemplate="{DataTemplate pages:TracksPage}" />
 
   <ShellContent 
     Title="Parameters"
     Icon="parameters.svg"
+    IsVisible="{Binding ShowMainMenu}"
+    
     ContentTemplate="{DataTemplate pages:ParametersPage}" />
+
+  <MenuFlyoutItem 
+    Text="Parameters - by menuitem"
+    Command="{Binding ShowParametersCommand}" />
+
 
   <ShellContent 
     Title="Settings"
     Icon="settings.svg"
+    IsVisible="{Binding ShowMainMenu}"
     ContentTemplate="{DataTemplate pages:SettingsPage}" />
 
   <ShellContent 
     Title="About"
     Icon="about.svg"
+    IsVisible="{Binding ShowMainMenu}"
     ContentTemplate="{DataTemplate pages:AboutPage}" />
 
+  
+  
+  <ShellContent 
+    Title="Assist Level"
+    IsVisible="{Binding ShowParameters}"
+    ContentTemplate="{DataTemplate parameters:AssistLevelPage}" />
+  
+  <ShellContent 
+    Title="Assist Level Power"
+    IsVisible="{Binding ShowAssistLevels}"
+    ContentTemplate="{DataTemplate assistlevels:AssistLevelPowerPage}" />
+  
+  <ShellContent
+    Title="Assist Level Torque"
+    IsVisible="{Binding ShowAssistLevels}"
+    ContentTemplate="{DataTemplate assistlevels:AssistLevelTorquePage}" />
+  
+  <ShellContent 
+    Title="Assist LevelCadence"
+    IsVisible="{Binding ShowAssistLevels}"
+    ContentTemplate="{DataTemplate assistlevels:AssistLevelCadencePage}" />
+  
+  <ShellContent 
+    Title="Assist LevelEMTB"
+    IsVisible="{Binding ShowAssistLevels}"
+    ContentTemplate="{DataTemplate assistlevels:AssistLevelEMTBPage}" />
+    
 
+  <ShellContent 
+    Title="Battery"
+    IsVisible="{Binding ShowParameters}"
+    ContentTemplate="{DataTemplate parameters:BatteryPage}" />
 
+  <ShellContent 
+    Title="Motor"
+    IsVisible="{Binding ShowParameters}"
+    ContentTemplate="{DataTemplate parameters:MotorPage}" />
+
+  <ShellContent 
+    Title="Motor Temperature"
+    IsVisible="{Binding ShowParameters}"
+    ContentTemplate="{DataTemplate parameters:MotorTemperaturePage}" />
+  
+  <ShellContent 
+    Title="SoC"
+    IsVisible="{Binding ShowParameters}"
+    ContentTemplate="{DataTemplate parameters:SoCPage}" />
+  
+  <ShellContent 
+    Title="Startup Boost"
+    IsVisible="{Binding ShowParameters}"
+    ContentTemplate="{DataTemplate parameters:StartupBoostPage}" />
+  
+  <ShellContent 
+    Title="Street Mode"
+    IsVisible="{Binding ShowParameters}"
+    ContentTemplate="{DataTemplate parameters:StreetModePage}" />
+  
+  <ShellContent 
+    Title="Technical"
+    IsVisible="{Binding ShowParameters}"
+    ContentTemplate="{DataTemplate parameters:TechnicalPage}" />
+  
+  <ShellContent 
+    Title="Torque Sensor"
+    IsVisible="{Binding ShowParameters}"
+    ContentTemplate="{DataTemplate parameters:TorqueSensorPage}" />
+  
+  <ShellContent 
+    Title="Trip Memories"
+    IsVisible="{Binding ShowParameters}"
+    ContentTemplate="{DataTemplate parameters:TripMemoriesPage}" />
+  
+  <ShellContent 
+    Title="Various"
+    IsVisible="{Binding ShowParameters}"
+    ContentTemplate="{DataTemplate parameters:VariousPage}" />
+  
+  <ShellContent 
+    Title="Wheel"
+    IsVisible="{Binding ShowParameters}"
+    ContentTemplate="{DataTemplate parameters:WheelPage}" />
+  
+  <ShellContent 
+    Title="Graph Variables"
+    IsVisible="{Binding ShowParameters}"
+    ContentTemplate="{DataTemplate parameters:GraphVariablesPage}" />
+  
+  <ShellContent 
+    Title="Battery Current Graph"
+    IsVisible="{Binding ShowGraphParameters}"
+    ContentTemplate="{DataTemplate graphvariables:VarsBatteryCurrentPage}" />
+  
+  <ShellContent 
+    Title="Battery Voltage Graph"
+    IsVisible="{Binding ShowGraphParameters}"
+    ContentTemplate="{DataTemplate graphvariables:VarsBatteryVoltagePage}" />
+  
+  <ShellContent 
+    Title="Cedence Graph"
+    IsVisible="{Binding ShowGraphParameters}"
+    ContentTemplate="{DataTemplate graphvariables:VarsCadencePage}" />
+  
+  <ShellContent 
+    Title="Human Power Graph"
+    IsVisible="{Binding ShowGraphParameters}"
+    ContentTemplate="{DataTemplate graphvariables:VarsHumanPowerPage}" />
+  
+  <ShellContent 
+    Title="Motor Current Graph"
+    IsVisible="{Binding ShowGraphParameters}"
+    ContentTemplate="{DataTemplate graphvariables:VarsMotorCurrentPage}" />
+  
+  <ShellContent 
+    Title="Motor FOC Graph"
+    IsVisible="{Binding ShowGraphParameters}"
+    ContentTemplate="{DataTemplate graphvariables:VarsMotorFOCPage}" />
+  
+  <ShellContent 
+    Title="Motor Power Graph"
+    IsVisible="{Binding ShowGraphParameters}"
+    ContentTemplate="{DataTemplate graphvariables:VarsMotorPowerPage}" />
+  
+  <ShellContent 
+    Title="Motor PWM Graph"
+    IsVisible="{Binding ShowGraphParameters}"
+    ContentTemplate="{DataTemplate graphvariables:VarsMotorPWMPage}" />
+  
+  <ShellContent 
+    Title="Motor Speed Graph"
+    IsVisible="{Binding ShowGraphParameters}"
+    ContentTemplate="{DataTemplate graphvariables:VarsMotorSpeedPage}" />
+  
+  <ShellContent 
+    Title="Motor Temperature Graph"
+    IsVisible="{Binding ShowGraphParameters}"
+    ContentTemplate="{DataTemplate graphvariables:VarsMotorTemperaturePage}" />
+  
+  <ShellContent 
+    Title="Speed Graph"
+    IsVisible="{Binding ShowGraphParameters}"
+    ContentTemplate="{DataTemplate graphvariables:VarsSpeedPage}" />
+  
+  <ShellContent 
+    Title="Trip Distance Graph"
+    IsVisible="{Binding ShowGraphParameters}"
+    ContentTemplate="{DataTemplate graphvariables:VarsTripDistancePage}" />
+  
+  <ShellContent 
+    Title="Watts / Km Graph"
+    IsVisible="{Binding ShowGraphParameters}"
+    ContentTemplate="{DataTemplate graphvariables:VarsWattsKmPage}" />
   
 </Shell>

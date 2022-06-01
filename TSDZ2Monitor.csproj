@@ -64,11 +64,11 @@
 	  <Compile Update="Pages\BluetoothPage.xaml.cs">
 	    <DependentUpon>BluetoothPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\Parameters\AssistLevelEMTBPage.xaml.cs">
+	  <Compile Update="Pages\Parameters\AssistLevels\AssistLevelEMTBPage.xaml.cs">
 	    <DependentUpon>AssistLevelEMTBPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\Parameters\GraphsVariablesPage.xaml.cs">
-	    <DependentUpon>GraphsVariablesPage.xaml</DependentUpon>
+	  <Compile Update="Pages\Parameters\GraphVariablesPage.xaml.cs">
+	    <DependentUpon>GraphVariablesPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\TracksPage.xaml.cs">
 	    <DependentUpon>TracksPage.xaml</DependentUpon>
@@ -88,25 +88,22 @@
 	  <MauiXaml Update="Pages\ParametersPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Parameters\AssistLevelCadencePage.xaml">
+	  <MauiXaml Update="Pages\Parameters\AssistLevels\AssistLevelCadencePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Parameters\AssistLevelPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Parameters\AssistLevelEMTBPage.xaml">
+	  <MauiXaml Update="Pages\Parameters\AssistLevels\AssistLevelEMTBPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Parameters\AssistLevelPowerPage.xaml">
+	  <MauiXaml Update="Pages\Parameters\AssistLevels\AssistLevelPowerPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Parameters\AssistLevelTorquePage.xaml">
+	  <MauiXaml Update="Pages\Parameters\AssistLevels\AssistLevelTorquePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Parameters\BatteryPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\Parameters\DisplayPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Parameters\GraphVariables\VarsBatteryCurrentPage.xaml">
@@ -175,7 +172,7 @@
 	  <MauiXaml Update="Pages\Parameters\TripMemoriesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Parameters\GraphsVariablesPage.xaml">
+	  <MauiXaml Update="Pages\Parameters\GraphVariablesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Parameters\VariousPage.xaml">

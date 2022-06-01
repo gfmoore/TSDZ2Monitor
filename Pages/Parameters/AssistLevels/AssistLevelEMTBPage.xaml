@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TSDZ2Monitor.Pages.Parameters.AssistLevelPowerPage"
-             Title="Assist Level Power Page">
+             x:Class="TSDZ2Monitor.Pages.Parameters.AssistLevels.AssistLevelEMTBPage"
+             Title="Assist Level EMTB Page">
   <StackLayout>
-    <Label Text="Assist Level Power"
+    <Label Text="Assist Level EMTB"
            VerticalOptions="Center" 
            HorizontalOptions="Center" />
   </StackLayout>

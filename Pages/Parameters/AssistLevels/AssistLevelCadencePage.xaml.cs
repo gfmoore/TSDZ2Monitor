@@ -1,4 +1,4 @@
-namespace TSDZ2Monitor.Pages.Parameters;
+namespace TSDZ2Monitor.Pages.Parameters.AssistLevels;
 
 public partial class AssistLevelCadencePage : ContentPage
 {

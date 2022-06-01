@@ -10,9 +10,4 @@ public partial class App : Application
     Application.Current.UserAppTheme = AppTheme.Dark;
 
   }
-
-  //public void ForcePageLayout()
-  //{
-  //  (MainPage as IView).InvalidateArrange();
-  //}
 }
