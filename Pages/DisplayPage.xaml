@@ -11,9 +11,6 @@
     <Label Text="Main Display"
            VerticalOptions="Center" 
            HorizontalOptions="Center" />
-    
-    <Button Text="Show parameters" 
-            FontSize="20"
-            Command="{Binding ShowParametersCommand}"/>
+
   </StackLayout>
 </ContentPage>

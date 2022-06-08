@@ -14,11 +14,13 @@
   
     Shell.FlyoutBehavior="Flyout"
     FlyoutHeaderBehavior="Default"
-    FlyoutVerticalScrollMode="Auto"
-    FlyoutBackgroundColor="{StaticResource FlyoutBackgroundColor}">
+    FlyoutVerticalScrollMode="Enabled"
+    FlyoutBackgroundColor="{StaticResource FlyoutBackgroundColor}"
+  
+    FlyoutWidth="270">
 
   <Shell.BindingContext>
-    <local:ControlMenuViewModel />
+    <local:ControlMenuViewModel/>
   </Shell.BindingContext>
 
   <Shell.FlyoutHeaderTemplate>
@@ -40,11 +42,7 @@
   <Shell.FlyoutFooterTemplate>
     <DataTemplate>
       <StackLayout>
-        <Label Text="TSDZ2"
-               TextColor="GhostWhite"
-               FontAttributes="Bold"
-               HorizontalOptions="Center" />
-        <Label Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:MMMM dd, yyyy}'}"
+        <Label Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:MMMM dd, yyyy}'} "
                TextColor="GhostWhite"
                HorizontalOptions="Center" />
       </StackLayout>
@@ -69,200 +67,241 @@
     </DataTemplate>
   </Shell.ItemTemplate>
 
+  <Shell.MenuItemTemplate>
+    <DataTemplate>
+      <Grid ColumnDefinitions="0.2*,0.8*">
+        <Image Source="{Binding Icon}"
+               Margin="0, 20, 0, 10"
+               HeightRequest="30" />
+        <Label Grid.Column="1"
+               Text="{Binding Text}"
+               FontSize="20"
+               TextColor="Orange"
+               VerticalTextAlignment="Center" />
+      </Grid>
+    </DataTemplate>
+  </Shell.MenuItemTemplate>
 
   <ShellContent 
     Title="Display"
     Icon="speedometer.svg"
-    IsVisible="{Binding ShowMainMenu}"
+    Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
     ContentTemplate="{DataTemplate pages:DisplayPage}" />
   
   <ShellContent 
     Title="Bluetooth"
     Icon="bluetooth.svg"
-    IsVisible="{Binding ShowMainMenu}"
+    Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
     ContentTemplate="{DataTemplate pages:BluetoothPage}" />
 
   <ShellContent 
     Title="Tracks"
     Icon="tracks.svg"
-    IsVisible="{Binding ShowMainMenu}"
+    Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
     ContentTemplate="{DataTemplate pages:TracksPage}" />
 
-  <ShellContent 
-    Title="Parameters"
-    Icon="parameters.svg"
-    IsVisible="{Binding ShowMainMenu}"
-    
-    ContentTemplate="{DataTemplate pages:ParametersPage}" />
-
-  <MenuFlyoutItem 
-    Text="Parameters - by menuitem"
+  <MenuItem 
+    Text="Parameters"
+    IconImageSource="parameters.svg"
+    Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
     Command="{Binding ShowParametersCommand}" />
-
 
   <ShellContent 
     Title="Settings"
     Icon="settings.svg"
-    IsVisible="{Binding ShowMainMenu}"
+    Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
     ContentTemplate="{DataTemplate pages:SettingsPage}" />
 
   <ShellContent 
     Title="About"
     Icon="about.svg"
-    IsVisible="{Binding ShowMainMenu}"
+    Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
     ContentTemplate="{DataTemplate pages:AboutPage}" />
 
   
+
+  <MenuItem 
+    Text="Back to Main menu"
+    IconImageSource="xreturn.svg"
+    Shell.FlyoutItemIsVisible="{Binding ShowParameters}"
+    Command="{Binding ShowParametersCommand}" />
+
+  <MenuItem 
+    Text="Assist Levels"
+    
+    Shell.FlyoutItemIsVisible="{Binding ShowParameters}"
+    Command="{Binding ShowAssistLevelsCommand}" />
   
+  <MenuItem 
+    Text="Back to Parameters"
+    IconImageSource="xreturn.svg"
+    Shell.FlyoutItemIsVisible="{Binding ShowAssistLevels}"
+    Command="{Binding ShowAssistLevelsCommand}" />
+
+
   <ShellContent 
-    Title="Assist Level"
-    IsVisible="{Binding ShowParameters}"
+    Title="Assist Level General"
+    Shell.FlyoutItemIsVisible="{Binding ShowAssistLevels}"
     ContentTemplate="{DataTemplate parameters:AssistLevelPage}" />
   
   <ShellContent 
     Title="Assist Level Power"
-    IsVisible="{Binding ShowAssistLevels}"
+    Shell.FlyoutItemIsVisible="{Binding ShowAssistLevels}"
     ContentTemplate="{DataTemplate assistlevels:AssistLevelPowerPage}" />
   
   <ShellContent
     Title="Assist Level Torque"
-    IsVisible="{Binding ShowAssistLevels}"
+    Shell.FlyoutItemIsVisible="{Binding ShowAssistLevels}"
     ContentTemplate="{DataTemplate assistlevels:AssistLevelTorquePage}" />
   
   <ShellContent 
     Title="Assist LevelCadence"
-    IsVisible="{Binding ShowAssistLevels}"
+    Shell.FlyoutItemIsVisible="{Binding ShowAssistLevels}"
     ContentTemplate="{DataTemplate assistlevels:AssistLevelCadencePage}" />
   
   <ShellContent 
     Title="Assist LevelEMTB"
-    IsVisible="{Binding ShowAssistLevels}"
+    Shell.FlyoutItemIsVisible="{Binding ShowAssistLevels}"
     ContentTemplate="{DataTemplate assistlevels:AssistLevelEMTBPage}" />
     
 
+  
   <ShellContent 
     Title="Battery"
-    IsVisible="{Binding ShowParameters}"
+    Shell.FlyoutItemIsVisible="{Binding ShowParameters}"
     ContentTemplate="{DataTemplate parameters:BatteryPage}" />
 
   <ShellContent 
     Title="Motor"
-    IsVisible="{Binding ShowParameters}"
+    Shell.FlyoutItemIsVisible="{Binding ShowParameters}"
     ContentTemplate="{DataTemplate parameters:MotorPage}" />
 
   <ShellContent 
     Title="Motor Temperature"
-    IsVisible="{Binding ShowParameters}"
+    Shell.FlyoutItemIsVisible="{Binding ShowParameters}"
     ContentTemplate="{DataTemplate parameters:MotorTemperaturePage}" />
   
   <ShellContent 
     Title="SoC"
-    IsVisible="{Binding ShowParameters}"
+    Shell.FlyoutItemIsVisible="{Binding ShowParameters}"
     ContentTemplate="{DataTemplate parameters:SoCPage}" />
   
   <ShellContent 
     Title="Startup Boost"
-    IsVisible="{Binding ShowParameters}"
+    Shell.FlyoutItemIsVisible="{Binding ShowParameters}"
     ContentTemplate="{DataTemplate parameters:StartupBoostPage}" />
   
   <ShellContent 
     Title="Street Mode"
-    IsVisible="{Binding ShowParameters}"
+    Shell.FlyoutItemIsVisible="{Binding ShowParameters}"
     ContentTemplate="{DataTemplate parameters:StreetModePage}" />
   
   <ShellContent 
     Title="Technical"
-    IsVisible="{Binding ShowParameters}"
+    Shell.FlyoutItemIsVisible="{Binding ShowParameters}"
     ContentTemplate="{DataTemplate parameters:TechnicalPage}" />
   
   <ShellContent 
     Title="Torque Sensor"
-    IsVisible="{Binding ShowParameters}"
+    Shell.FlyoutItemIsVisible="{Binding ShowParameters}"
     ContentTemplate="{DataTemplate parameters:TorqueSensorPage}" />
   
   <ShellContent 
     Title="Trip Memories"
-    IsVisible="{Binding ShowParameters}"
+    Shell.FlyoutItemIsVisible="{Binding ShowParameters}"
     ContentTemplate="{DataTemplate parameters:TripMemoriesPage}" />
   
   <ShellContent 
     Title="Various"
-    IsVisible="{Binding ShowParameters}"
+    Shell.FlyoutItemIsVisible="{Binding ShowParameters}"
     ContentTemplate="{DataTemplate parameters:VariousPage}" />
   
   <ShellContent 
     Title="Wheel"
-    IsVisible="{Binding ShowParameters}"
+    Shell.FlyoutItemIsVisible="{Binding ShowParameters}"
     ContentTemplate="{DataTemplate parameters:WheelPage}" />
-  
+
+
+  <MenuItem 
+    Text="Back to Parameters"
+    IconImageSource="xreturn.svg"
+    Shell.FlyoutItemIsVisible="{Binding ShowGraphParameters}"
+    Command="{Binding ShowGraphVariablesCommand}" />
+
+  <MenuItem 
+    x:Name="GraphVariables"
+    Text="Graph Variables"
+    Shell.FlyoutItemIsVisible="{Binding ShowParameters}"
+    Command="{Binding ShowGraphVariablesCommand}" />
+
   <ShellContent 
     Title="Graph Variables"
-    IsVisible="{Binding ShowParameters}"
+    Shell.FlyoutItemIsVisible="{Binding ShowGraphParameters}"
     ContentTemplate="{DataTemplate parameters:GraphVariablesPage}" />
   
   <ShellContent 
     Title="Battery Current Graph"
-    IsVisible="{Binding ShowGraphParameters}"
+    Shell.FlyoutItemIsVisible="{Binding ShowGraphParameters}"
     ContentTemplate="{DataTemplate graphvariables:VarsBatteryCurrentPage}" />
   
   <ShellContent 
     Title="Battery Voltage Graph"
-    IsVisible="{Binding ShowGraphParameters}"
+    Shell.FlyoutItemIsVisible="{Binding ShowGraphParameters}"
     ContentTemplate="{DataTemplate graphvariables:VarsBatteryVoltagePage}" />
   
   <ShellContent 
     Title="Cedence Graph"
-    IsVisible="{Binding ShowGraphParameters}"
+    Shell.FlyoutItemIsVisible="{Binding ShowGraphParameters}"
     ContentTemplate="{DataTemplate graphvariables:VarsCadencePage}" />
   
   <ShellContent 
     Title="Human Power Graph"
-    IsVisible="{Binding ShowGraphParameters}"
+    Shell.FlyoutItemIsVisible="{Binding ShowGraphParameters}"
     ContentTemplate="{DataTemplate graphvariables:VarsHumanPowerPage}" />
   
   <ShellContent 
     Title="Motor Current Graph"
-    IsVisible="{Binding ShowGraphParameters}"
+    Shell.FlyoutItemIsVisible="{Binding ShowGraphParameters}"
     ContentTemplate="{DataTemplate graphvariables:VarsMotorCurrentPage}" />
   
   <ShellContent 
     Title="Motor FOC Graph"
-    IsVisible="{Binding ShowGraphParameters}"
+    Shell.FlyoutItemIsVisible="{Binding ShowGraphParameters}"
     ContentTemplate="{DataTemplate graphvariables:VarsMotorFOCPage}" />
   
   <ShellContent 
     Title="Motor Power Graph"
-    IsVisible="{Binding ShowGraphParameters}"
+    Shell.FlyoutItemIsVisible="{Binding ShowGraphParameters}"
     ContentTemplate="{DataTemplate graphvariables:VarsMotorPowerPage}" />
   
   <ShellContent 
     Title="Motor PWM Graph"
-    IsVisible="{Binding ShowGraphParameters}"
+    Shell.FlyoutItemIsVisible="{Binding ShowGraphParameters}"
     ContentTemplate="{DataTemplate graphvariables:VarsMotorPWMPage}" />
   
   <ShellContent 
     Title="Motor Speed Graph"
-    IsVisible="{Binding ShowGraphParameters}"
+    Shell.FlyoutItemIsVisible="{Binding ShowGraphParameters}"
     ContentTemplate="{DataTemplate graphvariables:VarsMotorSpeedPage}" />
   
   <ShellContent 
     Title="Motor Temperature Graph"
-    IsVisible="{Binding ShowGraphParameters}"
+    Shell.FlyoutItemIsVisible="{Binding ShowGraphParameters}"
     ContentTemplate="{DataTemplate graphvariables:VarsMotorTemperaturePage}" />
   
   <ShellContent 
     Title="Speed Graph"
-    IsVisible="{Binding ShowGraphParameters}"
+    Shell.FlyoutItemIsVisible="{Binding ShowGraphParameters}"
     ContentTemplate="{DataTemplate graphvariables:VarsSpeedPage}" />
   
   <ShellContent 
     Title="Trip Distance Graph"
-    IsVisible="{Binding ShowGraphParameters}"
+    Shell.FlyoutItemIsVisible="{Binding ShowGraphParameters}"
     ContentTemplate="{DataTemplate graphvariables:VarsTripDistancePage}" />
   
   <ShellContent 
     Title="Watts / Km Graph"
-    IsVisible="{Binding ShowGraphParameters}"
+    Shell.FlyoutItemIsVisible="{Binding ShowGraphParameters}"
     ContentTemplate="{DataTemplate graphvariables:VarsWattsKmPage}" />
   
 </Shell>
