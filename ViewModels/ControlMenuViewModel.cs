@@ -48,7 +48,7 @@ public partial class ControlMenuViewModel : ObservableObject
     ShowAssistLevels = false;
     ShowGraphParameters = !ShowGraphParameters;
     //AppShell.Current.CurrentItem = null;
-    AppShell.Current
+    //AppShell.Current
   }
 
 

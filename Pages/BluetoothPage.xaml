@@ -4,8 +4,6 @@
              x:Class="TSDZ2Monitor.Pages.BluetoothPage"
              Title="Bluetooth Page">
     <StackLayout>
-        <Label Text="Bluetooth LE"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
+      <Label Text="Bluetooth LE Connections" />
     </StackLayout>
 </ContentPage>
