@@ -1,9 +1,66 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TSDZ2Monitor.ViewModels"
              x:Class="TSDZ2Monitor.Pages.BluetoothPage"
              Title="Bluetooth Page">
-    <StackLayout>
-      <Label Text="Bluetooth LE Connections" />
-    </StackLayout>
+
+  <ContentPage.BindingContext>
+    <local:BluetoothPeripheralsViewModel />
+  </ContentPage.BindingContext>
+
+
+  <StackLayout>
+    <Label Text="Bluetooth LE Connections" />
+    <Label Text="{Binding Test}" />
+
+    <CollectionView
+      ItemsSource="{Binding BluetoothPeripherals}"
+      EmptyView="No data available"
+      VerticalOptions="StartAndExpand"
+      SelectionMode="Single"
+      ItemsLayout="VerticalList"
+      Margin="0, 0, 0, 0"
+      HeightRequest="250">
+      <CollectionView.ItemTemplate>
+        <DataTemplate>
+          <Grid
+             ColumnDefinitions="*,*,auto">
+
+            <Label Grid.Column="0" 
+                   Text="{Binding Name}"
+                   FontSize="20"
+                   Padding="0, 5, 0, 0"
+                   TextColor="Yellow"/>
+            
+            <Label Grid.Column="1" 
+                   Text="{Binding Id}" 
+                   FontSize="20"
+                   Padding="0, 5, 0, 0"
+                   TextColor="Yellow"/>
+
+            <ImageButton 
+                    Grid.Column="2" 
+                    HorizontalOptions="End"  
+                    Source="deletebin.svg" 
+                    Scale="0.7" 
+                    BackgroundColor="Transparent"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:BluetoothPeripheralsViewModel}}, Path=DeleteBLEItemCommand}"
+                    CommandParameter="{Binding .}"/>
+
+          </Grid>
+        </DataTemplate>
+      </CollectionView.ItemTemplate>
+    </CollectionView>
+
+    <Button Text="{Binding ScanButtonText}"
+            WidthRequest="180"
+            HeightRequest="55"
+            BackgroundColor="LightGreen"
+            FontSize="20"
+            Command="{Binding ScanBLEPeripheralsCommand}"/>
+    <Label Text="{Binding ScanResults}"
+           FontSize="20"
+           TextColor="LightGreen"/>
+  </StackLayout>
 </ContentPage>

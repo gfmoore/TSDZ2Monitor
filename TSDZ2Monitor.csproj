@@ -52,6 +52,7 @@
 	  <None Remove="Resources\Images\about.svg" />
 	  <None Remove="Resources\Images\bicycle.svg" />
 	  <None Remove="Resources\Images\bluetooth.svg" />
+	  <None Remove="Resources\Images\deletebin.svg" />
 	  <None Remove="Resources\Images\parameters.svg" />
 	  <None Remove="Resources\Images\settings.svg" />
 	  <None Remove="Resources\Images\speedometer.svg" />
@@ -197,6 +198,7 @@
 
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
+	  <PackageReference Include="Plugin.BLE" Version="2.1.3" />
 	</ItemGroup>
 
 </Project>

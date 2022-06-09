@@ -83,16 +83,16 @@
   </Shell.MenuItemTemplate>
 
   <ShellContent 
-    Title="Display"
-    Icon="speedometer.svg"
-    Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
-    ContentTemplate="{DataTemplate pages:DisplayPage}" />
-  
-  <ShellContent 
     Title="Bluetooth"
     Icon="bluetooth.svg"
     Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
     ContentTemplate="{DataTemplate pages:BluetoothPage}" />
+  
+  <ShellContent 
+    Title="Display"
+    Icon="speedometer.svg"
+    Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
+    ContentTemplate="{DataTemplate pages:DisplayPage}" />
 
   <ShellContent 
     Title="Tracks"
