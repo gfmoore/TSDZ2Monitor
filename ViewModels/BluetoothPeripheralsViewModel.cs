@@ -54,6 +54,7 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
       ScanButtonText = "Stop scan";
       ScanResults = "Scanning for BLE peripherals...";
       scanning = true;
+      
     }
     else
     {
