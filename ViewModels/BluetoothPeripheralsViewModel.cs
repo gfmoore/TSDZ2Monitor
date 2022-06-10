@@ -31,11 +31,22 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
     }
   };
 
+  //remove peripeheral
   public ICommand DeleteBLEItemCommand => new Command<BluetoothPeripheral>(DeleteBLEItemControl);
   public void DeleteBLEItemControl(BluetoothPeripheral btp)
   {
     Console.WriteLine($"delete {btp.Name}");
+    BluetoothPeripherals.Remove(btp);
   }
+  
+  //show details
+  public ICommand ShowBLEItemCommand => new Command<BluetoothPeripheral>(ShowBLEItemControl);
+  public void ShowBLEItemControl(BluetoothPeripheral btp)
+  {
+    Console.WriteLine($"delete {btp.Name}");
+  }
+
+
 
   [ObservableProperty]
   String scanButtonText = "Scan";

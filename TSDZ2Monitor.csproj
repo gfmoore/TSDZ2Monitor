@@ -32,7 +32,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-    <MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#000000" />
+    <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#000000" />
     
 		<!-- Splash Screen -->
     <MauiSplashScreen Include="Resources\Splash\bicycle.svg" Color="#000000" />
@@ -198,6 +198,7 @@
 
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
+	  <PackageReference Include="InTheHand.BluetoothLE" Version="4.0.24" />
 	  <PackageReference Include="Plugin.BLE" Version="2.1.3" />
 	</ItemGroup>
 
