@@ -31,10 +31,10 @@ public partial class BluetoothPage : ContentPage
 
   }
 
-  private void OnQuit(object sender, EventArgs e)
-  {
-    Console.WriteLine($"Peripheral clicked {(Label)sender}");
-  }
+  //private void OnQuit(object sender, EventArgs e)
+  //{
+  //  Console.WriteLine($"Peripheral clicked {(Label)sender}");
+  //}
 
 
 }

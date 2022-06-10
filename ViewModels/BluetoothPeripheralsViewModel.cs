@@ -43,7 +43,7 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
   public ICommand ShowBLEItemCommand => new Command<BluetoothPeripheral>(ShowBLEItemControl);
   public void ShowBLEItemControl(BluetoothPeripheral btp)
   {
-    Console.WriteLine($"delete {btp.Name}");
+    Console.WriteLine($"You tapped on {btp.Name}");
   }
 
 
