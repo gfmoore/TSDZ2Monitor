@@ -8,5 +8,4 @@ global using System.Windows.Input;
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using System.Collections.ObjectModel;
 global using TSDZ2Monitor.Models;
-global using TSDZ2Monitor.ViewModels;
-global using Plugin.BLE;
+

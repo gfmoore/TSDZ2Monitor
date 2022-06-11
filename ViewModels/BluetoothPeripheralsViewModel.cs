@@ -40,8 +40,8 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
   }
   
   //show details
-  public ICommand ShowBLEItemCommand => new Command<BluetoothPeripheral>(ShowBLEItemControl);
-  public void ShowBLEItemControl(BluetoothPeripheral btp)
+  public ICommand ShowBLEItemCommand => new Command<BluetoothPeripheral>(BluetoothPeripheralsViewModel.ShowBLEItemControl);
+  public static void ShowBLEItemControl(BluetoothPeripheral btp)
   {
     Console.WriteLine($"You tapped on {btp.Name}");
   }
