@@ -5,81 +5,75 @@ public partial class BluetoothPage : ContentPage
   public BluetoothPage()
   {
     InitializeComponent();
-
-    Console.WriteLine("Bluetooth here");
-
-    var status = Task.Run(() => BluetoothPage.CheckBluetoothAccess() );
-
-    Task.Run(() => BluetoothPage.RequestBluetoothAccess() );
-
-    Task.Run(() => BluetoothPage.CheckLocationAccess() );
-
-    RequestLocationPermission();
-    static async void RequestLocationPermission()
-    {
-      PermissionStatus requestStatus = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
-    }
-    //Task.Run(() => BluetoothPage.RequestLocationAccess() ); //can only be run in main thread??
-
   }
 
-  public static async Task<bool> CheckBluetoothAccess()
+
+  private async void ContentPage_Loaded(object sender, EventArgs e)
+  {
+    Console.WriteLine("Let's request Bluetooth permissions");
+    await CheckAndRequestBluetoothPermissionAsync();
+
+    await BluetoothPage.SetupBluetoothAsync();
+  }
+  public async Task CheckAndRequestBluetoothPermissionAsync()
+  {
+    if (!await CheckBluetoothAccessAsync())
+    {
+      bool blePermissionGranted = await App.Current.MainPage.DisplayAlert("Alert", "Allow use of bluetooth for scanning for your peripheral devices such as heart rate monitor etc?", "Allow", "Deny");
+      if (blePermissionGranted)
+      {
+        await RequestBluetoothAccessAsync();
+      }
+      else
+      {
+        Console.WriteLine("Can't run the app without granting Bluetooth permission!!");
+        return;
+      }
+    }
+  }
+
+  public async Task<bool> CheckBluetoothAccessAsync()
   {
     try
     {
-      var checkStatus = await Permissions.CheckStatusAsync<BluetoothPermissions>();
-      return checkStatus == PermissionStatus.Granted;
+      Console.WriteLine("Check Bluetooth permission");
+      var requestStatus = await Permissions.CheckStatusAsync<BluetoothPermissions>();
+      return requestStatus == PermissionStatus.Granted;
     }
-    catch (Exception ex)
+    catch (Exception e)
     {
-      Console.WriteLine($"Oops  {ex}");
+      Console.WriteLine($"Oops on Check permission {e}");
       return false;
     }
   }
 
-  public static async Task<bool> RequestBluetoothAccess()
+  public async Task<bool> RequestBluetoothAccessAsync()
   {
     try
     {
+      Console.WriteLine("Request Bluetooth permission");
       var requestStatus = await Permissions.RequestAsync<BluetoothPermissions>();
       return requestStatus == PermissionStatus.Granted;
     }
-    catch (Exception ex)
+    catch (Exception e)
     {
-      Console.WriteLine($"Oops  {ex}");
+      Console.WriteLine($"Oops on Request permission {e}");
       return false;
     }
   }
 
-  public static async Task<bool> CheckLocationAccess()
+
+  public static Task<bool> SetupBluetoothAsync()
   {
-    try
+    Console.WriteLine("Setup Bluetooth scanning");
+    var ble = CrossBluetoothLE.Current;
+
+    //listen to see if bluetooth on or off
+    var state = ble.State;
+    ble.StateChanged += (s, e) =>
     {
-      PermissionStatus checkStatus = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
-      return checkStatus == PermissionStatus.Granted;
-    }
-    catch (Exception ex)
-    {
-      Console.WriteLine($"Oops  {ex}");
-      return false;
-    }
+      Console.WriteLine($"The bluetooth state changed to {e.NewState}");
+    };
+    return Task.FromResult(true);
   }
-  //public static async Task<bool> RequestLocationAccess()
-  //{
-  //  try
-  //  {
-  //    PermissionStatus requestStatus = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
-  //    return requestStatus == PermissionStatus.Granted;
-  //  }
-  //  catch (Exception ex)
-  //  {
-  //    Console.WriteLine($"Oops  {ex}");
-  //    return false;
-  //  }
-  //}
-
 }
-
-
-
-

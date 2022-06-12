@@ -1,4 +1,6 @@
-﻿namespace TSDZ2Monitor;
+﻿using TSDZ2Monitor.Extensions;
+
+namespace TSDZ2Monitor;
 
 public static class MauiProgram
 {
@@ -7,11 +9,11 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
-			.ConfigureFonts(fonts =>
-			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-			});
+
+			//from Extensions.OrganiseStartup
+			.RegisterFonts()
+			.RegisterHandlers()
+			.RegisterServices();
 
 		return builder.Build();
 	}

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:TSDZ2Monitor.ViewModels"
              x:Class="TSDZ2Monitor.Pages.BluetoothPage"
+             Loaded="ContentPage_Loaded"
              Title="Bluetooth Page">
 
   <ContentPage.BindingContext>
@@ -12,7 +13,6 @@
 
   <StackLayout>
     <Label Text="Bluetooth LE Connections" />
-    <Label Text="{Binding Test}" />
 
     <CollectionView
       ItemsSource="{Binding BluetoothPeripherals}"
@@ -67,5 +67,34 @@
     <Label Text="{Binding ScanResults}"
            FontSize="20"
            TextColor="LightGreen"/>
+    
+    
+    <CollectionView
+      ItemsSource="{Binding ScannedPeripherals}"
+      EmptyView="No data available"
+      VerticalOptions="StartAndExpand"
+      SelectionMode="Single"
+      ItemsLayout="VerticalList"
+      Margin="0, 0, 0, 0"
+      HeightRequest="250">
+    <CollectionView.ItemTemplate>
+      <DataTemplate>
+        <Grid
+             ColumnDefinitions="*">
+
+          <Label Grid.Column="0"
+                   Text="{Binding Name}"
+                   FontSize="20"
+                   Padding="0, 5, 0, 0"
+                   TextColor="LightBlue">
+              <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:BluetoothPeripheralsViewModel}}, Path=TransferScannedBLEItemCommand}" 
+                                      CommandParameter="{Binding .}"/>
+              </Label.GestureRecognizers>
+           </Label>
+        </Grid>
+      </DataTemplate>
+    </CollectionView.ItemTemplate>
+    </CollectionView>
   </StackLayout>
 </ContentPage>

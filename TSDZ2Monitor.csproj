@@ -203,9 +203,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Classes\" />
 	  <Folder Include="Controls\" />
-	  <Folder Include="Helpers\" />
 	</ItemGroup>
 
 </Project>

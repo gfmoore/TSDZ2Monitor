@@ -1,7 +1,12 @@
-﻿namespace TSDZ2Monitor.ViewModels;
+﻿using System.Collections.ObjectModel;
+using System.Diagnostics;
+using TSDZ2Monitor.Classes;
+
+namespace TSDZ2Monitor.ViewModels;
 
 public partial class BluetoothPeripheralsViewModel : ObservableObject
 {
+
   [ObservableProperty]
   public ObservableCollection<BluetoothPeripheral> bluetoothPeripherals = new()
   {
@@ -31,7 +36,7 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
     }
   };
 
-  //remove peripeheral
+  //remove peripheral
   public ICommand DeleteBLEItemCommand => new Command<BluetoothPeripheral>(DeleteBLEItemControl);
   public void DeleteBLEItemControl(BluetoothPeripheral btp)
   {
@@ -56,23 +61,52 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
 
   bool  scanning = false;
 
-  //Scan for peripherals
+  //create a list for found ble peripherals
+  [ObservableProperty]
+  ObservableUniqueCollection<BluetoothScannedPeripheral> scannedPeripherals = new();
+
+
   public ICommand ScanBLEPeripheralsCommand => new Command(ScanBLEPeripheralsControl);
-  public void ScanBLEPeripheralsControl()
+  public async void ScanBLEPeripheralsControl()
   {
+    var adapter = CrossBluetoothLE.Current.Adapter;
+    //adapter.ScanTimeout = 20000; //assume ms
     if (!scanning)
     {
       ScanButtonText = "Stop scan";
       ScanResults = "Scanning for BLE peripherals...";
       scanning = true;
-      
+
+      adapter.DeviceDiscovered += (s, a) =>
+      {
+        BluetoothScannedPeripheral p = new();
+        p.Name = a.Device.Name;
+
+        if (p.Name != null || p.Name != String.Empty)
+        {
+          scannedPeripherals.Add(p);
+          Console.WriteLine($"Bluetooth peripheral found: {p.Name}");
+        }
+      };
+      await adapter.StartScanningForDevicesAsync();
+
     }
     else
     {
       ScanButtonText = "Scan";
       ScanResults = "";
       scanning = false;
+
+      adapter = null;
+      scannedPeripherals.Clear();
     }
   }
-}
 
+  public ICommand TransferScannedBLEItemCommand => new Command<BluetoothScannedPeripheral>(BluetoothPeripheralsViewModel.TransferScannedBLEItemControl);
+  public static void TransferScannedBLEItemControl(BluetoothScannedPeripheral btp)
+  {
+    Console.WriteLine($"You tapped on {btp.Name}");
+  }
+
+
+}
