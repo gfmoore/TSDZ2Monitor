@@ -10,7 +10,6 @@
     <local:BluetoothPeripheralsViewModel />
   </ContentPage.BindingContext>
 
-
   <StackLayout>
     <Label Text="Bluetooth LE Connections" />
 
@@ -48,6 +47,15 @@
                     Grid.Column="2" 
                     HorizontalOptions="End"  
                     Source="deletebin.svg" 
+                    Scale="0.7" 
+                    BackgroundColor="Transparent"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:BluetoothPeripheralsViewModel}}, Path=DeleteBLEItemCommand}"
+                    CommandParameter="{Binding .}"/>
+            <ImageButton 
+                    Grid.Column="2" 
+                    HorizontalOptions="End"  
+                    Source="cancelbin.svg" 
+                    IsVisible="True"
                     Scale="0.7" 
                     BackgroundColor="Transparent"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type local:BluetoothPeripheralsViewModel}}, Path=DeleteBLEItemCommand}"
