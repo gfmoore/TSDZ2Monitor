@@ -1,40 +1,48 @@
-﻿using System.Collections.ObjectModel;
-using System.Diagnostics;
-using TSDZ2Monitor.Classes;
-
-namespace TSDZ2Monitor.ViewModels;
+﻿namespace TSDZ2Monitor.ViewModels;
 
 public partial class BluetoothPeripheralsViewModel : ObservableObject
 {
+  bool scanning = false;
 
   [ObservableProperty]
-  public ObservableCollection<BluetoothPeripheral> bluetoothPeripherals = new()
+  String scanButtonText = "Scan";
+
+  [ObservableProperty]
+  String scanResults = String.Empty;
+
+  //create a list for remembered ble peripherals
+  [ObservableProperty]
+  public static ObservableCollection<BluetoothPeripheral> bluetoothPeripherals = new()
   {
-    new BluetoothPeripheral
-    {
-      Name = "Heart Rate Monitor",
-      Id = "12:12:12:12:AB",
-      Enabled = true
-    },
-    new BluetoothPeripheral
-    {
-      Name = "Speedometer",
-      Id = "34:34:34:34:CD",
-      Enabled = true
-    },
-    new BluetoothPeripheral
-    {
-      Name = "Cadence",
-      Id = "56:56:56:56:EF",
-      Enabled = true
-    },
+    //new BluetoothPeripheral
+    //{
+    //  Name = "Heart Rate Monitor",
+    //  Id = "12:12:12:12:AB",
+    //  Enabled = true
+    //},
+    //new BluetoothPeripheral
+    //{
+    //  Name = "Speedometer",
+    //  Id = "34:34:34:34:CD",
+    //  Enabled = true
+    //},
+    //new BluetoothPeripheral
+    //{
+    //  Name = "Cadence",
+    //  Id = "56:56:56:56:EF",
+    //  Enabled = true
+    //},
     new BluetoothPeripheral
     {
       Name = "TSDZ2Monitor Motor",
-      Id = "78:78:78:78:GH",
-      Enabled = true
+      DeviceName = "78:78:78:78:GH"
     }
   };
+
+  //create a list for discovered ble peripherals
+  [ObservableProperty]
+  public static ObservableCollection<BluetoothDiscoveredPeripheral> discoveredPeripherals = new();
+
 
   //remove peripheral
   public ICommand DeleteBLEItemCommand => new Command<BluetoothPeripheral>(DeleteBLEItemControl);
@@ -45,25 +53,11 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
   }
   
   //show details
-  public ICommand ShowBLEItemCommand => new Command<BluetoothPeripheral>(BluetoothPeripheralsViewModel.ShowBLEItemControl);
-  public static void ShowBLEItemControl(BluetoothPeripheral btp)
+  public ICommand ShowBLEItemCommand => new Command<BluetoothPeripheral>(ShowBLEItemControl);
+  public void ShowBLEItemControl(BluetoothPeripheral btp)
   {
     Console.WriteLine($"You tapped on {btp.Name}");
   }
-
-
-
-  [ObservableProperty]
-  String scanButtonText = "Scan";
-
-  [ObservableProperty]
-  String scanResults = String.Empty;
-
-  bool  scanning = false;
-
-  //create a list for found ble peripherals
-  [ObservableProperty]
-  ObservableUniqueCollection<BluetoothScannedPeripheral> scannedPeripherals = new();
 
 
   public ICommand ScanBLEPeripheralsCommand => new Command(ScanBLEPeripheralsControl);
@@ -79,13 +73,35 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
 
       adapter.DeviceDiscovered += (s, a) =>
       {
-        BluetoothScannedPeripheral p = new();
-        p.Name = a.Device.Name;
-
-        if (p.Name != null || p.Name != String.Empty)
+        if (a.Device.Name != null && a.Device.Name != String.Empty)
         {
-          scannedPeripherals.Add(p);
-          Console.WriteLine($"Bluetooth peripheral found: {p.Name}");
+          BluetoothDiscoveredPeripheral p = new()
+          {
+            Name                = a.Device.Name,
+            DeviceName          = a.Device.NativeDevice.ToString(),
+            Id                  = a.Device.Id.ToString(),
+            State               = a.Device.State.ToString(),
+            Rssi                = a.Device.Rssi,
+            AdvertisementCount  = a.Device.AdvertisementRecords.Count
+          };
+
+          //need to see if peripheral in list
+          bool found = false;
+          foreach(BluetoothDiscoveredPeripheral q in DiscoveredPeripherals)
+          {
+            if (p.Name == q.Name) found = true;
+            Console.WriteLine(q.Name);
+          }
+
+          if (!found) DiscoveredPeripherals.Add(p);
+
+          Console.WriteLine($"Bluetooth peripheral found:");
+          Console.WriteLine(a.Device.Name);
+          Console.WriteLine(a.Device.NativeDevice);
+          Console.WriteLine(a.Device.Id);
+          Console.WriteLine(a.Device.State);
+          Console.WriteLine(a.Device.Rssi);
+          Console.WriteLine(a.Device.AdvertisementRecords.Count);
         }
       };
       await adapter.StartScanningForDevicesAsync();
@@ -98,14 +114,36 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
       scanning = false;
 
       adapter = null;
-      scannedPeripherals.Clear();
+      DiscoveredPeripherals.Clear();
     }
   }
 
-  public ICommand TransferScannedBLEItemCommand => new Command<BluetoothScannedPeripheral>(BluetoothPeripheralsViewModel.TransferScannedBLEItemControl);
-  public static void TransferScannedBLEItemControl(BluetoothScannedPeripheral btp)
+  public ICommand TransferScannedBLEItemCommand => new Command<BluetoothDiscoveredPeripheral>(TransferScannedBLEItemControl);
+  public void TransferScannedBLEItemControl(BluetoothDiscoveredPeripheral p)
   {
-    Console.WriteLine($"You tapped on {btp.Name}");
+    Console.WriteLine($"You tapped on {p.Name}");
+
+    BluetoothPeripheral a = new()
+    {
+      Name                = p.Name,
+      DeviceName          = p.DeviceName,
+      Id                  = p.Id,
+      State               = p.State,
+      Rssi                = p.Rssi,
+      AdvertisementCount  = p.AdvertisementCount,
+    };
+
+    //need to see if peripheral in list
+    bool found = false;
+    foreach (BluetoothPeripheral q in BluetoothPeripherals)
+    {
+      if (a.Name == q.Name) found = true;
+      Console.WriteLine(q.Name);
+    }
+
+    if (!found) BluetoothPeripherals.Add(a);
+
+
   }
 
 

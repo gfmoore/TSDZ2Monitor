@@ -39,7 +39,7 @@
             </Label>
 
             <Label Grid.Column="1" 
-                   Text="{Binding Id}" 
+                   Text="{Binding DeviceName}" 
                    FontSize="20"
                    Padding="0, 5, 0, 0"
                    TextColor="Yellow"/>
@@ -70,7 +70,7 @@
     
     
     <CollectionView
-      ItemsSource="{Binding ScannedPeripherals}"
+      ItemsSource="{Binding DiscoveredPeripherals}"
       EmptyView="No data available"
       VerticalOptions="StartAndExpand"
       SelectionMode="Single"

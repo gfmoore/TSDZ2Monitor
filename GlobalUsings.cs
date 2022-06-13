@@ -9,4 +9,6 @@ global using CommunityToolkit.Mvvm.ComponentModel;
 global using System.Collections.ObjectModel;
 global using TSDZ2Monitor.Models;
 global using Plugin.BLE;
+global using System.Diagnostics;
+global using TSDZ2Monitor.Classes;
 
