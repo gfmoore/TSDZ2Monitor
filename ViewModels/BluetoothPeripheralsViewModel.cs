@@ -46,10 +46,31 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
 
   //remove peripheral
   public ICommand DeleteBLEItemCommand => new Command<BluetoothPeripheral>(DeleteBLEItemControl);
-  public void DeleteBLEItemControl(BluetoothPeripheral btp)
+  public void DeleteBLEItemControl(BluetoothPeripheral p)
   {
     //Console.WriteLine($"delete {btp.Name}");
-    BluetoothPeripherals.Remove(btp);
+    //need to find the actual item in the list otherwise changes are not updated in ui
+
+    foreach (BluetoothPeripheral q in BluetoothPeripherals)
+    {
+      if (Equals(p,q))
+      {
+        if (!q.CancelBinIsVisible)
+        {
+          q.CancelBinIsVisible = true;
+        }
+        else
+        {
+          q.CancelBinIsVisible = false;
+          BluetoothPeripherals.Remove(q);
+        }
+        break;
+      }
+    }
+
+
+
+
   }
 
   //remove peripheral
@@ -57,7 +78,7 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
   public void CancelDeleteBLEItemControl(BluetoothPeripheral btp)
   {
     Console.WriteLine($"cancel delete {btp.Name}");
-    //BluetoothPeripherals.Remove(btp);
+    btp.CancelBinIsVisible = false;
   }
 
   //show details
@@ -142,6 +163,7 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
       State               = p.State,
       Rssi                = p.Rssi,
       AdvertisementCount  = p.AdvertisementCount,
+      CancelBinIsVisible  = false,
     };
 
     //need to see if peripheral in list
@@ -157,9 +179,6 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
     }
 
     if (!found) BluetoothPeripherals.Add(a);
-
-
   }
-
 
 }
