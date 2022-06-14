@@ -10,10 +10,14 @@
     <local:BluetoothPeripheralsViewModel />
   </ContentPage.BindingContext>
 
-  <StackLayout>
-    <Label Text="Bluetooth LE Connections" />
+  <Grid
+    RowDefinitions="30, 300, 60, 30, *">
+    
+    <Label Grid.Row="0" 
+           Text="Bluetooth LE Connections" />
 
     <CollectionView
+      Grid.Row="1"
       ItemsSource="{Binding BluetoothPeripherals}"
       EmptyView="No data available"
       VerticalOptions="StartAndExpand"
@@ -69,17 +73,20 @@
       </CollectionView.ItemTemplate>
     </CollectionView>
 
-    <Button Text="{Binding ScanButtonText}"
+    <Button Grid.Row="2" 
+            Text="{Binding ScanButtonText}"
             WidthRequest="180"
             HeightRequest="55"
             BackgroundColor="LightGreen"
             FontSize="20"
             Command="{Binding ScanBLEPeripheralsCommand}"/>
-    <Label Text="{Binding ScanResults}"
+    
+    <Label Grid.Row="3" 
+           Text="{Binding ScanResults}"
            FontSize="20"
            TextColor="LightGreen"/>
 
-    <CollectionView
+    <CollectionView Grid.Row="4"
       ItemsSource="{Binding DiscoveredPeripherals}">
       <CollectionView.ItemTemplate>
         <DataTemplate>
@@ -99,5 +106,5 @@
       </CollectionView.ItemTemplate>
     </CollectionView>
 
-  </StackLayout>
+  </Grid>
 </ContentPage>
