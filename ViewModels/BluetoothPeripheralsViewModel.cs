@@ -51,7 +51,15 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
     //Console.WriteLine($"delete {btp.Name}");
     BluetoothPeripherals.Remove(btp);
   }
-  
+
+  //remove peripheral
+  public ICommand CancelDeleteBLEItemCommand => new Command<BluetoothPeripheral>(CancelDeleteBLEItemControl);
+  public void CancelDeleteBLEItemControl(BluetoothPeripheral btp)
+  {
+    Console.WriteLine($"cancel delete {btp.Name}");
+    //BluetoothPeripherals.Remove(btp);
+  }
+
   //show details
   public ICommand ShowBLEItemCommand => new Command<BluetoothPeripheral>(ShowBLEItemControl);
   public void ShowBLEItemControl(BluetoothPeripheral btp)

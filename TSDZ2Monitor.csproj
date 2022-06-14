@@ -53,6 +53,7 @@
 	  <None Remove="Resources\Images\bicycle.svg" />
 	  <None Remove="Resources\Images\bluetooth.svg" />
 	  <None Remove="Resources\Images\deletebin.svg" />
+    <None Remove="Resources\Images\cancelbin.svg" />
 	  <None Remove="Resources\Images\parameters.svg" />
 	  <None Remove="Resources\Images\settings.svg" />
 	  <None Remove="Resources\Images\speedometer.svg" />
