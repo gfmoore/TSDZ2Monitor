@@ -3,12 +3,7 @@
 public partial class BluetoothPeripheral : ObservableObject
 {
   public string       Name    { get; set; }
-
-  private string      deviceName;
-  public string       DeviceName { 
-    get => deviceName; 
-    set => SetProperty(ref deviceName, value); 
-  }
+  public string       DeviceName { get; set; }
   public string       Id { get; set; } 
   public int          Rssi { get; set; } 
   public string       State { get; set; } 

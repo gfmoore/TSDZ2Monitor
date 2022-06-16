@@ -1,25 +1,42 @@
+using TSDZ2Monitor.Classes;
+
 namespace TSDZ2Monitor.Pages;
 
 public partial class BluetoothPage : ContentPage
 {
+
+
   public BluetoothPage()
   {
     InitializeComponent();
+
   }
+
+
+
+
 
 
   private async void ContentPage_Loaded(object sender, EventArgs e)
   {
+    //do Bluetooth permissions
     Console.WriteLine("Let's request Bluetooth permissions");
     await CheckAndRequestBluetoothPermissionAsync();
 
     await BluetoothPage.SetupBluetoothAsync();
+
+
+
   }
+  
   public async Task CheckAndRequestBluetoothPermissionAsync()
   {
     if (!await CheckBluetoothAccessAsync())
     {
-      bool blePermissionGranted = await App.Current.MainPage.DisplayAlert("Alert", "Allow use of bluetooth for scanning for your peripheral devices such as heart rate monitor etc?", "Allow", "Deny");
+      //bool blePermissionGranted = await App.Current.MainPage.DisplayAlert("Alert", "Allow use of bluetooth for scanning for your peripheral devices such as heart rate monitor etc?", "Allow", "Deny");
+//Testing
+bool blePermissionGranted = true;
+
       if (blePermissionGranted)
       {
         await RequestBluetoothAccessAsync();
@@ -62,7 +79,6 @@ public partial class BluetoothPage : ContentPage
     }
   }
 
-
   public static Task<bool> SetupBluetoothAsync()
   {
     Console.WriteLine("Setup Bluetooth scanning");
@@ -76,4 +92,5 @@ public partial class BluetoothPage : ContentPage
     };
     return Task.FromResult(true);
   }
+
 }

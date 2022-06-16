@@ -2,6 +2,24 @@
 
 public partial class BluetoothPeripheralsViewModel : ObservableObject
 {
+  private static Database database;
+  private static string filename = "GM.db3";
+  public static Database Database
+  {
+    get
+    {
+      if (database == null)
+      {
+        database = new Database(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), filename));
+        //database = new Database(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), filename));
+      }
+
+      return database;
+    }
+  }
+
+
+
   bool scanning = false;
 
   [ObservableProperty]
@@ -14,24 +32,6 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
   [ObservableProperty]
   public static ObservableCollection<BluetoothPeripheral> bluetoothPeripherals = new()
   {
-    //new BluetoothPeripheral
-    //{
-    //  Name = "Heart Rate Monitor",
-    //  Id = "12:12:12:12:AB",
-    //  Enabled = true
-    //},
-    //new BluetoothPeripheral
-    //{
-    //  Name = "Speedometer",
-    //  Id = "34:34:34:34:CD",
-    //  Enabled = true
-    //},
-    //new BluetoothPeripheral
-    //{
-    //  Name = "Cadence",
-    //  Id = "56:56:56:56:EF",
-    //  Enabled = true
-    //},
     new BluetoothPeripheral
     {
       Name = "TSDZ2Monitor Motor",
@@ -43,7 +43,6 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
   [ObservableProperty]
   public static ObservableCollection<BluetoothPeripheral> discoveredPeripherals = new();
 
-
   //remove peripheral
   public ICommand DeleteBLEItemCommand => new Command<BluetoothPeripheral>(DeleteBLEItemControl);
   public void DeleteBLEItemControl(BluetoothPeripheral p)
@@ -53,7 +52,7 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
 
     foreach (BluetoothPeripheral q in BluetoothPeripherals)
     {
-      if (Equals(p,q))
+      if (Equals(p, q))
       {
         if (!q.CancelBinIsVisible)
         {
@@ -73,6 +72,7 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
 
   }
 
+
   //remove peripheral
   public ICommand CancelDeleteBLEItemCommand => new Command<BluetoothPeripheral>(CancelDeleteBLEItemControl);
   public void CancelDeleteBLEItemControl(BluetoothPeripheral btp)
@@ -83,9 +83,9 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
 
   //show details
   public ICommand ShowBLEItemCommand => new Command<BluetoothPeripheral>(ShowBLEItemControl);
-  public void ShowBLEItemControl(BluetoothPeripheral btp)
+  public void ShowBLEItemControl(BluetoothPeripheral p)
   {
-    //Console.WriteLine($"You tapped on {btp.Name}");
+    Console.WriteLine($"You tapped on {p.Name}");
   }
 
 
@@ -93,7 +93,7 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
   public async void ScanBLEPeripheralsControl()
   {
     var adapter = CrossBluetoothLE.Current.Adapter;
-    //adapter.ScanTimeout = 20000; //assume ms
+    adapter.ScanTimeout = 10000; //assume ms, so 10s
     if (!scanning)
     {
       ScanButtonText = "Stop scan";
@@ -106,17 +106,17 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
         {
           BluetoothPeripheral p = new()
           {
-            Name                = a.Device.Name,
-            DeviceName          = a.Device.NativeDevice.ToString(),
-            Id                  = a.Device.Id.ToString(),
-            State               = a.Device.State.ToString(),
-            Rssi                = a.Device.Rssi,
-            AdvertisementCount  = a.Device.AdvertisementRecords.Count
+            Name = a.Device.Name,
+            DeviceName = a.Device.NativeDevice.ToString(),
+            Id = a.Device.Id.ToString(),
+            State = a.Device.State.ToString(),
+            Rssi = a.Device.Rssi,
+            AdvertisementCount = a.Device.AdvertisementRecords.Count
           };
 
           //need to see if peripheral in list
           bool found = false;
-          foreach(BluetoothPeripheral q in DiscoveredPeripherals)
+          foreach (BluetoothPeripheral q in DiscoveredPeripherals)
           {
             if (p.Name == q.Name)
             {
@@ -127,13 +127,6 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
 
           if (!found) DiscoveredPeripherals.Add(p);
 
-          //Console.WriteLine($"Bluetooth peripheral found:");
-          //Console.WriteLine(a.Device.Name);
-          //Console.WriteLine(a.Device.NativeDevice);
-          //Console.WriteLine(a.Device.Id);
-          //Console.WriteLine(a.Device.State);
-          //Console.WriteLine(a.Device.Rssi);
-          //Console.WriteLine(a.Device.AdvertisementRecords.Count);
         }
       };
       await adapter.StartScanningForDevicesAsync();
@@ -157,13 +150,13 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
 
     BluetoothPeripheral a = new()
     {
-      Name                = p.Name,
-      DeviceName          = p.DeviceName,
-      Id                  = p.Id,
-      State               = p.State,
-      Rssi                = p.Rssi,
-      AdvertisementCount  = p.AdvertisementCount,
-      CancelBinIsVisible  = false,
+      Name = p.Name,
+      DeviceName = p.DeviceName,
+      Id = p.Id,
+      State = p.State,
+      Rssi = p.Rssi,
+      AdvertisementCount = p.AdvertisementCount,
+      CancelBinIsVisible = false,
     };
 
     //need to see if peripheral in list
@@ -181,4 +174,26 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
     if (!found) BluetoothPeripherals.Add(a);
   }
 
+
+  [ObservableProperty]
+  public static ObservableCollection<User> u = new();
+  List<User> userlist = new();
+  public ICommand DBStuffCommand => new Command(DBStuffControl);
+  public async void DBStuffControl()
+  {
+    Console.WriteLine("Got here");
+    //await Database.DropTableUsersAsync();
+    //await Database.CreateTableUsersAsync();
+
+    await Database.SaveUserAsync(new User
+    {
+      Username = "Jane"
+    });
+
+    userlist = await Database.GetUsersAsync();
+    u.Clear();
+    userlist.ForEach(x => u.Add(x));  //convert list to observable collection
+
+    Console.WriteLine("Got here as well");
+  }
 }

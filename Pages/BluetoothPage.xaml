@@ -11,7 +11,7 @@
   </ContentPage.BindingContext>
 
   <Grid
-    RowDefinitions="30, 300, 60, 30, *">
+    RowDefinitions="30, 300, 60, 30, *, 50">
     
     <Label Grid.Row="0" 
            Text="Bluetooth LE Connections" />
@@ -94,7 +94,7 @@
           <Label Text="{Binding Name}" 
                  FontSize="20"
                  Padding="0, 5, 0, 0"
-                 TextColor="Blue">
+                 TextColor="Orange">
             <Label.GestureRecognizers>
               <TapGestureRecognizer 
                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:BluetoothPeripheralsViewModel}}, Path=TransferScannedBLEItemCommand}" 
@@ -105,6 +105,12 @@
         </DataTemplate>
       </CollectionView.ItemTemplate>
     </CollectionView>
+
+    <Button Grid.Row="5"
+            Text="Database"
+            WidthRequest="150"
+            FontSize="20" 
+            Command="{Binding DBStuffCommand}"/>
 
   </Grid>
 </ContentPage>

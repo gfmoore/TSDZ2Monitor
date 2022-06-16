@@ -199,12 +199,15 @@
 
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
-	  <PackageReference Include="InTheHand.BluetoothLE" Version="4.0.24" />
 	  <PackageReference Include="Plugin.BLE" Version="2.1.3" />
+	  <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+	  <PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Folder Include="Controls\" />
 	</ItemGroup>
+
+	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionTSDZ2MonitorHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 
 </Project>
