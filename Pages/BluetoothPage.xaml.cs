@@ -1,17 +1,20 @@
-using TSDZ2Monitor.Classes;
-
 namespace TSDZ2Monitor.Pages;
 
 public partial class BluetoothPage : ContentPage
 {
-
-
   public BluetoothPage()
   {
     InitializeComponent();
 
   }
 
+  protected override async void OnAppearing()
+  {
+    base.OnAppearing();
+
+    //now do stuff like set up the database
+    Console.WriteLine("Page appearing");
+  }
 
 
 

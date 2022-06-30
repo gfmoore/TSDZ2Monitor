@@ -1,6 +1,4 @@
-﻿using TSDZ2Monitor.Extensions;
-
-namespace TSDZ2Monitor;
+﻿namespace TSDZ2Monitor;
 
 public static class MauiProgram
 {
@@ -15,6 +13,17 @@ public static class MauiProgram
 			.RegisterHandlers()
 			.RegisterServices();
 
-		return builder.Build();
+    //dependency injection
+    builder.Services.AddTransient<DisplayPage>();
+    builder.Services.AddTransient<BluetoothPage>();
+    builder.Services.AddTransient<TracksPage>();
+    builder.Services.AddTransient<ParametersPage>();
+    builder.Services.AddTransient<SettingsPage>();
+    builder.Services.AddTransient<AboutPage>();
+
+    builder.Services.AddTransient<ControlMenuViewModel>();
+    builder.Services.AddTransient<BluetoothPeripheralsViewModel>();
+
+    return builder.Build();
 	}
 }

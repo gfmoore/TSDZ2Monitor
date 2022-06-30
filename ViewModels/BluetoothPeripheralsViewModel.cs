@@ -2,23 +2,6 @@
 
 public partial class BluetoothPeripheralsViewModel : ObservableObject
 {
-  private static Database database;
-  private static string filename = "GM.db3";
-  public static Database Database
-  {
-    get
-    {
-      if (database == null)
-      {
-        database = new Database(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), filename));
-        //database = new Database(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), filename));
-      }
-
-      return database;
-    }
-  }
-
-
 
   bool scanning = false;
 
@@ -175,25 +158,6 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
   }
 
 
-  [ObservableProperty]
-  public static ObservableCollection<User> u = new();
-  List<User> userlist = new();
-  public ICommand DBStuffCommand => new Command(DBStuffControl);
-  public async void DBStuffControl()
-  {
-    Console.WriteLine("Got here");
-    //await Database.DropTableUsersAsync();
-    //await Database.CreateTableUsersAsync();
 
-    await Database.SaveUserAsync(new User
-    {
-      Username = "Jane"
-    });
-
-    userlist = await Database.GetUsersAsync();
-    u.Clear();
-    userlist.ForEach(x => u.Add(x));  //convert list to observable collection
-
-    Console.WriteLine("Got here as well");
-  }
+ 
 }

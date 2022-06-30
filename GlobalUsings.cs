@@ -7,9 +7,14 @@ global using System.Threading.Tasks;
 global using System.Windows.Input;
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using System.Collections.ObjectModel;
-global using TSDZ2Monitor.Models;
+
 global using Plugin.BLE;
 global using System.Diagnostics;
-global using TSDZ2Monitor.Classes;
+global using TSDZ2Monitor.Models;
+global using TSDZ2Monitor.Database;
+global using TSDZ2Monitor.ViewModels;
 global using SQLite;
+global using TSDZ2Monitor.Extensions;
+global using TSDZ2Monitor.Pages;
+
 
