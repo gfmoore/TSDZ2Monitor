@@ -11,6 +11,7 @@ global using CommunityToolkit.Mvvm.ComponentModel;
 global using System.Collections.ObjectModel;
 
 global using Plugin.BLE;
+global using Plugin.BLE.Abstractions.Contracts;
 global using System.Diagnostics;
 global using TSDZ2Monitor.Models;
 global using TSDZ2Monitor.Database;

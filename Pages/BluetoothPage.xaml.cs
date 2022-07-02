@@ -21,7 +21,7 @@ public partial class BluetoothPage : ContentPage
   private async void ContentPage_Loaded(object sender, EventArgs e)
   {
     //do Bluetooth permissions
-    Console.WriteLine("Let's request Bluetooth permissions");
+    Debug.WriteLine("Let's request Bluetooth permissions");
     await CheckAndRequestBluetoothPermissionAsync();
 
     await BluetoothPage.SetupBluetoothAsync();
@@ -35,6 +35,7 @@ public partial class BluetoothPage : ContentPage
       //bool blePermissionGranted = await App.Current.MainPage.DisplayAlert("Alert", "Allow use of bluetooth for scanning for your peripheral devices such as heart rate monitor etc?", "Allow", "Deny");
 
 //TODO Remove Testing
+
 bool blePermissionGranted = true;
 
       if (blePermissionGranted)
@@ -43,7 +44,7 @@ bool blePermissionGranted = true;
       }
       else
       {
-        Console.WriteLine("Can't run the app without granting Bluetooth permission!!");
+        Debug.WriteLine("Can't run the app without granting Bluetooth permission!!");
         return;
       }
     }
@@ -53,13 +54,13 @@ bool blePermissionGranted = true;
   {
     try
     {
-      Console.WriteLine("Check Bluetooth permission");
+      Debug.WriteLine("Check Bluetooth permission");
       var requestStatus = await Permissions.CheckStatusAsync<BluetoothPermissions>();
       return requestStatus == PermissionStatus.Granted;
     }
     catch (Exception e)
     {
-      Console.WriteLine($"Oops on Check permission {e}");
+      Debug.WriteLine($"Oops on Check permission {e}");
       return false;
     }
   }
@@ -68,30 +69,30 @@ bool blePermissionGranted = true;
   {
     try
     {
-      Console.WriteLine("Request Bluetooth permission");
+      Debug.WriteLine("Request Bluetooth permission");
       var requestStatus = await Permissions.RequestAsync<BluetoothPermissions>();
       return requestStatus == PermissionStatus.Granted;
     }
     catch (Exception e)
     {
-      Console.WriteLine($"Oops on Request permission {e}");
+      Debug.WriteLine($"Oops on Request permission {e}");
       return false;
     }
   }
 
   public static Task<bool> SetupBluetoothAsync()
   {
-    Console.WriteLine("Setup Bluetooth scanning");
+    Debug.WriteLine("Setup Bluetooth scanning");
     var ble = CrossBluetoothLE.Current;
+    var adapter = CrossBluetoothLE.Current.Adapter;
 
     //listen to see if bluetooth on or off
     var state = ble.State;
     ble.StateChanged += (s, e) =>
     {
-      Console.WriteLine($"The bluetooth state changed to {e.NewState}");
+      Debug.WriteLine($"The bluetooth state changed to {e.NewState}");
     };
     return Task.FromResult(true);
   }
-
 
 }

@@ -17,6 +17,7 @@ public static class MauiProgram
     builder.Services.AddSingleton<IGeolocation>(Geolocation.Default);
     builder.Services.AddSingleton<IMap>(Map.Default);
 
+
     builder.Services.AddTransient<DisplayPage>();
     builder.Services.AddTransient<BluetoothPage>();
     builder.Services.AddTransient<TracksPage>();

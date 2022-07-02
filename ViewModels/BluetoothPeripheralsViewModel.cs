@@ -8,19 +8,21 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
     timer.Elapsed += OnTimedEvent;  
     timer.AutoReset = false;
 
+    //Setup blutooth adapter
+    ble = CrossBluetoothLE.Current;
+    adapter = CrossBluetoothLE.Current.Adapter;
+    adapter.ScanTimeout = 10000; //assume ms, so 10s
+
     //Get what's in the database
     LoadExistingBluetoothPeripherals();
   }
 
-  private static readonly System.Timers.Timer timer = new(10000);
-
-  private async void LoadExistingBluetoothPeripherals()
-  {
-    List<BluetoothPeripheral> l = await App.Database.GetBluetoothPeripheralsAsync();
-    BluetoothPeripherals = new ObservableCollection<BluetoothPeripheral>(l);
-  }
+  IBluetoothLE ble;
+  IAdapter adapter;
 
   bool scanning = false;
+
+  private static readonly System.Timers.Timer timer = new(10000);
 
   [ObservableProperty]
   String scanButtonText = "Scan";
@@ -35,6 +37,14 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
   //create a list for discovered ble peripherals
   [ObservableProperty]
   private ObservableCollection<BluetoothPeripheral> discoveredPeripherals = new();
+
+
+  //Load saved peripherals
+  private async void LoadExistingBluetoothPeripherals()
+  {
+    List<BluetoothPeripheral> l = await App.Database.GetBluetoothPeripheralsAsync();
+    BluetoothPeripherals = new ObservableCollection<BluetoothPeripheral>(l);
+  }
 
   //remove peripheral
   [RelayCommand]
@@ -76,6 +86,7 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
   }
 
 
+
   [RelayCommand]
   public async void ScanBLEPeripherals()
   {
@@ -83,8 +94,6 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
     Debug.WriteLine("Timer started");
     timer.Start();
 
-    var adapter = CrossBluetoothLE.Current.Adapter;
-    adapter.ScanTimeout = 10000; //assume ms, so 10s
     if (!scanning)
     {
       ScanButtonText = "Stop scan";
@@ -95,14 +104,15 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
       {
         if (a.Device.Name != null && a.Device.Name != String.Empty)
         {
+          Debug.WriteLine(a.Device.Name);
           BluetoothPeripheral p = new()
           {
-            Name = a.Device.Name,
-            DeviceName = a.Device.NativeDevice.ToString(),
-            DeviceId = a.Device.Id.ToString(),
-            State = a.Device.State.ToString(),
-            Rssi = a.Device.Rssi,
-            AdvertisementCount = a.Device.AdvertisementRecords.Count
+            Name                = a.Device.Name,
+            DeviceName          = a.Device.NativeDevice.ToString(),
+            DeviceId            = a.Device.Id.ToString(),
+            State               = a.Device.State.ToString(),
+            Rssi                = a.Device.Rssi,
+            AdvertisementCount  = a.Device.AdvertisementRecords.Count
           };
 
           //need to see if peripheral in list
@@ -125,30 +135,25 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
     }
     else
     {
-      timer.Stop();
-      timer.Close();
-
-      ScanButtonText = "Scan";
-      ScanResults = "";
-      scanning = false;
-
-      adapter = null;
-      DiscoveredPeripherals.Clear();
+      ClearScanning();
     }
   }
   
   private void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
   {
-    // Code to be executed at the end of Timer 
-    Debug.WriteLine("Timer ending 10 second count");
+    ClearScanning();
+  }
+
+  private void ClearScanning()
+  {
     timer.Stop();
     timer.Close();
+    Debug.WriteLine("Timer stopped");
 
     ScanButtonText = "Scan";
     ScanResults = "";
     scanning = false;
 
-    //adapter = null;
     DiscoveredPeripherals.Clear();
   }
 
