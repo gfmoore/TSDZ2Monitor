@@ -28,7 +28,7 @@ public class Database
     return _database.Table<BluetoothPeripheral>().ToListAsync();
   }
 
-  public Task<int> SaveBluetoothPeripheralAsync(BluetoothPeripheral bluetoothPeripheral)
+  public Task<int> InsertBluetoothPeripheralAsync(BluetoothPeripheral bluetoothPeripheral)
   {
     return _database.InsertAsync(bluetoothPeripheral);
   }
@@ -38,5 +38,11 @@ public class Database
     return _database.DeleteAsync(bluetoothPeripheral);
   }
 
+  public Task<int> DeleteAllBluetoothPeripheralsAsync() => _database.DeleteAllAsync<BluetoothPeripheral>();
+
+  public Task<List<BluetoothPeripheral>> Query(string query)
+  {
+    return null;
+  }
 }
 

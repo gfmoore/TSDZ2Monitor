@@ -10,107 +10,138 @@
     <local:BluetoothPeripheralsViewModel />
   </ContentPage.BindingContext>
 
-  <Grid
-    RowDefinitions="30, 300, 60, 30, *, 50">
+  <Grid RowDefinitions="350, *"
+        RowSpacing="10">
     
-    <Label Grid.Row="0" 
-           Text="Bluetooth LE Connections" />
+    <Border Grid.Row="0"
+            Stroke="Orange"
+            StrokeThickness="2"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            Background="Black"
+            Margin="5,0,5,0"
+            Padding="5,5,5,5">
+      
+      <Grid RowDefinitions="20, 260, 40">
+        
+        <Label Grid.Row="0" 
+               Text="Bluetooth LE Connections" 
+               FontSize="15"/>
+        
+        <CollectionView
+          Grid.Row="1"
+          ItemsSource="{Binding BluetoothPeripherals}"
+          VerticalOptions="StartAndExpand"
+          SelectionMode="Single"
+          ItemsLayout="VerticalList"
+          Margin="0, 0, 0, 0"
+          HeightRequest="150">
+          <CollectionView.ItemTemplate>
+            <DataTemplate>
+              <Grid
+                 ColumnDefinitions="*,*,20,20"
+                 ColumnSpacing="2">
 
-    <CollectionView
-      Grid.Row="1"
-      ItemsSource="{Binding BluetoothPeripherals}"
-      EmptyView="No data available"
-      VerticalOptions="StartAndExpand"
-      SelectionMode="Single"
-      ItemsLayout="VerticalList"
-      Margin="0, 0, 0, 0"
-      HeightRequest="150">
-      <CollectionView.ItemTemplate>
-        <DataTemplate>
-          <Grid
-             ColumnDefinitions="*,*,20,20"
-             ColumnSpacing="2">
+                <Label Grid.Column="0"
+                       Text="{Binding Name}"
+                       FontSize="20"
+                       Padding="0, 5, 0, 0"
+                       TextColor="Yellow">
+                        <Label.GestureRecognizers>
+                          <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:BluetoothPeripheralsViewModel}}, Path=ShowBLEItemCommand}" 
+                                                CommandParameter="{Binding .}"/>
+                        </Label.GestureRecognizers> 
+                </Label>
 
-            <Label Grid.Column="0"
-                   Text="{Binding Name}"
-                   FontSize="20"
-                   Padding="0, 5, 0, 0"
-                   TextColor="Yellow">
-                    <Label.GestureRecognizers>
-                      <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:BluetoothPeripheralsViewModel}}, Path=ShowBLEItemCommand}" 
-                                            CommandParameter="{Binding .}"/>
-                    </Label.GestureRecognizers> 
-            </Label>
+                <Label Grid.Column="1" 
+                       Text="{Binding DeviceName}" 
+                       FontSize="20"
+                       Padding="0, 5, 0, 0"
+                       TextColor="Yellow"/>
 
-            <Label Grid.Column="1" 
-                   Text="{Binding DeviceName}" 
-                   FontSize="20"
-                   Padding="0, 5, 0, 0"
-                   TextColor="Yellow"/>
-
-            <ImageButton 
-                    Grid.Column="2" 
-                    HorizontalOptions="End"  
-                    Source="cancelbin.svg" 
-                    IsVisible="{Binding CancelBinIsVisible}"
-                    Scale="1.4" 
-                    BackgroundColor="Transparent"
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:BluetoothPeripheralsViewModel}}, Path=CancelDeleteBLEItemCommand}"
-                    CommandParameter="{Binding .}"/>
+                <ImageButton 
+                        Grid.Column="2" 
+                        HorizontalOptions="End"  
+                        Source="cancelbin.svg" 
+                        IsVisible="{Binding CancelBinIsVisible}"
+                        Scale="1.4" 
+                        BackgroundColor="Transparent"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:BluetoothPeripheralsViewModel}}, Path=CancelDeleteBLEItemCommand}"
+                        CommandParameter="{Binding .}"/>
 
 
-            <ImageButton 
-                    Grid.Column="3" 
-                    HorizontalOptions="End"  
-                    Source="deletebin.svg" 
-                    Scale="1.0" 
-                    BackgroundColor="Transparent"
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:BluetoothPeripheralsViewModel}}, Path=DeleteBLEItemCommand}"
-                    CommandParameter="{Binding .}"/>
+                <ImageButton 
+                        Grid.Column="3" 
+                        HorizontalOptions="End"  
+                        Source="deletebin.svg" 
+                        Scale="1.0" 
+                        BackgroundColor="Transparent"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:BluetoothPeripheralsViewModel}}, Path=DeleteBLEItemCommand}"
+                        CommandParameter="{Binding .}"/>
 
-          </Grid>
-        </DataTemplate>
-      </CollectionView.ItemTemplate>
-    </CollectionView>
+              </Grid>
+            </DataTemplate>
+          </CollectionView.ItemTemplate>
+        </CollectionView>
 
-    <Button Grid.Row="2" 
-            Text="{Binding ScanButtonText}"
+        <Button Grid.Row="2"
+            Text="Connect"
             WidthRequest="180"
             HeightRequest="55"
-            BackgroundColor="LightGreen"
-            FontSize="20"
-            Command="{Binding ScanBLEPeripheralsCommand}"/>
-    
-    <Label Grid.Row="3" 
-           Text="{Binding ScanResults}"
-           FontSize="20"
-           TextColor="LightGreen"/>
-
-    <CollectionView Grid.Row="4"
-      ItemsSource="{Binding DiscoveredPeripherals}">
-      <CollectionView.ItemTemplate>
-        <DataTemplate>
-
-          <Label Text="{Binding Name}" 
-                 FontSize="20"
-                 Padding="0, 5, 0, 0"
-                 TextColor="Orange">
-            <Label.GestureRecognizers>
-              <TapGestureRecognizer 
-                Command="{Binding Source={RelativeSource AncestorType={x:Type local:BluetoothPeripheralsViewModel}}, Path=TransferScannedBLEItemCommand}" 
-                CommandParameter="{Binding .}"/>
-            </Label.GestureRecognizers>
-          </Label>
-
-        </DataTemplate>
-      </CollectionView.ItemTemplate>
-    </CollectionView>
-
-    <Button Grid.Row="5"
-            Text="Database"
-            WidthRequest="150"
             FontSize="20" 
-            Command="{Binding DBStuffCommand}"/>
+            Margin="0,0,0,0"
+            Command="{Binding ConnectToPeripheralsCommand}"/>
+
+      </Grid>
+    </Border>
+
+    <Border Grid.Row="1"
+            Stroke="blue"
+            StrokeThickness="2"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            Background="Black"
+            Margin="5,0,5,0"
+            Padding="5,5,5,5">
+      
+      <Grid RowDefinitions="50, 35, *">
+        
+        <Button Grid.Row="0" 
+                Text="{Binding ScanButtonText}"
+                WidthRequest="180"
+                HeightRequest="50"
+                BackgroundColor="LightGreen"
+                FontSize="20"
+                Margin="0,10,0,0"
+                Command="{Binding ScanBLEPeripheralsCommand}"/>
+        
+        <Label Grid.Row="1" 
+                Text="{Binding ScanResults}"
+                FontSize="18"
+                Margin="0,10,0,0"
+                TextColor="LightGreen"/>        
+
+        <CollectionView Grid.Row="2"
+          ItemsSource="{Binding DiscoveredPeripherals}">
+          <CollectionView.ItemTemplate>
+            <DataTemplate>
+
+              <Label Text="{Binding Name}" 
+                     FontSize="20"
+                     Padding="0, 5, 0, 0"
+                     TextColor="Orange">
+                <Label.GestureRecognizers>
+                  <TapGestureRecognizer 
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:BluetoothPeripheralsViewModel}}, Path=TransferScannedBLEItemCommand}" 
+                    CommandParameter="{Binding .}"/>
+                </Label.GestureRecognizers>
+              </Label>
+
+            </DataTemplate>
+          </CollectionView.ItemTemplate>
+        </CollectionView>
+      
+      </Grid>
+      
+    </Border>
 
   </Grid>
 </ContentPage>

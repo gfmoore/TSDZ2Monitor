@@ -6,14 +6,17 @@ public static class MauiProgram
 	{
 		var builder = MauiApp.CreateBuilder();
 		builder
-			.UseMauiApp<App>()
-
-			//from Extensions.OrganiseStartup
-			.RegisterFonts()
-			.RegisterHandlers()
-			.RegisterServices();
+      .UseMauiApp<App>()
+      .ConfigureFonts(fonts =>
+      {
+        fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+        fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+      });
 
     //dependency injection
+    builder.Services.AddSingleton<IGeolocation>(Geolocation.Default);
+    builder.Services.AddSingleton<IMap>(Map.Default);
+
     builder.Services.AddTransient<DisplayPage>();
     builder.Services.AddTransient<BluetoothPage>();
     builder.Services.AddTransient<TracksPage>();
@@ -23,6 +26,7 @@ public static class MauiProgram
 
     builder.Services.AddTransient<ControlMenuViewModel>();
     builder.Services.AddTransient<BluetoothPeripheralsViewModel>();
+    builder.Services.AddTransient<TracksViewModel>();
 
     return builder.Build();
 	}

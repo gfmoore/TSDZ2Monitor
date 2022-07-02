@@ -83,16 +83,16 @@
   </Shell.MenuItemTemplate>
 
   <ShellContent 
-    Title="Tracks"
-    Icon="tracks.svg"
-    Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
-    ContentTemplate="{DataTemplate pages:TracksPage}" />
-
-  <ShellContent 
     Title="Bluetooth"
     Icon="bluetooth.svg"
     Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
     ContentTemplate="{DataTemplate pages:BluetoothPage}" />
+  
+  <ShellContent 
+    Title="Tracks"
+    Icon="tracks.svg"
+    Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
+    ContentTemplate="{DataTemplate pages:TracksPage}" />
   
   <ShellContent 
     Title="Display"
@@ -106,7 +106,7 @@
     Text="Parameters"
     IconImageSource="parameters.svg"
     Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
-    Command="{Binding ShowParametersCommand}" />
+    Command="{Binding DisplayParametersCommand}" />
 
   <ShellContent 
     Title="Settings"
@@ -126,19 +126,19 @@
     Text="Back to Main menu"
     IconImageSource="xreturn.svg"
     Shell.FlyoutItemIsVisible="{Binding ShowParameters}"
-    Command="{Binding ShowParametersCommand}" />
+    Command="{Binding DisplayParametersCommand}" />
 
   <MenuItem 
     Text="Assist Levels"
     
     Shell.FlyoutItemIsVisible="{Binding ShowParameters}"
-    Command="{Binding ShowAssistLevelsCommand}" />
+    Command="{Binding DisplayAssistLevelsCommand}" />
   
   <MenuItem 
     Text="Back to Parameters"
     IconImageSource="xreturn.svg"
     Shell.FlyoutItemIsVisible="{Binding ShowAssistLevels}"
-    Command="{Binding ShowAssistLevelsCommand}" />
+    Command="{Binding DisplayAssistLevelsCommand}" />
 
 
   <ShellContent 
@@ -228,13 +228,13 @@
     Text="Back to Parameters"
     IconImageSource="xreturn.svg"
     Shell.FlyoutItemIsVisible="{Binding ShowGraphParameters}"
-    Command="{Binding ShowGraphVariablesCommand}" />
+    Command="{Binding DisplayGraphVariablesCommand}" />
 
   <MenuItem 
     x:Name="GraphVariables"
     Text="Graph Variables"
     Shell.FlyoutItemIsVisible="{Binding ShowParameters}"
-    Command="{Binding ShowGraphVariablesCommand}" />
+    Command="{Binding DisplayGraphVariablesCommand}" />
 
   <ShellContent 
     Title="Graph Variables"

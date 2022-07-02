@@ -14,8 +14,8 @@ public partial class ControlMenuViewModel : ObservableObject
   [ObservableProperty]
   bool showGraphParameters = false;
 
-  public ICommand ShowMainMenuCommand => new Command(ShowMainMenuControl);
-  public void ShowMainMenuControl()
+  [RelayCommand]
+  public void DisplayMainMenu()
   {
     ShowMainMenu = false;
     ShowParameters = false;
@@ -23,8 +23,8 @@ public partial class ControlMenuViewModel : ObservableObject
     ShowGraphParameters = true;
   }
 
-  public ICommand ShowParametersCommand => new Command(ShowParametersControl);
-  public void ShowParametersControl()
+  [RelayCommand]
+  public void DisplayParameters()
   {
     ShowMainMenu = !ShowMainMenu;
     ShowParameters = !ShowParameters;
@@ -32,16 +32,17 @@ public partial class ControlMenuViewModel : ObservableObject
     ShowGraphParameters = false;
   }
 
-  public ICommand ShowAssistLevelsCommand => new Command(ShowAssistLevelControl);
-  public void ShowAssistLevelControl()
+  [RelayCommand]
+  public void DisplayAssistLevels()
   {
     ShowMainMenu = false;
     ShowParameters = !ShowParameters;
     ShowAssistLevels = !ShowAssistLevels;
     ShowGraphParameters = false;
   }
-  public ICommand ShowGraphVariablesCommand => new Command(ShowGraphLevelsControl);
-  public void ShowGraphLevelsControl()
+
+  [RelayCommand]
+  public void DisplayGraphVariables()
   {
     ShowMainMenu = false;
     ShowParameters = !ShowParameters;

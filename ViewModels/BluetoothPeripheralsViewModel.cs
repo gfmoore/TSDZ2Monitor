@@ -2,6 +2,23 @@
 
 public partial class BluetoothPeripheralsViewModel : ObservableObject
 {
+  public BluetoothPeripheralsViewModel()
+  {
+    //timer to limit scan time and then reset the scan button
+    timer.Elapsed += OnTimedEvent;  
+    timer.AutoReset = false;
+
+    //Get what's in the database
+    LoadExistingBluetoothPeripherals();
+  }
+
+  private static readonly System.Timers.Timer timer = new(10000);
+
+  private async void LoadExistingBluetoothPeripherals()
+  {
+    List<BluetoothPeripheral> l = await App.Database.GetBluetoothPeripheralsAsync();
+    BluetoothPeripherals = new ObservableCollection<BluetoothPeripheral>(l);
+  }
 
   bool scanning = false;
 
@@ -13,26 +30,17 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
 
   //create a list for remembered ble peripherals
   [ObservableProperty]
-  public static ObservableCollection<BluetoothPeripheral> bluetoothPeripherals = new()
-  {
-    new BluetoothPeripheral
-    {
-      Name = "TSDZ2Monitor Motor",
-      DeviceName = "78:78:78:78:GH"
-    }
-  };
+  private ObservableCollection<BluetoothPeripheral> bluetoothPeripherals = new();
 
   //create a list for discovered ble peripherals
   [ObservableProperty]
-  public static ObservableCollection<BluetoothPeripheral> discoveredPeripherals = new();
+  private ObservableCollection<BluetoothPeripheral> discoveredPeripherals = new();
 
   //remove peripheral
-  public ICommand DeleteBLEItemCommand => new Command<BluetoothPeripheral>(DeleteBLEItemControl);
-  public void DeleteBLEItemControl(BluetoothPeripheral p)
+  [RelayCommand]
+  public async void DeleteBLEItem(BluetoothPeripheral p)
   {
-    //Console.WriteLine($"delete {btp.Name}");
     //need to find the actual item in the list otherwise changes are not updated in ui
-
     foreach (BluetoothPeripheral q in BluetoothPeripherals)
     {
       if (Equals(p, q))
@@ -45,36 +53,36 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
         {
           q.CancelBinIsVisible = false;
           BluetoothPeripherals.Remove(q);
+          await App.Database.DeleteBluetoothPeripheralAsync(q);
         }
         break;
       }
     }
-
-
-
-
   }
 
-
   //remove peripheral
-  public ICommand CancelDeleteBLEItemCommand => new Command<BluetoothPeripheral>(CancelDeleteBLEItemControl);
-  public void CancelDeleteBLEItemControl(BluetoothPeripheral btp)
+  [RelayCommand]
+  public static void CancelDeleteBLEItem(BluetoothPeripheral btp)
   {
-    Console.WriteLine($"cancel delete {btp.Name}");
     btp.CancelBinIsVisible = false;
   }
 
   //show details
-  public ICommand ShowBLEItemCommand => new Command<BluetoothPeripheral>(ShowBLEItemControl);
-  public void ShowBLEItemControl(BluetoothPeripheral p)
+  [RelayCommand]
+  public static void ShowBLEItem(BluetoothPeripheral p)
   {
-    Console.WriteLine($"You tapped on {p.Name}");
+    Debug.WriteLine($"You tapped on {p.Name}");
+    //TODO show details
   }
 
 
-  public ICommand ScanBLEPeripheralsCommand => new Command(ScanBLEPeripheralsControl);
-  public async void ScanBLEPeripheralsControl()
+  [RelayCommand]
+  public async void ScanBLEPeripherals()
   {
+    //start a timer
+    Debug.WriteLine("Timer started");
+    timer.Start();
+
     var adapter = CrossBluetoothLE.Current.Adapter;
     adapter.ScanTimeout = 10000; //assume ms, so 10s
     if (!scanning)
@@ -91,7 +99,7 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
           {
             Name = a.Device.Name,
             DeviceName = a.Device.NativeDevice.ToString(),
-            Id = a.Device.Id.ToString(),
+            DeviceId = a.Device.Id.ToString(),
             State = a.Device.State.ToString(),
             Rssi = a.Device.Rssi,
             AdvertisementCount = a.Device.AdvertisementRecords.Count
@@ -117,6 +125,9 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
     }
     else
     {
+      timer.Stop();
+      timer.Close();
+
       ScanButtonText = "Scan";
       ScanResults = "";
       scanning = false;
@@ -125,39 +136,50 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
       DiscoveredPeripherals.Clear();
     }
   }
-
-  public ICommand TransferScannedBLEItemCommand => new Command<BluetoothPeripheral>(TransferScannedBLEItemControl);
-  public void TransferScannedBLEItemControl(BluetoothPeripheral p)
+  
+  private void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
   {
-    //Console.WriteLine($"You tapped on {p.Name}");
+    // Code to be executed at the end of Timer 
+    Debug.WriteLine("Timer ending 10 second count");
+    timer.Stop();
+    timer.Close();
 
-    BluetoothPeripheral a = new()
-    {
-      Name = p.Name,
-      DeviceName = p.DeviceName,
-      Id = p.Id,
-      State = p.State,
-      Rssi = p.Rssi,
-      AdvertisementCount = p.AdvertisementCount,
-      CancelBinIsVisible = false,
-    };
+    ScanButtonText = "Scan";
+    ScanResults = "";
+    scanning = false;
 
-    //need to see if peripheral in list
+    //adapter = null;
+    DiscoveredPeripherals.Clear();
+  }
+
+  [RelayCommand]
+  public void TransferScannedBLEItem(BluetoothPeripheral p)
+  {
+    //need to see if peripheral in list of stored/displayed peripherals
     bool found = false;
     foreach (BluetoothPeripheral q in BluetoothPeripherals)
     {
-      if (a.Name == q.Name)
+      if (q.Name == p.Name)
       {
         found = true;
         break;
       }
-      //Console.WriteLine(q.Name);
     }
 
-    if (!found) BluetoothPeripherals.Add(a);
+    if (!found)
+    {
+      BluetoothPeripherals.Add(p);
+      App.Database.InsertBluetoothPeripheralAsync(p);
+    }
   }
 
 
+  [RelayCommand]
+  public static void ConnectToPeripherals()
+  {
+    Debug.WriteLine("Trying to connect...");
+    //TODO do the connections
+  }
 
- 
 }
+
