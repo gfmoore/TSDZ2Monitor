@@ -5,15 +5,19 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
   public BluetoothPeripheralsViewModel()
   {
     //timer to limit scan time and then reset the scan button
+    //do a 10 second countdown timer each second for display on scan button
     timer.Elapsed += OnTimedEvent;  
-    timer.AutoReset = false;
+    timer.AutoReset = true;
 
     //Setup blutooth adapter
     ble = CrossBluetoothLE.Current;
     adapter = CrossBluetoothLE.Current.Adapter;
-    adapter.ScanTimeout = 10000; //assume ms, so 10s
+    //adapter.ScanTimeout = 10000; //assume ms, so 10s
 
-    //Get what's in the database
+    //Add the event handler
+    adapter.DeviceDiscovered += AdapterDeviceDiscovered;
+
+    //Get what's in the sqlite database
     LoadExistingBluetoothPeripherals();
   }
 
@@ -21,8 +25,9 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
   IAdapter adapter;
 
   bool scanning = false;
+  int scanCounter = 10;  //countdown
 
-  private static readonly System.Timers.Timer timer = new(10000);
+  private static readonly System.Timers.Timer timer = new(1000); //1 second, but do 10x
 
   [ObservableProperty]
   String scanButtonText = "Scan";
@@ -86,7 +91,6 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
   }
 
 
-
   [RelayCommand]
   public async void ScanBLEPeripherals()
   {
@@ -96,52 +100,59 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
 
     if (!scanning)
     {
-      ScanButtonText = "Stop scan";
+      ScanButtonText = $"Stop scan {scanCounter}";
       ScanResults = "Scanning for BLE peripherals...";
       scanning = true;
 
-      adapter.DeviceDiscovered += (s, a) =>
-      {
-        if (a.Device.Name != null && a.Device.Name != String.Empty)
-        {
-          Debug.WriteLine(a.Device.Name);
-          BluetoothPeripheral p = new()
-          {
-            Name                = a.Device.Name,
-            DeviceName          = a.Device.NativeDevice.ToString(),
-            DeviceId            = a.Device.Id.ToString(),
-            State               = a.Device.State.ToString(),
-            Rssi                = a.Device.Rssi,
-            AdvertisementCount  = a.Device.AdvertisementRecords.Count
-          };
-
-          //need to see if peripheral in list
-          bool found = false;
-          foreach (BluetoothPeripheral q in DiscoveredPeripherals)
-          {
-            if (p.Name == q.Name)
-            {
-              found = true;
-              break;
-            }
-          }
-
-          if (!found) DiscoveredPeripherals.Add(p);
-
-        }
-      };
       await adapter.StartScanningForDevicesAsync();
-
     }
     else
     {
       ClearScanning();
     }
   }
-  
+
+  //Event handler for adapter.DeviceDiscovered
+  private void AdapterDeviceDiscovered(Object s, Plugin.BLE.Abstractions.EventArgs.DeviceEventArgs a)
+  {
+    Debug.WriteLine(a.Device.Name);
+    if (a.Device.Name != null && a.Device.Name != String.Empty)
+    {
+      BluetoothPeripheral p = new()
+      {
+        Name = a.Device.Name,
+        DeviceName = a.Device.NativeDevice.ToString(),
+        DeviceId = a.Device.Id.ToString(),
+        State = a.Device.State.ToString(),
+        Rssi = a.Device.Rssi,
+        AdvertisementCount = a.Device.AdvertisementRecords.Count
+      };
+
+      //need to see if peripheral in list
+      bool found = false;
+      foreach (BluetoothPeripheral q in DiscoveredPeripherals)
+      {
+        if (p.Name == q.Name)
+        {
+          found = true;
+          break;
+        }
+      }
+
+      if (!found) DiscoveredPeripherals.Add(p);
+    }
+  }
+
   private void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
   {
-    ClearScanning();
+    scanCounter -= 1;
+    ScanButtonText = $"Stop scan {scanCounter}";
+    if (scanCounter == 0)
+    {
+      ClearScanning();
+      scanCounter = 10;
+    }
+
   }
 
   private void ClearScanning()
@@ -155,6 +166,10 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
     scanning = false;
 
     DiscoveredPeripherals.Clear();
+
+    //remove the event as it gets added again in scanning function
+    //TODO is there a way I can just add the event once and forget
+    //adapter.DeviceDiscovered -= Adapter_DeviceDiscovered;
   }
 
   [RelayCommand]
