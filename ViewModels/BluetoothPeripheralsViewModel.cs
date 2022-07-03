@@ -84,10 +84,17 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
 
   //show details
   [RelayCommand]
-  public static void ShowBLEItem(BluetoothPeripheral p)
+  public async static void ShowBLEItem(BluetoothPeripheral p)
   {
     Debug.WriteLine($"You tapped on {p.Name}");
-    //TODO show details
+
+    //Show details
+    var navigationParameter = new Dictionary<string, object>
+    {
+        { "BluetoothPeripheral", p }
+    };
+    await Shell.Current.GoToAsync(nameof(BluetoothDetailPage), true, navigationParameter);
+
   }
 
 

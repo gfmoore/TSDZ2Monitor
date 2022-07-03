@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TSDZ2Monitor.Pages.BluetoothDetailPage"
+             Title="Bluetooth Peripheral Detail"
+             NavigationPage.HasNavigationBar="False">
+
+  <Grid RowDefinitions="250,*">
+    <Border Grid.Row="0"
+            Stroke="Orange"
+            StrokeThickness="2"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            Background="Black"
+            Margin="5,0,5,0"
+            Padding="5,5,5,5">
+    
+      <Grid RowDefinitions="30,30,60,30,30, 30">
+        <Grid Grid.Row="0" 
+              ColumnDefinitions="160,*">
+
+          <Label Grid.Column="0" 
+                 Text="Name:"
+                 FontSize="20"
+                 TextColor="Yellow" />
+
+          <Label Grid.Column="1" 
+                 Text="{Binding BluetoothPeripheral.Name}"
+                 FontSize="20"
+                 TextColor="LightGreen" />
+        </Grid>
+
+        <Grid Grid.Row="1" 
+              ColumnDefinitions="160,*">
+
+          <Label Grid.Column="0" 
+                 Text="Device Name"
+                 FontSize="20"
+                 TextColor="Yellow" />
+        
+          <Label Grid.Column="1" 
+                 Text="{Binding BluetoothPeripheral.DeviceName}"
+                 FontSize="20"
+                 TextColor="LightGreen" />
+        </Grid>
+
+        <Grid Grid.Row="2" 
+              ColumnDefinitions="160,*">
+          <Label Grid.Column="0" 
+                 Text="Device Id"
+                 FontSize="20"
+                 TextColor="Yellow" />
+
+          <Label Grid.Column="2" 
+                 Text="{Binding BluetoothPeripheral.DeviceId}"
+                 FontSize="20"
+                 TextColor="LightGreen" />
+        </Grid>
+
+        <Grid Grid.Row="3" 
+              ColumnDefinitions="160,*">
+          <Label Grid.Column="0" 
+                 Text="Device State"
+                 FontSize="20"
+                 TextColor="Yellow" />
+
+          <Label Grid.Column="2" 
+                 Text="{Binding BluetoothPeripheral.State}"
+                 FontSize="20"
+                 TextColor="LightGreen" />
+        </Grid>
+
+        <Grid Grid.Row="4" 
+              ColumnDefinitions="160,*">
+          <Label Grid.Column="0" 
+                 Text="Rssi"
+                 FontSize="20"
+                 TextColor="Yellow" />
+
+          <Label Grid.Column="2" 
+                 Text="{Binding BluetoothPeripheral.Rssi}"
+                 FontSize="20"
+                 TextColor="LightGreen" />
+        </Grid>
+
+        <Grid Grid.Row="5" 
+              ColumnDefinitions="160,*">
+          <Label Grid.Column="0" 
+                 Text="Advertisements"
+                 FontSize="20"
+                 TextColor="Yellow" />
+
+          <Label Grid.Column="2" 
+                 Text="{Binding BluetoothPeripheral.AdvertisementCount}"
+                 FontSize="20"
+                 TextColor="LightGreen" />
+        </Grid>
+
+      </Grid>
+    </Border>    
+  </Grid>
+
+</ContentPage>

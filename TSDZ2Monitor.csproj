@@ -84,6 +84,9 @@
 	  <MauiXaml Update="Pages\AboutPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\BluetoothDetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\BluetoothPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

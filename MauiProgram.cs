@@ -20,6 +20,8 @@ public static class MauiProgram
 
     builder.Services.AddTransient<DisplayPage>();
     builder.Services.AddTransient<BluetoothPage>();
+    builder.Services.AddTransient<BluetoothDetailPage>();
+
     builder.Services.AddTransient<TracksPage>();
     builder.Services.AddTransient<ParametersPage>();
     builder.Services.AddTransient<SettingsPage>();
@@ -27,6 +29,8 @@ public static class MauiProgram
 
     builder.Services.AddTransient<ControlMenuViewModel>();
     builder.Services.AddTransient<BluetoothPeripheralsViewModel>();
+    builder.Services.AddTransient<BluetoothPeripheralsDetailViewModel>();
+
     builder.Services.AddTransient<TracksViewModel>();
 
     return builder.Build();
