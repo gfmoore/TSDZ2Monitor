@@ -5,7 +5,6 @@ public partial class BluetoothPeripheralsDetailViewModel : ObservableObject
 {
   public BluetoothPeripheralsDetailViewModel()
   {
-    Debug.WriteLine("hi");
   }
 
   [ObservableProperty]

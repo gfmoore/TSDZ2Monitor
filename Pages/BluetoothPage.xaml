@@ -30,6 +30,9 @@
         <CollectionView
           Grid.Row="1"
           ItemsSource="{Binding BluetoothPeripherals}"
+          SelectedItem="{Binding SelectedItem}"
+          SelectionChangedCommand="{Binding SelectionChangedCommand}"
+          SelectionChangedCommandParameter="{Binding .}" 
           VerticalOptions="StartAndExpand"
           SelectionMode="Single"
           ItemsLayout="VerticalList"
@@ -46,10 +49,7 @@
                        FontSize="20"
                        Padding="0, 5, 0, 0"
                        TextColor="Yellow">
-                        <Label.GestureRecognizers>
-                          <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:BluetoothPeripheralsViewModel}}, Path=ShowBLEItemCommand}" 
-                                                CommandParameter="{Binding .}"/>
-                        </Label.GestureRecognizers> 
+
                 </Label>
 
                 <Label Grid.Column="1" 
@@ -83,13 +83,42 @@
           </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <Button Grid.Row="2"
+        <Grid Grid.Row="2" 
+              ColumnDefinitions="*,*,*"
+              ColumnSpacing="10">
+          
+          <Button Grid.Column="0"
             Text="Connect"
-            WidthRequest="180"
+            TextColor="Green"
+            BackgroundColor="LightGrey"
+            WidthRequest="100"
             HeightRequest="55"
             FontSize="20" 
             Margin="0,0,0,0"
             Command="{Binding ConnectToPeripheralsCommand}"/>
+
+        <Button Grid.Column="1"
+            Text="Disconnect"
+            TextColor="Red"
+            BackgroundColor="LightGrey"
+            WidthRequest="100"
+            HeightRequest="55"
+            FontSize="20" 
+            Margin="0,0,0,0"
+            Command="{Binding DisconnectToPeripheralsCommand}"/>
+
+          <Button Grid.Column="2"
+            Text="Read Byte"
+            TextColor="Yellow"
+            BackgroundColor="LightGrey"
+            WidthRequest="100"
+            HeightRequest="55"
+            FontSize="20" 
+            Margin="0,0,0,0"
+            Command="{Binding ReadCharacteristicCommand}"/>
+        </Grid>
+
+
 
       </Grid>
     </Border>
