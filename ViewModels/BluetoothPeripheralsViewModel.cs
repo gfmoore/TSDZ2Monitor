@@ -1,5 +1,6 @@
-﻿using Plugin.BLE.Abstractions.Exceptions;
-using System.Threading;
+﻿
+using Microsoft.Maui.Graphics;
+using Microsoft.Maui.Graphics.Converters;
 using System;
 
 namespace TSDZ2Monitor.ViewModels;
@@ -28,9 +29,9 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
     //Add the device disconnected event
     adapter.DeviceDisconnected += AdapterDeviceDisconnected;
 
-
     //Get what's in the sqlite database
     LoadExistingBluetoothPeripherals();
+
   }
 
   IBluetoothLE ble;
@@ -39,7 +40,7 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
 
   Plugin.BLE.Abstractions.ConnectParameters cp = new(true, true);
   CancellationTokenSource cts;
-  CancellationToken ct;
+  //CancellationToken ct;
 
 
   enum ScanStatus { Scanning, Halted, Stopped};
@@ -66,11 +67,18 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
   [ObservableProperty]
   private BluetoothPeripheral selectedItem;
 
+
   //Load saved peripherals
   private async void LoadExistingBluetoothPeripherals()
   {
     List<BluetoothPeripheral> l = await App.Database.GetBluetoothPeripheralsAsync();
     BluetoothPeripherals = new ObservableCollection<BluetoothPeripheral>(l);
+
+    //set the basic color to Yellow
+    foreach (BluetoothPeripheral btp in BluetoothPeripherals)
+    {
+      btp.ItemColor = "Yellow";
+    }
   }
 
   //remove peripheral
@@ -230,71 +238,293 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
     }
   }
 
+  IDevice deviceHRM, deviceSPD, deviceCAD, deviceXXX;
+  System.Collections.Generic.IReadOnlyList<Plugin.BLE.Abstractions.Contracts.IService> servicesHRM, servicesSPD, servicesCAD, servicesXXX;
+  int         HRM;
+  int         HRRint;
+  double      HRR;
+
+  int         SPDWheelRevolutions, PreviousSPDWheelRevolutions;
+  int         SPDWheelEventTime, PreviousSPDWheelEventTime;
+  int         SPDWheelRevolutionsDifference, SPDWheelEventTimeDifference;
+  double      WheelRPM;
+
+  int         CADCrankRevolutions, PreviousCADCrankRevolutions;
+  int         CADCrankEventTime, PreviousCADCrankEventTime;
+  int         CADCrankRevolutionsDifference, CADCrankEventTimeDifference;
+  double      Cadence;
+
+  
+  //int         XXX;
 
   [RelayCommand]
   public async void ConnectToPeripherals()
   {
-    Debug.WriteLine("Trying to connect...");
+    Debug.WriteLine("Trying to connect to devices...");
+
     foreach (BluetoothPeripheral btp in BluetoothPeripherals)
     {
-      Guid guid = new(btp.DeviceId);
       Debug.WriteLine($"{btp.Name}");
-
-      try
+      if (btp.Name[..3] == "HRM")
       {
-        var dvc = await adapter.ConnectToKnownDeviceAsync(guid, cp, cts.Token);
-        Debug.WriteLine("Connected");
+        //Guid guid = new(btp.DeviceId);
+        //try
+        //{
+        //  deviceHRM = await adapter.ConnectToKnownDeviceAsync(guid, cp, cts.Token);
+        //  Debug.WriteLine("Device HRM connected ");
 
-        var services = await dvc.GetServicesAsync();
+        //  //now have to get services for this device
+        //  try
+        //  {
+        //    servicesHRM = await deviceHRM.GetServicesAsync();
+        //    Debug.WriteLine("Services for HRM");
 
-        foreach (var service in services)
-        {
-          Debug.WriteLine($"{service.Name} {service.Device} {service.Id}");
-          var characteristics = await service.GetCharacteristicsAsync();
+        //    foreach (var serviceHRM in servicesHRM)
+        //    {
+        //      Debug.WriteLine(serviceHRM.Name);
+        //      if (serviceHRM.Name == "Heart Rate")
+        //      {
+        //        //now get characteristics for this service
+        //        try
+        //        {
+        //          var characteristicsHRM = await serviceHRM.GetCharacteristicsAsync();
 
-          foreach (var characteristic in characteristics)
-          {
-            Debug.WriteLine($" ---> {characteristic.Name} {characteristic.Id}");  // {characteristic.Uuid}");
+        //          //now get the guid for Heart Rate Measurement
+        //          foreach (var characteristicHRM in characteristicsHRM)
+        //          {
+        //            Debug.WriteLine(characteristicHRM.Name);
+        //            if (characteristicHRM.Name == "Heart Rate Measurement")
+        //            {
+        //              characteristicHRM.ValueUpdated += (o, args) =>
+        //              {
+        //                var bytes = args.Characteristic.Value;
 
+        //                if (bytes.Length == 2)
+        //                {
+        //                  //Debug.WriteLine($" HRM: {bytes[0]} {bytes[1]}");
+        //                  HRM = bytes[1];
+        //                  Debug.WriteLine($"HRM: {HRM}");
+        //                }
+        //                if (bytes.Length == 4)
+        //                {
+        //                  //Debug.WriteLine($" R-R: {bytes[0]} {bytes[1]} {bytes[2]} {bytes[3]}");
+        //                  HRRint = ((bytes[3] * 256) + bytes[2]);
+        //                  HRR = HRRint / 1024.0;
+        //                  Debug.WriteLine($"HRR: {HRR}");
+        //                }
+        //              };
 
-
-          }
-        }
+        //              //call the characteristic updates handler
+        //              await characteristicHRM.StartUpdatesAsync();
+        //            }
+        //          }
+        //        }
+        //        catch (Exception e) { Debug.WriteLine($"TSDZ2: Error getting HRM characteristics {e.Message}"); }
+        //      }
+        //    }
+        //  }
+        //  catch (Exception e) { Debug.WriteLine($"TSDZ2: Error getting HRM services {e.Message}"); }
+        //}
+        //catch (Exception e) { Debug.WriteLine($"TSDZ2: Error connecting to HRM {e.Message}"); }
+        //End of HRM
       }
-      catch (DeviceConnectionException e)
+      if (btp.Name[..3] == "SPD")
       {
-        Debug.WriteLine($"GM: Oops connection error {e.Message}");
+        Guid guid = new(btp.DeviceId);
+        PreviousSPDWheelRevolutions = 0; //the first calc will be incorrect
+        PreviousSPDWheelEventTime = 0;  
+        try
+        {
+          deviceSPD = await adapter.ConnectToKnownDeviceAsync(guid, cp, cts.Token);
+          Debug.WriteLine("Device SPD connected ");
+
+          //now have to get services for this device
+          try
+          {
+            servicesSPD = await deviceSPD.GetServicesAsync();
+            Debug.WriteLine("Services for SPD");
+            //change colour of device in list
+
+            foreach (var serviceSPD in servicesSPD)
+            {
+              Debug.WriteLine(serviceSPD.Name);
+              if (serviceSPD.Name == "Cycling Speed and Cadence")
+              {
+                //now get characteristics for this service
+                try
+                {
+                  var characteristicsSPD = await serviceSPD.GetCharacteristicsAsync();
+
+                  //now get the guid for Heart Rate Measurement
+                  foreach (var characteristicSPD in characteristicsSPD)
+                  {
+                    Debug.WriteLine(characteristicSPD.Name);
+                    if (characteristicSPD.Name == "CSC Measurement")
+                    {
+                      characteristicSPD.ValueUpdated += (o, args) =>
+                      {
+                        var bytes = args.Characteristic.Value;
+
+                        if (bytes.Length == 7)
+                        {
+                          //if (bytes.Length == 7) Debug.WriteLine($" SPD: {bytes[0]} {bytes[1]} {bytes[2]} {bytes[3]} {bytes[4]} {bytes[5]} {bytes[6]}");
+
+                          SPDWheelRevolutions = ((bytes[4] * 16777216) + (bytes[3] * 65536) + (bytes[2] * 256) + bytes[1]);
+                          SPDWheelEventTime = ((bytes[6] * 256) + bytes[5]);
+
+                          SPDWheelRevolutionsDifference = SPDWheelRevolutions - PreviousSPDWheelRevolutions;
+                          SPDWheelEventTimeDifference = SPDWheelEventTime - PreviousSPDWheelEventTime;
+
+                          if (SPDWheelEventTimeDifference != 0)
+                          {
+                            WheelRPM = 60 * SPDWheelEventTimeDifference / SPDWheelRevolutionsDifference / 1024;
+
+                            Debug.WriteLine($"SPD Wheel RPM: {WheelRPM}   Revolutions {SPDWheelRevolutionsDifference}  Time {SPDWheelEventTimeDifference}");
+
+                            PreviousSPDWheelRevolutions = SPDWheelRevolutions;
+                            PreviousSPDWheelEventTime = SPDWheelEventTime;
+                          }
+
+                        }
+                      };
+
+                      //call the characteristic updates handler
+                      await characteristicSPD.StartUpdatesAsync();
+                    }
+                  }
+                }
+                catch (Exception e) { Debug.WriteLine($"TSDZ2: Error getting SPD characteristics {e.Message}"); }
+              }
+            }
+          }
+          catch (Exception e) { Debug.WriteLine($"TSDZ2: Error getting SPD services {e.Message}"); }
+        }
+        catch (Exception e) { Debug.WriteLine($"TSDZ2: Error connecting to SPD {e.Message}"); }
+        //End of SPD
+      }
+      if (btp.Name[..3] == "CAD")
+      {
+        //Guid guid = new(btp.DeviceId);
+        //PreviousCADCrankRevolutions = 0; //the first calc will be incorrect
+        //PreviousCADCrankEventTime = 0;  //Stop divide by 0
+        //try
+        //{
+        //  deviceCAD = await adapter.ConnectToKnownDeviceAsync(guid, cp, cts.Token);
+        //  Debug.WriteLine("Device CAD connected ");
+
+        //  //now have to get services for this device
+        //  try
+        //  {
+        //    servicesCAD = await deviceCAD.GetServicesAsync();
+        //    Debug.WriteLine("Services for CAD");
+
+        //    foreach (var serviceCAD in servicesCAD)
+        //    {
+        //      Debug.WriteLine(serviceCAD.Name);
+        //      if (serviceCAD.Name == "Cycling Speed and Cadence")
+        //      {
+        //        //now get characteristics for this service
+        //        try
+        //        {
+        //          var characteristicsCAD = await serviceCAD.GetCharacteristicsAsync();
+
+        //          //now get the guid for Heart Rate Measurement
+        //          foreach (var characteristicCAD in characteristicsCAD)
+        //          {
+        //            Debug.WriteLine(characteristicCAD.Name);
+        //            if (characteristicCAD.Name == "CSC Measurement")
+        //            {
+        //              characteristicCAD.ValueUpdated += (o, args) =>
+        //              {
+        //                var bytes = args.Characteristic.Value;
+
+        //                if (bytes.Length == 5)
+        //                {
+        //                  //Debug.WriteLine($" CDC: {bytes[0]} {bytes[1]} {bytes[2]} {bytes[3]} {bytes[4]}");
+        //                  CADCrankRevolutions = ((bytes[2] * 256) + bytes[1]);
+        //                  CADCrankEventTime = ((bytes[4] * 256) + bytes[3]);
+
+        //                  CADCrankRevolutionsDifference = CADCrankRevolutions - PreviousCADCrankRevolutions;
+        //                  CADCrankEventTimeDifference = CADCrankEventTime - PreviousCADCrankEventTime;
+                          
+        //                  if (CADCrankEventTimeDifference != 0)
+        //                  {
+        //                    Cadence = 60 * CADCrankEventTimeDifference / CADCrankRevolutionsDifference / 1024;
+
+        //                    Debug.WriteLine($"CAD Cadence: {Cadence}   Revolutions {CADCrankRevolutionsDifference}  Time {CADCrankEventTimeDifference}");
+                            
+        //                    PreviousCADCrankRevolutions = CADCrankRevolutions;
+        //                    PreviousCADCrankEventTime = CADCrankEventTime;
+        //                  }
+        //                }
+        //              };
+
+        //              //call the characteristic updates handler
+        //              await characteristicCAD.StartUpdatesAsync();
+        //            }
+        //          }
+        //        }
+        //        catch (Exception e) { Debug.WriteLine($"TSDZ2: Error getting CAD characteristics {e.Message}"); }
+        //      }
+        //    }
+        //  }
+        //  catch (Exception e) { Debug.WriteLine($"TSDZ2: Error getting CAD services {e.Message}"); }
+        //}
+        //catch (Exception e) { Debug.WriteLine($"TSDZ2: Error connecting to CAD {e.Message}"); }
+        //End of CAD
+      }
+      if (btp.Name[..3] == "XXX")
+      {
+        //Guid guid = new(btp.DeviceId);
+        //try
+        //{
+        //  deviceXXX = await adapter.ConnectToKnownDeviceAsync(guid, cp, cts.Token);
+        //  Debug.WriteLine("Device CAD connected ");
+
+        //  //now have to get services for this device
+        //  try
+        //  {
+        //    servicesXXX = await deviceXXX.GetServicesAsync();
+        //    Debug.WriteLine("Services for XXX");
+
+        //    foreach (var serviceXXX in servicesXXX)
+        //    {
+        //      Debug.WriteLine(serviceXXX.Name);
+        //      if (serviceXXX.Name == "XXX")
+        //      {
+        //        //now get characteristics for this service
+        //        try
+        //        {
+        //          var characteristicsXXX = await serviceXXX.GetCharacteristicsAsync();
+
+        //          //now get the guid for Heart Rate Measurement
+        //          foreach (var characteristicXXX in characteristicsXXX)
+        //          {
+        //            Debug.WriteLine(characteristicXXX.Name);
+        //            if (characteristicXXX.Name == "XXX")
+        //            {
+        //              characteristicXXX.ValueUpdated += (o, args) =>
+        //              {
+        //                var bytes = args.Characteristic.Value;
+        //                Debug.WriteLine(bytes);
+        //              };
+
+        //              //call the characteristic updates handler
+        //              await characteristicXXX.StartUpdatesAsync();
+        //            }
+        //          }
+        //        }
+        //        catch (Exception e) { Debug.WriteLine($"TSDZ2: Error getting XXX characteristics {e.Message}"); }
+        //      }
+        //    }
+        //  }
+        //  catch (Exception e) { Debug.WriteLine($"TSDZ2: Error getting XXX services {e.Message}"); }
+        //}
+        //catch (Exception e) { Debug.WriteLine($"TSDZ2: Error connecting to XXX {e.Message}"); }
+        //End of XXX
+
       }
     }
-  }
-
-
-  [RelayCommand]
-  public async void ReadCharacteristic()
-  {
-    Debug.WriteLine("Read Byte...");
-    //Heart rate
-    //Guid guid = new(BluetoothPeripherals[0].DeviceId);
-    //var dvc = await adapter.ConnectToKnownDeviceAsync(guid, cp, cts.Token);
-    //var service = await dvc.GetServiceAsync(Guid.Parse("0000180d-0000-1000-8000-00805f9b34fb"));
-    //var characteristic = await service.GetCharacteristicAsync(Guid.Parse("00002a37-0000-1000-8000-00805f9b34fb"));    Guid guid = new(BluetoothPeripherals[0].DeviceId);
-
-    //Speed and cadence
-    Guid guid = new(BluetoothPeripherals[2].DeviceId);
-    var dvc = await adapter.ConnectToKnownDeviceAsync(guid, cp, cts.Token);
-    var service = await dvc.GetServiceAsync(Guid.Parse("00001816-0000-1000-8000-00805f9b34fb"));
-    var characteristic = await service.GetCharacteristicAsync(Guid.Parse("00002a5b-0000-1000-8000-00805f9b34fb"));
-
-    //add event handler for characteristic
-    characteristic.ValueUpdated += (o, args) =>
-    {
-      var bytes = args.Characteristic.Value;
-      //Debug.WriteLine($"{bytes.Length}");
-      if (bytes.Length == 7) Debug.WriteLine($" SPD: {bytes[0]} {bytes[1]} {bytes[2]} {bytes[3]} {bytes[4]} {bytes[5]} {bytes[6]}");
-      if (bytes.Length == 5) Debug.WriteLine($" CDC: {bytes[0]} {bytes[1]} {bytes[2]} {bytes[3]} {bytes[4]}");
-    };
-    //call the characteristic updates handler
-    await characteristic.StartUpdatesAsync();
   }
 
 

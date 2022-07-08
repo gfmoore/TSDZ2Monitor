@@ -2,17 +2,22 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:TSDZ2Monitor.ViewModels"
+             xmlns:local2="clr-namespace:TSDZ2Monitor.Classes"
              x:Class="TSDZ2Monitor.Pages.BluetoothPage"
              Loaded="ContentPage_Loaded"
              Title="Bluetooth Page">
 
+  <ContentPage.Resources>
+    <local2:StringToColor x:Key="StringToColor" />
+  </ContentPage.Resources>
+  
   <ContentPage.BindingContext>
     <local:BluetoothPeripheralsViewModel />
   </ContentPage.BindingContext>
 
   <Grid RowDefinitions="350, *"
         RowSpacing="10">
-    
+
     <Border Grid.Row="0"
             Stroke="Orange"
             StrokeThickness="2"
@@ -48,15 +53,13 @@
                        Text="{Binding Name}"
                        FontSize="20"
                        Padding="0, 5, 0, 0"
-                       TextColor="Yellow">
-
-                </Label>
+                       TextColor="{Binding ItemColor, Converter={StaticResource StringToColor}, ConverterParameter=Yellow }" />
 
                 <Label Grid.Column="1" 
                        Text="{Binding DeviceName}" 
                        FontSize="20"
                        Padding="0, 5, 0, 0"
-                       TextColor="Yellow"/>
+                       TextColor="{Binding ItemColor, Converter={StaticResource StringToColor}, ConverterParameter=Yellow }" />
 
                 <ImageButton 
                         Grid.Column="2" 
@@ -91,7 +94,7 @@
             Text="Connect"
             TextColor="Green"
             BackgroundColor="LightGrey"
-            WidthRequest="100"
+            WidthRequest="110"
             HeightRequest="55"
             FontSize="20" 
             Margin="0,0,0,0"
@@ -101,24 +104,13 @@
             Text="Disconnect"
             TextColor="Red"
             BackgroundColor="LightGrey"
-            WidthRequest="100"
+            WidthRequest="110"
             HeightRequest="55"
             FontSize="20" 
             Margin="0,0,0,0"
             Command="{Binding DisconnectToPeripheralsCommand}"/>
 
-          <Button Grid.Column="2"
-            Text="Read Byte"
-            TextColor="Yellow"
-            BackgroundColor="LightGrey"
-            WidthRequest="100"
-            HeightRequest="55"
-            FontSize="20" 
-            Margin="0,0,0,0"
-            Command="{Binding ReadCharacteristicCommand}"/>
         </Grid>
-
-
 
       </Grid>
     </Border>

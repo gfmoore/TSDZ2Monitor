@@ -16,6 +16,7 @@ global using System.Diagnostics;
 global using TSDZ2Monitor.Models;
 global using TSDZ2Monitor.Database;
 global using TSDZ2Monitor.ViewModels;
+global using TSDZ2Monitor.Classes;
 global using SQLite;
 global using TSDZ2Monitor.Pages;
 

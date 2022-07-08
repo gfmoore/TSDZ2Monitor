@@ -18,4 +18,11 @@ public partial class BluetoothPeripheral : ObservableObject
     set => SetProperty(ref cancelBinIsVisible, value); 
   }
 
+  private string      itemColor;
+  public string       ItemColor
+  {
+    get => itemColor;
+    set => SetProperty(ref itemColor, value);
+  }
+
 }
