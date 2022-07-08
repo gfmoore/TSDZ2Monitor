@@ -25,6 +25,4 @@ public partial class App : Application
       return database;
     }
   }
-
-
 }

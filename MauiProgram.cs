@@ -28,6 +28,7 @@ public static class MauiProgram
     builder.Services.AddTransient<AboutPage>();
 
     builder.Services.AddTransient<ControlMenuViewModel>();
+    builder.Services.AddTransient<DisplayPageViewModel>();
     builder.Services.AddTransient<BluetoothPeripheralsViewModel>();
     builder.Services.AddTransient<BluetoothPeripheralsDetailViewModel>();
 

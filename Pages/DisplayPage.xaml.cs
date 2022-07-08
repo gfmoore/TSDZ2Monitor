@@ -2,9 +2,9 @@ namespace TSDZ2Monitor.Pages;
 
 public partial class DisplayPage : ContentPage
 {
-	public DisplayPage()
+	public DisplayPage(DisplayPageViewModel viewModel)
 	{
 		InitializeComponent();
-    this.BindingContext = AppShell.Current.BindingContext;
+    this.BindingContext = viewModel;
   }
 }
