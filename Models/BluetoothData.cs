@@ -3,15 +3,59 @@
 public partial class BluetoothData : ObservableObject
 {
   //Heart rate raw data
-  public int HRM { get; set; }
-  public double HRR { get; set; }
+  private int hRM;
+  public int HRM
+  {
+    get => hRM;
+    set => SetProperty(ref hRM, value);
+  }
+  private double hRR;
+  public double HRR
+  {
+    get => hRR;
+    set => SetProperty(ref hRR, value);
+  }
 
   //SPD raw data
-  public int SPDWheelRevolutions { get; set; }
-  public double SPDWheelEventTime { get; set; }
+  private int sPDWheelRevolutions;
+  public int SPDWheelRevolutions
+  {
+    get => sPDWheelRevolutions;
+    set => SetProperty(ref sPDWheelRevolutions, value);
+  }
+  private double sPDWheelEventTime;
+  public double SPDWheelEventTime
+  {
+    get => sPDWheelEventTime;
+    set => SetProperty(ref sPDWheelEventTime, value);
+  }
+
+  private double wheelRPM;
+  public double WheelRPM
+  {
+    get => wheelRPM;
+    set => SetProperty(ref wheelRPM, value);
+  }
 
   //CAD raw data
-  public int CADCrankRevolutions { get; set; }
-  public double CADCrankEventTime { get; set; }
+  private int cADCrankRevolutions;
+  public int CADCrankRevolutions
+  {
+    get => cADCrankRevolutions;
+    set => SetProperty(ref cADCrankRevolutions, value);
+  }
+  private double cADCrankEventTime;
+  public double CADCrankEventTime
+  {
+    get => cADCrankEventTime;
+    set => SetProperty(ref cADCrankEventTime, value);
+  }
+
+  private double cadence;
+  public double Cadence
+  {
+    get => cadence;
+    set => SetProperty(ref cadence, value);
+  }
 
 }

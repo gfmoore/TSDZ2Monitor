@@ -6,7 +6,6 @@ public partial class BluetoothPage : ContentPage
   {
     InitializeComponent();
     BindingContext = viewModel;
-
   }
 
   protected override void OnAppearing()

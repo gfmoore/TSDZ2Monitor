@@ -7,4 +7,5 @@ public partial class DisplayPage : ContentPage
 		InitializeComponent();
     this.BindingContext = viewModel;
   }
+
 }

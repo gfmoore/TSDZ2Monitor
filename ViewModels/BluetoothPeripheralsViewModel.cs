@@ -242,17 +242,14 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
   System.Collections.Generic.IReadOnlyList<Plugin.BLE.Abstractions.Contracts.IService> servicesHRM, servicesSPD, servicesCAD, servicesXXX;
 
   int         HRM;
-  int         HRRint;
   double      HRR;
 
-  int         SPDWheelRevolutions, PreviousSPDWheelRevolutions;
-  int         SPDWheelEventTime, PreviousSPDWheelEventTime;
-  int         SPDWheelRevolutionsDifference, SPDWheelEventTimeDifference;
+  int         SPDWheelRevolutions, PreviousSPDWheelRevolutions, SPDWheelRevolutionsDifference;
+  double      SPDWheelEventTime, PreviousSPDWheelEventTime, SPDWheelEventTimeDifference;
   double      WheelRPM;
 
-  int         CADCrankRevolutions, PreviousCADCrankRevolutions;
-  int         CADCrankEventTime, PreviousCADCrankEventTime;
-  int         CADCrankRevolutionsDifference, CADCrankEventTimeDifference;
+  int         CADCrankRevolutions, PreviousCADCrankRevolutions, CADCrankRevolutionsDifference;
+  double      CADCrankEventTime, PreviousCADCrankEventTime, CADCrankEventTimeDifference;
   double      Cadence;
     
   //int         XXX;
@@ -261,6 +258,7 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
   public async void ConnectToPeripherals()
   {
     Debug.WriteLine("Trying to connect to devices...");
+
 
     foreach (BluetoothPeripheral btp in BluetoothPeripherals)
     {
@@ -273,17 +271,14 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
           btp.ItemColor = "Orange";
           deviceHRM = await adapter.ConnectToKnownDeviceAsync(guid, cp, cts1.Token);
           btp.ItemColor = "LightGreen";
-          Debug.WriteLine("Device HRM connected ");
 
           //now have to get services for this device
           try
           {
             servicesHRM = await deviceHRM.GetServicesAsync();
-            Debug.WriteLine("Services for HRM");
 
             foreach (var serviceHRM in servicesHRM)
             {
-              Debug.WriteLine(serviceHRM.Name);
               if (serviceHRM.Name == "Heart Rate")
               {
                 //now get characteristics for this service
@@ -294,7 +289,7 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
                   //now get the guid for Heart Rate Measurement
                   foreach (var characteristicHRM in characteristicsHRM)
                   {
-                    Debug.WriteLine(characteristicHRM.Name);
+                    //Debug.WriteLine(characteristicHRM.Name);
                     if (characteristicHRM.Name == "Heart Rate Measurement")
                     {
                       characteristicHRM.ValueUpdated += (o, args) =>
@@ -304,23 +299,28 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
                         if (bytes.Length == 2)
                         {
                           //Debug.WriteLine($" HRM: {bytes[0]} {bytes[1]}");
+
                           HRM = bytes[1];
-                          Debug.WriteLine($"HRM: {HRM}");
-                          btd.HRM = HRM;
+                          HRR = 0;
                         }
-                        if (bytes.Length == 4)
+                        if (bytes.Length == 4)  //also get HRM and HRR
                         {
                           //Debug.WriteLine($" R-R: {bytes[0]} {bytes[1]} {bytes[2]} {bytes[3]}");
-                          HRRint = ((bytes[3] * 256) + bytes[2]);
-                          HRR = HRRint / 1024.0;
-                          Debug.WriteLine($"HRR: {HRR}");
-                          btd.HRR = HRR;
+
+                          HRM = bytes[1];
+                          HRR = ((double)((bytes[3] * 256) + bytes[2])) / 1024.0;
                         }
+
+                        btd.HRM = HRM;
+                        btd.HRR = HRR;
+
+                        MessagingCenter.Send(new MessagingMarker(), "BTDataUpdate", btd);
                       };
 
                       //call the characteristic updates handler
                       await characteristicHRM.StartUpdatesAsync();
                     }
+
                   }
                 }
                 catch (Exception e) { Debug.WriteLine($"TSDZ2: Error getting HRM characteristics {e.Message}"); }
@@ -332,6 +332,7 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
         catch (Exception e) { Debug.WriteLine($"TSDZ2: Error connecting to HRM {e.Message}"); }
         //End of HRM
       }
+
       if (btp.Name[..3] == "SPD")
       {
         Guid guid = new(btp.DeviceId);
@@ -341,15 +342,12 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
         {
           btp.ItemColor = "Orange";
           deviceSPD = await adapter.ConnectToKnownDeviceAsync(guid, cp, cts2.Token);
-          Debug.WriteLine("Device SPD connected ");
           btp.ItemColor = "LightGreen";
 
           //now have to get services for this device
           try
           {
             servicesSPD = await deviceSPD.GetServicesAsync();
-            Debug.WriteLine("Services for SPD");
-            //change colour of device in list
 
             foreach (var serviceSPD in servicesSPD)
             {
@@ -364,7 +362,6 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
                   //now get the guid for Heart Rate Measurement
                   foreach (var characteristicSPD in characteristicsSPD)
                   {
-                    Debug.WriteLine(characteristicSPD.Name);
                     if (characteristicSPD.Name == "CSC Measurement")
                     {
                       characteristicSPD.ValueUpdated += (o, args) =>
@@ -373,27 +370,25 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
 
                         if (bytes.Length == 7)
                         {
-                          //if (bytes.Length == 7) Debug.WriteLine($" SPD: {bytes[0]} {bytes[1]} {bytes[2]} {bytes[3]} {bytes[4]} {bytes[5]} {bytes[6]}");
-
                           SPDWheelRevolutions = ((bytes[4] * 16777216) + (bytes[3] * 65536) + (bytes[2] * 256) + bytes[1]);
-                          SPDWheelEventTime = ((bytes[6] * 256) + bytes[5]);
-
-                          btd.SPDWheelRevolutions = SPDWheelRevolutions;
-                          btd.SPDWheelEventTime = SPDWheelEventTime/1024.0;
+                          SPDWheelEventTime = ((double)((bytes[6] * 256) + bytes[5])) / 1024.0;
 
                           SPDWheelRevolutionsDifference = SPDWheelRevolutions - PreviousSPDWheelRevolutions;
                           SPDWheelEventTimeDifference = SPDWheelEventTime - PreviousSPDWheelEventTime;
 
-                          if (SPDWheelEventTimeDifference != 0)
+                          if (SPDWheelEventTimeDifference != 0)  //otherwise divide by 0
                           {
-                            WheelRPM = 60 * SPDWheelEventTimeDifference / SPDWheelRevolutionsDifference / 1024;
-
-                            Debug.WriteLine($"SPD Wheel RPM: {WheelRPM}   Revolutions {SPDWheelRevolutionsDifference}  Time {SPDWheelEventTimeDifference}");
-
+                            WheelRPM = 60.0 * ((double)SPDWheelRevolutionsDifference) / SPDWheelEventTimeDifference;
+ 
                             PreviousSPDWheelRevolutions = SPDWheelRevolutions;
                             PreviousSPDWheelEventTime = SPDWheelEventTime;
                           }
 
+                          btd.SPDWheelRevolutions = SPDWheelRevolutions;
+                          btd.SPDWheelEventTime = SPDWheelEventTime;
+                          btd.WheelRPM = WheelRPM;
+
+                          MessagingCenter.Send(new MessagingMarker(), "BTDataUpdate", btd);
                         }
                       };
 
@@ -411,6 +406,7 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
         catch (Exception e) { Debug.WriteLine($"TSDZ2: Error connecting to SPD {e.Message}"); }
         //End of SPD
       }
+
       if (btp.Name[..3] == "CAD")
       {
         Guid guid = new(btp.DeviceId);
@@ -421,13 +417,11 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
           btp.ItemColor = "Orange";
           deviceCAD = await adapter.ConnectToKnownDeviceAsync(guid, cp, cts3.Token);
           btp.ItemColor = "LightGreen";
-          Debug.WriteLine("Device CAD connected ");
 
           //now have to get services for this device
           try
           {
             servicesCAD = await deviceCAD.GetServicesAsync();
-            Debug.WriteLine("Services for CAD");
 
             foreach (var serviceCAD in servicesCAD)
             {
@@ -442,7 +436,6 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
                   //now get the guid for Heart Rate Measurement
                   foreach (var characteristicCAD in characteristicsCAD)
                   {
-                    Debug.WriteLine(characteristicCAD.Name);
                     if (characteristicCAD.Name == "CSC Measurement")
                     {
                       characteristicCAD.ValueUpdated += (o, args) =>
@@ -451,25 +444,25 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
 
                         if (bytes.Length == 5)
                         {
-                          //Debug.WriteLine($" CDC: {bytes[0]} {bytes[1]} {bytes[2]} {bytes[3]} {bytes[4]}");
                           CADCrankRevolutions = ((bytes[2] * 256) + bytes[1]);
-                          CADCrankEventTime = ((bytes[4] * 256) + bytes[3]);
-
-                          btd.CADCrankRevolutions = CADCrankRevolutions;
-                          btd.CADCrankEventTime = CADCrankEventTime/1024.0;
+                          CADCrankEventTime = ((double)((bytes[4] * 256) + bytes[3])) / 1024.0;
 
                           CADCrankRevolutionsDifference = CADCrankRevolutions - PreviousCADCrankRevolutions;
                           CADCrankEventTimeDifference = CADCrankEventTime - PreviousCADCrankEventTime;
 
                           if (CADCrankEventTimeDifference != 0)
                           {
-                            Cadence = 60 * CADCrankEventTimeDifference / CADCrankRevolutionsDifference / 1024;
-
-                            Debug.WriteLine($"CAD Cadence: {Cadence}   Revolutions {CADCrankRevolutionsDifference}  Time {CADCrankEventTimeDifference}");
-
+                            Cadence = 60.0 * ((double)CADCrankRevolutionsDifference) / CADCrankEventTimeDifference;
+ 
                             PreviousCADCrankRevolutions = CADCrankRevolutions;
                             PreviousCADCrankEventTime = CADCrankEventTime;
                           }
+
+                          btd.CADCrankRevolutions = CADCrankRevolutions;
+                          btd.CADCrankEventTime = CADCrankEventTime / 1024.0;
+                          btd.Cadence = Cadence;
+
+                          MessagingCenter.Send(new MessagingMarker(), "BTDataUpdate", btd);
                         }
                       };
 
@@ -487,6 +480,7 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
         catch (Exception e) { Debug.WriteLine($"TSDZ2: Error connecting to CAD {e.Message}"); }
         //End of CAD
       }
+
       if (btp.Name[..3] == "XXX")
       {
         //Guid guid = new(btp.DeviceId);

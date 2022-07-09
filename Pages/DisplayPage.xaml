@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:TSDZ2Monitor.ViewModels"
              x:Class="TSDZ2Monitor.Pages.DisplayPage"
              Title="Display Page">
+  
+  <ContentPage.BindingContext>
+    <local:DisplayPageViewModel />
+  </ContentPage.BindingContext>
 
   <Grid RowDefinitions="*">
     <Border Grid.Row="0"
@@ -14,11 +18,11 @@
             Margin="5,0,5,0"
             Padding="5,5,5,5">
       
-      <Grid RowDefinitions="40,40,40,40,40,40"
+      <Grid RowDefinitions="35,35,35,35,35,35,35,35"
             RowSpacing="5" >
 
         <Grid Grid.Row="0"
-              ColumnDefinitions="250, 200"
+              ColumnDefinitions="220, 200"
               ColumnSpacing="5" >
           
           <Label Grid.Column="0" 
@@ -27,14 +31,14 @@
                  FontSize="20"/>
 
           <Label Grid.Column="1" 
-                 Text="{Binding Btd.HRM}"
-                 TextColor="Yellow"
+                 Text="{Binding BTData.HRM}"
+                 TextColor="LightGreen"
                  FontSize="20"/>             
         </Grid>
 
 
         <Grid Grid.Row="1"
-              ColumnDefinitions="250, 200"
+              ColumnDefinitions="220, 200"
               ColumnSpacing="5" >
 
           <Label Grid.Column="0" 
@@ -43,14 +47,14 @@
                  FontSize="20"/>
 
           <Label Grid.Column="1" 
-                 Text="{Binding Btd.HRR}"
+                 Text="{Binding BTData.HRR, StringFormat={}{0:0.0000}}"
                  TextColor="Yellow"
                  FontSize="20"/>
         </Grid>
 
 
         <Grid Grid.Row="2"
-              ColumnDefinitions="250, 100"
+              ColumnDefinitions="220, 100"
               ColumnSpacing="5" >
 
           <Label Grid.Column="0" 
@@ -59,14 +63,14 @@
                  FontSize="20"/>
 
           <Label Grid.Column="1" 
-                 Text="{Binding Btd.SPDWheelRevolutions}"
+                 Text="{Binding BTData.SPDWheelRevolutions}"
                  TextColor="Yellow"
                  FontSize="20"/>
         </Grid>
 
 
         <Grid Grid.Row="3"
-              ColumnDefinitions="250, 200"
+              ColumnDefinitions="220, 200"
               ColumnSpacing="5" >
 
           <Label Grid.Column="0" 
@@ -75,14 +79,28 @@
                  FontSize="20"/>
 
           <Label Grid.Column="1" 
-                 Text="{Binding Btd.SPDWheelEventTime}"
+                 Text="{Binding BTData.SPDWheelEventTime, StringFormat={}{0:0.0000}}"
                  TextColor="Yellow"
                  FontSize="20"/>
         </Grid>
 
-
         <Grid Grid.Row="4"
-              ColumnDefinitions="250, 200"
+              ColumnDefinitions="220, 200"
+              ColumnSpacing="5" >
+
+          <Label Grid.Column="0" 
+                 Text="Wheel RPM" 
+                 TextColor="White"
+                 FontSize="20"/>
+
+          <Label Grid.Column="1" 
+                 Text="{Binding BTData.WheelRPM, StringFormat={}{0:0.0000}}"
+                 TextColor="LightGreen"
+                 FontSize="20"/>
+        </Grid>
+
+        <Grid Grid.Row="5"
+              ColumnDefinitions="220, 200"
               ColumnSpacing="5" >
 
           <Label Grid.Column="0" 
@@ -91,14 +109,14 @@
                  FontSize="20"/>
 
           <Label Grid.Column="1" 
-                 Text="{Binding Btd.CADCrankRevolutions}"
+                 Text="{Binding BTData.CADCrankRevolutions}"
                  TextColor="Yellow"
                  FontSize="20"/>
         </Grid>
 
 
-        <Grid Grid.Row="5"
-              ColumnDefinitions="250, 200"
+        <Grid Grid.Row="6"
+              ColumnDefinitions="220, 200"
               ColumnSpacing="5" >
 
           <Label Grid.Column="0" 
@@ -107,8 +125,23 @@
                  FontSize="20"/>
 
           <Label Grid.Column="1" 
-                 Text="{Binding Btd.CADCrankEventTime}"
+                 Text="{Binding BTData.CADCrankEventTime, StringFormat={}{0:0.0000}}"
                  TextColor="Yellow"
+                 FontSize="20"/>
+        </Grid>
+
+        <Grid Grid.Row="7"
+              ColumnDefinitions="220, 200"
+              ColumnSpacing="5" >
+
+          <Label Grid.Column="0" 
+                 Text="Cadence RPM" 
+                 TextColor="White"
+                 FontSize="20"/>
+
+          <Label Grid.Column="1" 
+                 Text="{Binding BTData.Cadence, StringFormat={}{0:0.0000}}"
+                 TextColor="LightGreen"
                  FontSize="20"/>
         </Grid>
 
