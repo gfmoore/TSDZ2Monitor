@@ -47,7 +47,7 @@
                  FontSize="20"/>
 
           <Label Grid.Column="1" 
-                 Text="{Binding BTData.HRR, StringFormat={}{0:0.0000}}"
+                 Text="{Binding BTData.HRR, StringFormat='{}{0:0.0000}'}"
                  TextColor="Yellow"
                  FontSize="20"/>
         </Grid>
@@ -79,7 +79,7 @@
                  FontSize="20"/>
 
           <Label Grid.Column="1" 
-                 Text="{Binding BTData.SPDWheelEventTime, StringFormat={}{0:0.0000}}"
+                 Text="{Binding BTData.SPDWheelEventTime, StringFormat='{}{0:0.0000}'}"
                  TextColor="Yellow"
                  FontSize="20"/>
         </Grid>
@@ -94,7 +94,7 @@
                  FontSize="20"/>
 
           <Label Grid.Column="1" 
-                 Text="{Binding BTData.WheelRPM, StringFormat={}{0:0.0000}}"
+                 Text="{Binding BTData.WheelRPM, StringFormat='{}{0:0.0000}'}"
                  TextColor="LightGreen"
                  FontSize="20"/>
         </Grid>
@@ -125,7 +125,7 @@
                  FontSize="20"/>
 
           <Label Grid.Column="1" 
-                 Text="{Binding BTData.CADCrankEventTime, StringFormat={}{0:0.0000}}"
+                 Text="{Binding BTData.CADCrankEventTime, StringFormat='{}{0:0.0000}'}"
                  TextColor="Yellow"
                  FontSize="20"/>
         </Grid>
@@ -140,7 +140,7 @@
                  FontSize="20"/>
 
           <Label Grid.Column="1" 
-                 Text="{Binding BTData.Cadence, StringFormat={}{0:0.0000}}"
+                 Text="{Binding BTData.Cadence, StringFormat='{}{0:0.0000}'}"
                  TextColor="LightGreen"
                  FontSize="20"/>
         </Grid>
