@@ -82,6 +82,14 @@
     </DataTemplate>
   </Shell.MenuItemTemplate>
 
+
+
+  <MenuItem 
+    Text="Parameters"
+    IconImageSource="parameters.svg"
+    Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
+    Command="{Binding DisplayParametersCommand}" />
+
   <ShellContent 
     Title="Display"
     Icon="speedometer.svg"
@@ -101,13 +109,8 @@
     ContentTemplate="{DataTemplate pages:BluetoothPage}" />
   
 
- 
-  <MenuItem 
-    Text="Parameters"
-    IconImageSource="parameters.svg"
-    Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
-    Command="{Binding DisplayParametersCommand}" />
-
+  
+  
   <ShellContent 
     Title="Settings"
     Icon="settings.svg"
@@ -120,7 +123,6 @@
     Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
     ContentTemplate="{DataTemplate pages:AboutPage}" />
 
-  
 
   <MenuItem 
     Text="Back to Main menu"

@@ -21,15 +21,15 @@ public partial class BluetoothPage : ContentPage
   {
     //do Bluetooth permissions
     Debug.WriteLine("Let's request Bluetooth permissions");
-    await CheckAndRequestBluetoothPermissionAsync();
+    await BluetoothPage.CheckAndRequestBluetoothPermissionAsync();
 
     await BluetoothPage.SetupBluetoothAsync();
 
   }
   
-  public async Task CheckAndRequestBluetoothPermissionAsync()
+  public static async Task CheckAndRequestBluetoothPermissionAsync()
   {
-    if (!await CheckBluetoothAccessAsync())
+    if (!await BluetoothPage.CheckBluetoothAccessAsync())
     {
       //bool blePermissionGranted = await App.Current.MainPage.DisplayAlert("Alert", "Allow use of bluetooth for scanning for your peripheral devices such as heart rate monitor etc?", "Allow", "Deny");
 
@@ -39,7 +39,7 @@ bool blePermissionGranted = true;
 
       if (blePermissionGranted)
       {
-        await RequestBluetoothAccessAsync();
+        await BluetoothPage.RequestBluetoothAccessAsync();
       }
       else
       {
@@ -49,7 +49,7 @@ bool blePermissionGranted = true;
     }
   }
 
-  public async Task<bool> CheckBluetoothAccessAsync()
+  public static async Task<bool> CheckBluetoothAccessAsync()
   {
     try
     {
@@ -64,7 +64,7 @@ bool blePermissionGranted = true;
     }
   }
 
-  public async Task<bool> RequestBluetoothAccessAsync()
+  public static async Task<bool> RequestBluetoothAccessAsync()
   {
     try
     {

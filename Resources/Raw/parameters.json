@@ -29,12 +29,12 @@
   },
 
   "Battery": {
-    "Battery_Max_current": "",
-    "Battery_Low_Cut_Off": "",
-    "Battery_Resistance": "",
-    "Battery_Voltage_Est": "",
-    "Battery_Resistance_Est": "",
-    "Battery_Power_Loss_Est": ""
+    "Battery_Max_Current": "11",
+    "Battery_Low_Cut_Off": "39",
+    "Battery_Resistance": "200",
+    "Battery_Voltage_Estimate": "0",
+    "Battery_Resistance_Estimate": "0",
+    "Battery_Power_Loss_Estimate": "0"
   },
 
   "SoC": {

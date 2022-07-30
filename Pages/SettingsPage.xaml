@@ -3,9 +3,60 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TSDZ2Monitor.Pages.SettingsPage"
              Title="Settings Page">
-    <StackLayout>
-        <Label Text="Settings"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
-    </StackLayout>
+
+  <Grid RowDefinitions="60"
+        ColumnDefinitions="*,*"
+        RowSpacing="5"
+        ColumnSpacing="5">
+
+    <Border Grid.Row="0" Grid.Column="0"
+            Stroke="Green"
+            StrokeThickness="2"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            Background="Black"
+            Padding="10,0,10,20"
+            Margin="10,0,10,0"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            WidthRequest="380"
+            HeightRequest="120">
+
+      <Grid RowDefinitions="*,*" 
+            ColumnDefinitions="*,*"
+            RowSpacing="0"
+            ColumnSpacing="0">
+
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+               Text="Save/Load Default Parameters"
+               TextColor="White"
+               FontSize="20" 
+               VerticalTextAlignment="Start"
+               HeightRequest="35"
+               Margin="0,0,0,0"/>
+
+        <Button Grid.Row="1" Grid.Column="0"
+                Text="Save Parameters"
+                BackgroundColor="LightGreen"
+                WidthRequest="150"
+                HeightRequest="50"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"
+                Clicked="SaveParameters" 
+                Margin="0,0,0,0"/>
+
+        <Button Grid.Row="1" Grid.Column="1"
+                Text="Load Parameters"
+                BackgroundColor="LightBlue"
+                WidthRequest="150"
+                HeightRequest="50"
+                HorizontalOptions="End"
+                VerticalOptions="Start"
+                Clicked="LoadParameters" 
+                Margin="0,0,0,0"/>
+      </Grid>
+    </Border>
+
+
+  </Grid>
+  
 </ContentPage>
