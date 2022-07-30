@@ -117,7 +117,7 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
   {
     if (SelectedItem == null) return;
 
-    Debug.WriteLine($"You tapped on {SelectedItem.Name}");
+    //Debug.WriteLine($"You tapped on {SelectedItem.Name}");
 
     //Show details
     var navigationParameter = new Dictionary<string, object>
@@ -238,8 +238,8 @@ public partial class BluetoothPeripheralsViewModel : ObservableObject
     }
   }
 
-  IDevice deviceHRM, deviceSPD, deviceCAD, deviceXXX;
-  System.Collections.Generic.IReadOnlyList<Plugin.BLE.Abstractions.Contracts.IService> servicesHRM, servicesSPD, servicesCAD, servicesXXX;
+  IDevice deviceHRM, deviceSPD, deviceCAD; //, deviceXXX;
+  System.Collections.Generic.IReadOnlyList<Plugin.BLE.Abstractions.Contracts.IService> servicesHRM, servicesSPD, servicesCAD; //, servicesXXX;
 
   int         HRM;
   double      HRR;

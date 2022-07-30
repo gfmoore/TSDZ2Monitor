@@ -20,5 +20,11 @@ global using TSDZ2Monitor.Classes;
 global using SQLite;
 global using TSDZ2Monitor.Pages;
 
+global using SkiaSharp.Views.Maui.Controls.Hosting;
+global using Mapsui;
+global using Mapsui.Projections;
+global using Mapsui.UI.Maui;
+global using Mapsui.Utilities;
+global using Location = Microsoft.Maui.Devices.Sensors.Location;
 
-
+global using System.Text.Json;

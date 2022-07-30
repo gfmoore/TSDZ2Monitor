@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TSDZ2Monitor.Pages.TracksListPage"
+             
+             xmlns:local="clr-namespace:TSDZ2Monitor.ViewModels"
+             xmlns:local2="clr-namespace:TSDZ2Monitor.Classes"
+             
+             Title="Tracks List Page">
+
+  <Grid RowDefinitions="*, 60"
+        RowSpacing="5">
+    
+    <Border Grid.Row="0"
+            Stroke="Green"
+            StrokeThickness="2"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            Background="Black"
+            Margin="5,0,5,0"
+            Padding="5,5,5,5">
+
+      <CollectionView
+          Grid.Row="1"
+          ItemsSource="{Binding Tracks}"
+          SelectedItem="{Binding SelectedItem}"
+          SelectionChangedCommand="{Binding SelectionChangedCommand}"
+          SelectionChangedCommandParameter="{Binding .}" 
+          VerticalOptions="StartAndExpand"
+          SelectionMode="Single"
+          ItemsLayout="VerticalList"
+          Margin="10, 0, 10, 0" >
+        <CollectionView.ItemTemplate>
+          <DataTemplate>
+            <Grid
+                 ColumnDefinitions="*,*,20,20"
+                 ColumnSpacing="2">
+
+              <Label Grid.Column="0"
+                       Text="{Binding Name}"
+                       FontSize="20"
+                       Padding="0, 5, 0, 0"
+                       TextColor="Yellow" />
+
+              <ImageButton 
+                        Grid.Column="2" 
+                        HorizontalOptions="End"  
+                        Source="cancelbin.svg" 
+                        IsVisible="{Binding CancelBinIsVisible}"
+                        Scale="1.4" 
+                        BackgroundColor="Transparent"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:TracksListViewModel}}, Path=CancelDeleteTrackCommand}"
+                        CommandParameter="{Binding .}"/>
+
+
+              <ImageButton 
+                        Grid.Column="3" 
+                        HorizontalOptions="End"  
+                        Source="deletebin.svg" 
+                        Scale="1.0" 
+                        BackgroundColor="Transparent"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:TracksListViewModel}}, Path=DeleteTrackCommand}"
+                        CommandParameter="{Binding .}"/>
+
+            </Grid>
+          </DataTemplate>
+        </CollectionView.ItemTemplate>
+      </CollectionView>
+    </Border>
+
+    <Grid Grid.Row="1"
+          ColumnDefinitions="*"
+          ColumnSpacing="5">
+
+      <Border Grid.Column="0"
+            Stroke="Green"
+            StrokeThickness="2"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            Background="Black"
+            Margin="5,0,5,0"
+            Padding="5,5,5,5">
+        
+        <Entry TextColor="Yellow"
+             Placeholder="Enter track name"
+             PlaceholderColor="Green"
+             FontSize="20" 
+             Text="{Binding TrackName}"
+             ReturnCommand="{Binding TrackNameReturnCommand}" 
+             IsEnabled="{Binding TrackNameEntryEnabled}"
+             Margin="5,5,0,0"/>
+        
+      </Border>
+
+    </Grid>
+
+
+
+  </Grid>
+  
+</ContentPage>

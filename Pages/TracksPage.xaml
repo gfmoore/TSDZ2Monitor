@@ -1,17 +1,65 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mapsui="clr-namespace:Mapsui.UI.Maui;assembly=Mapsui.UI.Maui"
+             
+             xmlns:local="clr-namespace:TSDZ2Monitor.ViewModels"
+             
              x:Class="TSDZ2Monitor.Pages.TracksPage"
+             
              Title="Tracks Page">
-  <StackLayout>
-    <Button Text="Get location"
-            FontSize="20"
-            TextColor="White"
-            BackgroundColor="Firebrick"
-            WidthRequest="200"
-            Command="{Binding GetLocationCommand}" />
+  
+  <Grid RowDefinitions="*, 50">
 
-    <ActivityIndicator IsRunning="{Binding IsBusy}"
-                         Color="Aquamarine" />
-  </StackLayout>
+    <mapsui:MapView Grid.Row="0" 
+                    x:Name="mapView" />
+
+    <Grid Grid.Row="1"
+          ColumnDefinitions="*,*,*">
+
+      <Button Grid.Column="0"
+              x:Name="TrackingButton"
+              Text="Start"
+              TextColor="White"
+              BackgroundColor="Green"
+              FontSize="20" 
+              WidthRequest="100"
+              HeightRequest="40" 
+              Padding="0,0,0,0" 
+              Clicked="Tracking"/>
+
+      <Button Grid.Column="1"
+              x:Name="ClearTrackButton"
+              Text="Clear"
+              TextColor="Blue"
+              BackgroundColor="LightBlue"
+              FontSize="20" 
+              WidthRequest="100"
+              HeightRequest="40" 
+              Padding="0,0,0,0" 
+              Clicked="ClearTrack"/>
+
+      <Button Grid.Column="2"
+              x:Name="SaveTrackButton"
+              Text="List/Save"
+              TextColor="White"
+              BackgroundColor="Blue"
+              FontSize="20" 
+              WidthRequest="100"
+              HeightRequest="40" 
+              Padding="0,0,0,0" 
+              Clicked="SaveTrack"/>
+
+
+
+    </Grid>
+
+    <ActivityIndicator x:Name="ActIndicator"
+                       IsRunning="{Binding IsBusy}"
+                       Color="Aquamarine" 
+                       Scale="2"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+
+  </Grid>
 </ContentPage>

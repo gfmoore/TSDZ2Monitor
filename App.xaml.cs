@@ -6,7 +6,7 @@ public partial class App : Application
 	{
 	  InitializeComponent();
 	  //initialise database before use
-      var database = Database;
+    var database = Database;
 	  
 	  MainPage = new AppShell();
       Application.Current.UserAppTheme = AppTheme.Dark;

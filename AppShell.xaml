@@ -86,19 +86,21 @@
     Title="Display"
     Icon="speedometer.svg"
     Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
-    ContentTemplate="{DataTemplate pages:DisplayPage}" />  
- 
+    ContentTemplate="{DataTemplate pages:DisplayPage}" />
+
+  <ShellContent 
+    Title="Tracks"
+    Icon="tracks.svg"
+    Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
+    ContentTemplate="{DataTemplate pages:TracksPage}" />
+
   <ShellContent 
     Title="Bluetooth"
     Icon="bluetooth.svg"
     Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
     ContentTemplate="{DataTemplate pages:BluetoothPage}" />
   
-  <ShellContent 
-    Title="Tracks"
-    Icon="tracks.svg"
-    Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
-    ContentTemplate="{DataTemplate pages:TracksPage}" />
+
  
   <MenuItem 
     Text="Parameters"

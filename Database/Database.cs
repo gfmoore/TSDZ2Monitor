@@ -9,6 +9,7 @@ public class Database
     _database = new SQLiteAsyncConnection(dbPath);
 
     CreateTableBluetoothPeripheralAsync();
+    CreateTableTrackAsync();
   }
 
   public Task<int> DropTableBluetoothPeripheralAsync()
@@ -44,5 +45,32 @@ public class Database
   {
     return null;
   }
+
+
+
+  //Track table
+  public Task<int> CreateTableTrackAsync()
+  {
+    _database.CreateTableAsync<Track>();
+    return Task.FromResult(0);
+  }
+
+  public Task<List<Track>> GetTracksAsync()
+  {
+    return _database.Table<Track>().ToListAsync();
+  }
+   
+  public Task<int> InsertTrackAsync(Track track)
+  {
+    return _database.InsertAsync(track);
+  }
+
+  public Task<int> DeleteTrackAsync(Track track)
+  {
+    return _database.DeleteAsync(track);
+  }
+
+  public Task<int> DeleteAllTrackAsync() => _database.DeleteAllAsync<Track>();
+
 }
 
