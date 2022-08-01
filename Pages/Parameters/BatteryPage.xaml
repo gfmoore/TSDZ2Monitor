@@ -16,7 +16,12 @@
            VerticalTextAlignment="Start" 
            HeightRequest="50"
            Margin="0,0,0,0"
-           Padding="0,0,0,0" />
+           Padding="0,0,0,0">
+           <Label.GestureRecognizers>
+             <TapGestureRecognizer Tapped="OnMaxCurrentlabelTapped"
+                                   NumberOfTapsRequired="1" />
+           </Label.GestureRecognizers> 
+    </Label>
 
     <Border Grid.Row="0" Grid.Column="1" 
             HeightRequest="50" 
@@ -24,19 +29,21 @@
             HorizontalOptions="Start"
             VerticalOptions="Start"
             BackgroundColor="Black"
-            StrokeThickness="2"
+            StrokeThickness="1.2"
             Stroke="Yellow"
             StrokeShape="RoundRectangle 10,10,10,10">
       <Entry x:Name="MaxCurrent" 
         Text=""
-        TextColor="Yellow"
+        TextColor="LightGreen"
         FontSize="20" 
         Margin ="0,0,0,0" 
         VerticalTextAlignment="Start"
         HorizontalTextAlignment="Start"
         WidthRequest="120"
         HeightRequest="50"
-        ClearButtonVisibility="WhileEditing"/>
+        ClearButtonVisibility="WhileEditing"
+        TextChanged="MaxCurrent_TextChanged"
+        Completed="MaxCurrent_Completed"/>
     </Border>
 
 
@@ -48,7 +55,12 @@
            VerticalTextAlignment="Start" 
            HeightRequest="50"
            Margin="0,0,0,0"
-           Padding="0,0,0,0" />
+           Padding="0,0,0,0" >
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="LowCutOfflabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
 
     <Border Grid.Row="1" Grid.Column="1" 
             HeightRequest="50" 
@@ -56,21 +68,23 @@
             HorizontalOptions="Start"
             VerticalOptions="Start"
             BackgroundColor="Black"
-            StrokeThickness="2"
+            StrokeThickness="1.2"
             Stroke="Yellow"
             StrokeShape="RoundRectangle 10,10,10,10">
       <Entry x:Name="LowCutOff"
         Text=""
-        TextColor="Yellow"
+        TextColor="LightGreen"
         FontSize="20" 
         Margin ="0,0,0,0" 
         VerticalTextAlignment="Start"
         HorizontalTextAlignment="Start"
         WidthRequest="120"
         HeightRequest="50"
-        ClearButtonVisibility="WhileEditing"/>
+        ClearButtonVisibility="WhileEditing"
+        TextChanged="LowCutOff_TextChanged"
+        Completed="LowCutOff_Completed"/>
     </Border>
-    
+
 
     <Label Grid.Row="2" Grid.Column="0"
            Text="Resistance"
@@ -80,7 +94,12 @@
            VerticalTextAlignment="Start" 
            HeightRequest="50"
            Margin="0,0,0,0"
-           Padding="0,0,0,0" />
+           Padding="0,0,0,0" >
+      <Label.GestureRecognizers>
+      <TapGestureRecognizer Tapped="ResistancelabelTapped"
+                            NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
 
     <Border Grid.Row="2" Grid.Column="1" 
             HeightRequest="50" 
@@ -88,19 +107,21 @@
             HorizontalOptions="Start"
             VerticalOptions="Start"
             BackgroundColor="Black"
-            StrokeThickness="2"
+            StrokeThickness="1.2"
             Stroke="Yellow"
             StrokeShape="RoundRectangle 10,10,10,10">
       <Entry x:Name="Resistance"
         Text=""
-        TextColor="Yellow"
+        TextColor="LightGreen"
         FontSize="20" 
         Margin ="0,0,0,0" 
         VerticalTextAlignment="Start"
         HorizontalTextAlignment="Start"
         WidthRequest="120"
         HeightRequest="50"
-        ClearButtonVisibility="WhileEditing"/>
+        ClearButtonVisibility="WhileEditing"
+        TextChanged="Resistance_TextChanged"
+        Completed="Resistance_Completed"/>
     </Border>
 
 
@@ -112,7 +133,12 @@
            VerticalTextAlignment="Start" 
            HeightRequest="50"
            Margin="0,0,0,0"
-           Padding="0,0,0,0" />
+           Padding="0,0,0,0" >
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="VoltageEstimatelabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
 
     <Border Grid.Row="3" Grid.Column="1" 
             HeightRequest="50" 
@@ -120,19 +146,21 @@
             HorizontalOptions="Start"
             VerticalOptions="Start"
             BackgroundColor="Black"
-            StrokeThickness="2"
+            StrokeThickness="1.2"
             Stroke="Yellow"
             StrokeShape="RoundRectangle 10,10,10,10">
       <Entry x:Name="VoltageEstimate"
         Text=""
-        TextColor="Yellow"
+        TextColor="LightGreen"
         FontSize="20" 
         Margin ="0,0,0,0" 
         VerticalTextAlignment="Start"
         HorizontalTextAlignment="Start"
         WidthRequest="120"
         HeightRequest="50"
-        ClearButtonVisibility="WhileEditing"/>
+        ClearButtonVisibility="WhileEditing"
+        TextChanged="VoltageEstimate_TextChanged"
+        Completed="VoltageEstimate_Completed"/>
     </Border>
 
 
@@ -144,7 +172,12 @@
            VerticalTextAlignment="Start" 
            HeightRequest="50"
            Margin="0,0,0,0"
-           Padding="0,0,0,0" />
+           Padding="0,0,0,0" >
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="ResistanceEstimatelabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>      
 
     <Border Grid.Row="4" Grid.Column="1" 
             HeightRequest="50" 
@@ -152,19 +185,21 @@
             HorizontalOptions="Start"
             VerticalOptions="Start"
             BackgroundColor="Black"
-            StrokeThickness="2"
+            StrokeThickness="1.2"
             Stroke="Yellow"
             StrokeShape="RoundRectangle 10,10,10,10">
       <Entry x:Name="ResistanceEstimate"
         Text=""
-        TextColor="Yellow"
+        TextColor="LightGreen"
         FontSize="20" 
         Margin ="0,0,0,0" 
         VerticalTextAlignment="Start"
         HorizontalTextAlignment="Start"
         WidthRequest="120"
         HeightRequest="50"
-        ClearButtonVisibility="WhileEditing"/>
+        ClearButtonVisibility="WhileEditing"
+        TextChanged="ResistanceEstimate_TextChanged"
+        Completed="ResistanceEstimate_Completed"/>
     </Border>
 
 
@@ -176,7 +211,12 @@
            VerticalTextAlignment="Start" 
            HeightRequest="50"
            Margin="0,0,0,0"
-           Padding="0,0,0,0" />
+           Padding="0,0,0,0" >
+      <Label.GestureRecognizers>
+      <TapGestureRecognizer Tapped="PowerLossEstimatelabelTapped"
+                            NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
 
     <Border Grid.Row="5" Grid.Column="1" 
             HeightRequest="50" 
@@ -184,19 +224,21 @@
             HorizontalOptions="Start"
             VerticalOptions="Start"
             BackgroundColor="Black"
-            StrokeThickness="2"
+            StrokeThickness="1.2"
             Stroke="Yellow"
             StrokeShape="RoundRectangle 10,10,10,10">
       <Entry x:Name="PowerLossEstimate"
         Text=""
-        TextColor="Yellow"
+        TextColor="LightGreen"
         FontSize="20" 
         Margin ="0,0,0,0" 
         VerticalTextAlignment="Start"
         HorizontalTextAlignment="Start"
         WidthRequest="120"
         HeightRequest="50"
-        ClearButtonVisibility="WhileEditing"/>
+        ClearButtonVisibility="WhileEditing"
+        TextChanged="PowerLossEstimate_TextChanged"
+        Completed="PowerLossEstimate_Completed"/>
     </Border>
     
   </Grid>

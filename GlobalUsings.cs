@@ -28,3 +28,4 @@ global using Mapsui.Utilities;
 global using Location = Microsoft.Maui.Devices.Sensors.Location;
 
 global using System.Text.Json;
+global using System.Text.RegularExpressions;
