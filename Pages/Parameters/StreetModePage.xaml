@@ -2,10 +2,194 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TSDZ2Monitor.Pages.Parameters.StreetModePage"
-             Title="Street Mode Page">
-  <StackLayout>
-    <Label Text="Street Mode"
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-  </StackLayout>
+             Title="Street Mode">
+
+  <Grid RowDefinitions="60,60,60,60,60,60,60"
+        ColumnDefinitions="220,*"
+        Margin="5,0,0,0">
+
+    <Label Grid.Row="0" Grid.Column="0"
+           Text="Enable Mode"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnStreetModeEnableModelabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Switch Grid.Row="0" Grid.Column="1" 
+            x:Name="StreetModeEnableMode"
+            Toggled="StreetModeEnableMode_Toggled"
+            Margin="0,0,20,15"/>
+
+    
+    <Label Grid.Row="1" Grid.Column="0"
+           Text="Enable At Startup"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnStreetModeEnableAtStartuplabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Switch Grid.Row="1" Grid.Column="1" 
+            x:Name="StreetModeEnableAtStartup"
+            Toggled="StreetModeEnableAtStartup_Toggled"
+            Margin="0,0,20,15"/>    
+    
+
+    <Label Grid.Row="2" Grid.Column="0"
+           Text="Speed Limit"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnStreetModeSpeedLimitLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="2" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="StreetModeSpeedLimit" 
+        Text=""
+        TextColor="LightGreen"
+        FontSize="20" 
+        Margin ="0,0,0,0" 
+        VerticalTextAlignment="Start"
+        HorizontalTextAlignment="Start"
+        WidthRequest="120"
+        HeightRequest="50"
+        ClearButtonVisibility="WhileEditing"
+        TextChanged="StreetModeSpeedLimit_TextChanged"
+        Completed="StreetModeSpeedLimit_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="3" Grid.Column="0"
+           Text="Motor Power Limit"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnStreetModeMotorPowerLimitLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="3" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="StreetModeMotorPowerLimit" 
+        Text=""
+        TextColor="LightGreen"
+        FontSize="20" 
+        Margin ="0,0,0,0" 
+        VerticalTextAlignment="Start"
+        HorizontalTextAlignment="Start"
+        WidthRequest="120"
+        HeightRequest="50"
+        ClearButtonVisibility="WhileEditing"
+        TextChanged="StreetModeMotorPowerLimit_TextChanged"
+        Completed="StreetModeMotorPowerLimit_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="4" Grid.Column="0"
+           Text="Throttle Enable"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnStreetModeThrottleEnablelabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Switch Grid.Row="4" Grid.Column="1" 
+            x:Name="StreetModeThrottleEnable"
+            Toggled="StreetModeThrottleEnable_Toggled"
+            Margin="0,0,20,15"/>
+
+    
+    <Label Grid.Row="5" Grid.Column="0"
+           Text="Cruise Enable"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnStreetModeCruiseEnablelabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Switch Grid.Row="5" Grid.Column="1" 
+            x:Name="StreetModeCruiseEnable"
+            Toggled="StreetModeCruiseEnable_Toggled"
+            Margin="0,0,20,15"/>
+
+    
+    <Label Grid.Row="6" Grid.Column="0"
+           Text="Hotkey Enable"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnStreetModeHotkeyEnablelabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Switch Grid.Row="6" Grid.Column="1" 
+            x:Name="StreetModeHotkeyEnable"
+            Toggled="StreetModeHotkeyEnable_Toggled"
+            Margin="0,0,20,15"/>
+
+  </Grid>
+
 </ContentPage>

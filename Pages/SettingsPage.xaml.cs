@@ -56,5 +56,37 @@ public partial class SettingsPage : ContentPage
     Preferences.Get("BatteryVoltageEstimate", p.BatteryVoltageEstimate);
     Preferences.Get("BatteryResistanceEstimate", p.BatteryResistanceEstimate);
     Preferences.Get("PowerLossEstimate", p.BatteryPowerLossEstimate);
+    
+    Preferences.Get("MotorVoltage", p.MotorVoltage);
+    Preferences.Get("MotorPowerMax", p.MotorPowerMax);
+    Preferences.Get("MotorAcceleration", p.MotorAcceleration);
+    Preferences.Get("MotorDeceleration", p.MotorDeceleration);
+    Preferences.Get("MotorFastStop", p.MotorFastStop);
+    Preferences.Get("MotorFieldWeakening", p.MotorFieldWeakening);
+
+    Preferences.Get("MotorTemperatureFeature", p.MotorTemperatureFeature);
+    Preferences.Get("MotorTemperatureMinLimit", p.MotorTemperatureMinLimit);
+    Preferences.Get("MotorTemperatureMaxLimit", p.MotorTemperatureMaxLimit);
+    Preferences.Get("MotorTemperatureTemperatureUnits", p.MotorTemperatureUnits);
+
+    Preferences.Get("SoCDisplayText", p.SoCDisplayText);
+    Preferences.Get("SoCResetAtVoltage", p.SoCResetAtVoltage);
+    Preferences.Get("SoCBatteryTotalWH", p.SoCBatteryTotalWH);
+    Preferences.Get("SoCUsedWH", p.SoCUsedWH);
+    Preferences.Get("SoCManualReset", p.SoCManualReset);
+
+    Preferences.Get("StartupBoostFeature", p.StartupBoostFeature);
+    Preferences.Get("StartupBoostTorqueFactor", p.StartupBoostTorqueFactor);
+    Preferences.Get("StartupBoostCadenceStep", p.StartupBoostCadenceStep);
+
+    Preferences.Get("StreetModeEnableMode", p.StreetModeEnableMode);
+    Preferences.Get("StreetModeEnableAtStartup", p.StreetModeEnableAtStartup);
+    Preferences.Get("StreetModeSpeedLimit", p.StreetModeSpeedLimit);
+    Preferences.Get("StreetModeMotorPowerLimit", p.StreetModeMotorPowerLimit);
+    Preferences.Get("StreetModeThrottleEnable", p.StreetModeThrottleEnable);
+    Preferences.Get("StreetModeCruiseEnable", p.StreetModeCruiseEnable);
+    Preferences.Get("StreetModeHotkeyEnable", p.StreetModeHotkeyEnable);
+
+    Preferences.Get("VariousUnits", p.VariousUnits);
   }
 }

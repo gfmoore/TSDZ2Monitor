@@ -2,10 +2,183 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TSDZ2Monitor.Pages.Parameters.SoCPage"
-             Title="SoC Page">
-  <StackLayout>
-    <Label Text="SoC"
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-  </StackLayout>
+             Title="SoC (State of Charge)">
+
+  <Grid RowDefinitions="60,60,60,60,60"
+        ColumnDefinitions="220,*"
+        Margin="5,0,0,0">
+
+    <Label Grid.Row="0" Grid.Column="0"
+           Text="Display Text"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnSoCDisplayTextLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="0" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Picker x:Name="SoCDisplayText"
+              FontSize="20"
+              TextColor="LightGreen"
+              Margin="15,0,0,0"
+              SelectedIndexChanged="SoCDisplayText_SelectedIndexChanged">
+      </Picker>
+    </Border>
+
+
+    <Label Grid.Row="1" Grid.Column="0"
+           Text="Reset at Voltage"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnSoCResetAtVoltageLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="1" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="SoCResetAtVoltage" 
+        Text=""
+        TextColor="LightGreen"
+        FontSize="20" 
+        Margin ="0,0,0,0" 
+        VerticalTextAlignment="Start"
+        HorizontalTextAlignment="Start"
+        WidthRequest="120"
+        HeightRequest="50"
+        ClearButtonVisibility="WhileEditing"
+        TextChanged="SoCResetAtVoltage_TextChanged"
+        Completed="SoCResetAtVoltage_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="2" Grid.Column="0"
+           Text="Battery Total Watt-Hr"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnSoCBatteryTotalWattHrLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="2" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="SoCBatteryTotalWattHr" 
+        Text=""
+        TextColor="LightGreen"
+        FontSize="20" 
+        Margin ="0,0,0,0" 
+        VerticalTextAlignment="Start"
+        HorizontalTextAlignment="Start"
+        WidthRequest="120"
+        HeightRequest="50"
+        ClearButtonVisibility="WhileEditing"
+        TextChanged="SoCBatteryTotalWattHr_TextChanged"
+        Completed="SoCBatteryTotalWattHr_Completed"/>
+    </Border>
+
+    
+
+    <Label Grid.Row="3" Grid.Column="0"
+           Text="Used Watt-Hr"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnSoCUsedWattHrLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="3" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="SoCUsedWattHr" 
+        Text=""
+        TextColor="LightGreen"
+        FontSize="20" 
+        Margin ="0,0,0,0" 
+        VerticalTextAlignment="Start"
+        HorizontalTextAlignment="Start"
+        WidthRequest="120"
+        HeightRequest="50"
+        ClearButtonVisibility="WhileEditing"
+        TextChanged="SoCUsedWattHr_TextChanged"
+        Completed="SoCUsedWattHr_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="4" Grid.Column="0"
+           Text="Manual Reset"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnSoCManualResetlabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Switch Grid.Row="4" Grid.Column="1" 
+            x:Name="SoCManualReset"
+            Toggled="SoCManualReset_Toggled"
+            Margin="0,0,20,15"/>
+
+  </Grid>
+
 </ContentPage>

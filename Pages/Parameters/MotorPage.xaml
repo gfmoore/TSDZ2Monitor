@@ -2,10 +2,203 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TSDZ2Monitor.Pages.Parameters.MotorPage"
-             Title="Motor Page">
-  <StackLayout>
-    <Label Text="Motor!"
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-  </StackLayout>
+             Title="Motor">
+
+  <Grid RowDefinitions="60,60,60,60,60,60"
+        ColumnDefinitions="220,*"
+        Margin="5,0,0,0">
+
+    <Label Grid.Row="0" Grid.Column="0"
+           Text="Voltage"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnMotorVoltagelabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="0" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Picker x:Name="MotorVoltage"
+              FontSize="20"
+              TextColor="LightGreen"
+              Margin="15,0,0,0"
+              SelectedIndexChanged="MotorVoltage_SelectedIndexChanged">
+        
+      </Picker>
+    </Border>
+
+
+    <Label Grid.Row="1" Grid.Column="0"
+           Text="Power Max"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="MotorPowerMaxlabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="1" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="MotorPowerMax" 
+        Text=""
+        TextColor="LightGreen"
+        FontSize="20" 
+        Margin ="0,0,0,0" 
+        VerticalTextAlignment="Start"
+        HorizontalTextAlignment="Start"
+        WidthRequest="120"
+        HeightRequest="50"
+        ClearButtonVisibility="WhileEditing"
+        TextChanged="MotorPowerMax_TextChanged"
+        Completed="MotorPowerMax_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="2" Grid.Column="0"
+           Text="Acceleration"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnMotorAccelerationlabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="2" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="MotorAcceleration" 
+        Text=""
+        TextColor="LightGreen"
+        FontSize="20" 
+        Margin ="0,0,0,0" 
+        VerticalTextAlignment="Start"
+        HorizontalTextAlignment="Start"
+        WidthRequest="120"
+        HeightRequest="50"
+        ClearButtonVisibility="WhileEditing"
+        TextChanged="MotorAcceleration_TextChanged"
+        Completed="MotorAcceleration_Completed"/>
+    </Border>
+
+    
+    <Label Grid.Row="3" Grid.Column="0"
+           Text="Deceleration"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnMotorDecelerationlabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="3" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="MotorDeceleration" 
+        Text=""
+        TextColor="LightGreen"
+        FontSize="20" 
+        Margin ="0,0,0,0" 
+        VerticalTextAlignment="Start"
+        HorizontalTextAlignment="Start"
+        WidthRequest="120"
+        HeightRequest="50"
+        ClearButtonVisibility="WhileEditing"
+        TextChanged="MotorDeceleration_TextChanged"
+        Completed="MotorDeceleration_Completed"/>
+    </Border>
+
+    
+    <Label Grid.Row="4" Grid.Column="0"
+           Text="Fast Stop"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnMotorFastStoplabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Switch Grid.Row="4" Grid.Column="1" 
+            x:Name="MotorFastStop"
+            Toggled="MotorFastStop_Toggled"
+            Margin="0,0,0,15"/>
+
+
+    <Label Grid.Row="5" Grid.Column="0"
+           Text="Field Weakening"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnMotorFieldWeakeninglabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Switch Grid.Row="5" Grid.Column="1" 
+            x:Name="MotorFieldWeakening" 
+            Toggled="MotorFieldWeakening_Toggled"
+            Margin="0,0,0,15"/>
+
+  </Grid>
 </ContentPage>

@@ -2,10 +2,57 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TSDZ2Monitor.Pages.Parameters.VariousPage"
-             Title="Various Page">
-  <StackLayout>
-    <Label Text="Various"
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-  </StackLayout>
+             Title="Various">
+
+  <Grid RowDefinitions="60,60,60,60,60"
+        ColumnDefinitions="220,*"
+        Margin="5,0,0,0">
+
+    <Label Grid.Row="0" Grid.Column="0"
+           Text="System Units"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="VariousUnitsLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Grid Grid.Row="1" Grid.Column="0"
+          ColumnDefinitions="120,50,120"
+          Margin="0,-40,0,0">
+
+      <Label Grid.Column="0"
+           Text="Imperial"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0" />
+
+      <Switch Grid.Column="1" 
+            x:Name="VariousUnits"
+            IsToggled="True"
+            Toggled="VariousUnits_Toggled"
+            Margin="0,0,0,15"/>
+
+      <Label Grid.Column="2"
+           Text="Metric SI"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="30,0,0,0"
+           Padding="0,0,0,0" />
+    </Grid>
+
+  </Grid>
 </ContentPage>
