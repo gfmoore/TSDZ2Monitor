@@ -2,10 +2,275 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TSDZ2Monitor.Pages.Parameters.TripMemoriesPage"
-             Title="Trip Memories Page">
-  <StackLayout>
-    <Label Text="Trip Memories"
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-  </StackLayout>
+             Title="Trip Memories">
+
+  <Grid RowDefinitions="60,60,60,60,60,60,60,60,60"
+        ColumnDefinitions="180,50,*"
+        Margin="5,0,0,0">
+
+    <Label Grid.Row="0" Grid.Column="0"
+           Text="Odometer"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnTripMemoriesOdometerLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <ImageButton Grid.Row="0" Grid.Column="1" 
+                 BorderWidth="2"
+                 BorderColor="Red"
+                 BackgroundColor="Red"
+                 CornerRadius="10"
+                 WidthRequest="30"
+                 HeightRequest="30"
+                 Margin="0,0,0,12"
+                 Clicked="OnTripMemoriesOdometerReset"/>
+
+    <Border Grid.Row="0" Grid.Column="2" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="TripMemoriesOdometer" 
+        Text=""
+        TextColor="Orange"
+        FontSize="20" 
+        Margin ="0,0,0,0" 
+        VerticalTextAlignment="Start"
+        HorizontalTextAlignment="Start"
+        WidthRequest="120"
+        HeightRequest="50"
+        ClearButtonVisibility="WhileEditing"
+        IsEnabled="False"/>
+    </Border>
+
+
+    <Label Grid.Row="1" Grid.Column="0"
+           Text="Trip A"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnTripMemoriesTripALabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <ImageButton Grid.Row="1" Grid.Column="1" 
+                 BorderWidth="2"
+                 BorderColor="Red"
+                 BackgroundColor="Red"
+                 CornerRadius="10"
+                 WidthRequest="30"
+                 HeightRequest="30"
+                 Margin="0,0,0,12"
+                 Clicked="OnTripMemoriesTripAReset"/>
+
+    <Border Grid.Row="1" Grid.Column="2" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="TripMemoriesTripA" 
+        Text=""
+        TextColor="Orange"
+        FontSize="20" 
+        Margin ="0,0,0,0" 
+        VerticalTextAlignment="Start"
+        HorizontalTextAlignment="Start"
+        WidthRequest="120"
+        HeightRequest="50"
+        ClearButtonVisibility="WhileEditing"
+        IsEnabled="False"/>
+    </Border>
+
+
+    <Label Grid.Row="2" Grid.Column="0"
+           Text="Trip B"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnTripMemoriesTripBLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <ImageButton Grid.Row="2" Grid.Column="1" 
+                 BorderWidth="2"
+                 BorderColor="Red"
+                 BackgroundColor="Red"
+                 CornerRadius="10"
+                 WidthRequest="30"
+                 HeightRequest="30"
+                 Margin="0,0,0,12"
+                 Clicked="OnTripMemoriesTripBReset"/>
+
+    <Border Grid.Row="2" Grid.Column="2" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="TripMemoriesTripB" 
+        Text=""
+        TextColor="Orange"
+        FontSize="20" 
+        Margin ="0,0,0,0" 
+        VerticalTextAlignment="Start"
+        HorizontalTextAlignment="Start"
+        WidthRequest="120"
+        HeightRequest="50"
+        ClearButtonVisibility="WhileEditing"
+        IsEnabled="False"/>
+    </Border>
+
+    
+    <Label Grid.Row="4" Grid.Column="0"
+           Text="A AutoReset"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnTripMemoriesTripAAutoResetLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Switch Grid.Row="4" Grid.Column="2" 
+            x:Name="TripMemoriesTripAAutoReset"
+            Toggled="TripMemoriesTripAAutoReset_Toggled"
+            Margin="0,0,20,15"/>
+
+    
+    <Label Grid.Row="5" Grid.Column="0"
+           Text="A AutoReset Hours"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnTripMemoriesTripAAutoResetHoursLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="5" Grid.Column="2" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="TripMemoriesTripAAutoResetHours" 
+        Text=""
+        TextColor="LightGreen"
+        FontSize="20" 
+        Margin ="0,0,0,0" 
+        VerticalTextAlignment="Start"
+        HorizontalTextAlignment="Start"
+        WidthRequest="120"
+        HeightRequest="50"
+        ClearButtonVisibility="WhileEditing"
+        TextChanged="TripMemoriesTripAAutoResetHours_TextChanged"
+        Completed="TripMemoriesTripAAutoResetHours_Completed"/>
+    </Border>    
+    
+
+    <Label Grid.Row="6" Grid.Column="0"
+           Text="B AutoReset"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnTripMemoriesTripBAutoResetLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Switch Grid.Row="6" Grid.Column="2" 
+            x:Name="TripMemoriesTripBAutoReset"
+            Toggled="TripMemoriesTripBAutoReset_Toggled"
+            Margin="0,0,20,15"/>
+
+
+    <Label Grid.Row="7" Grid.Column="0"
+           Text="B AutoReset Hours"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnTripMemoriesTripBAutoResetHoursLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="7" Grid.Column="2" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="TripMemoriesTripBAutoResetHours" 
+        Text=""
+        TextColor="LightGreen"
+        FontSize="20" 
+        Margin ="0,0,0,0" 
+        VerticalTextAlignment="Start"
+        HorizontalTextAlignment="Start"
+        WidthRequest="120"
+        HeightRequest="50"
+        ClearButtonVisibility="WhileEditing"
+        TextChanged="TripMemoriesTripBAutoResetHours_TextChanged"
+        Completed="TripMemoriesTripBAutoResetHours_Completed"/>
+    </Border>
+
+  </Grid>
+
 </ContentPage>

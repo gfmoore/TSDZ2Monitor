@@ -88,5 +88,44 @@ public partial class SettingsPage : ContentPage
     Preferences.Get("StreetModeHotkeyEnable", p.StreetModeHotkeyEnable);
 
     Preferences.Get("VariousUnits", p.VariousUnits);
+    Preferences.Get("VariousLightsConfiguration", p.VariousLightsConfiguration);
+    Preferences.Get("VariousAssistWithError", p.VariousAssistWithError);
+    Preferences.Get("VariousVirtualThrottleStep", p.VariousVirtualThrottleStep);
+
+    Preferences.Get("TechnicalADCBatteryCurrent", p.TechnicalADCBatteryCurrent);
+    Preferences.Get("TechnicalADVThrottleSensor", p.TechnicalADCThrottleSensor);
+    Preferences.Get("TechnicalThrottleSensor", p.TechnicalThrottleSensor);
+    Preferences.Get("TechnicalADCTorqueSensor", p.TechnicalADCTorqueSensor);
+    Preferences.Get("TechnicalADCTorqueDelta", p.TechnicalADCTorqueDelta);
+    Preferences.Get("TechnicalADCTorqueBoost", p.TechnicalADCTorqueBoost);
+    Preferences.Get("TechnicalADCTorqueStepCalc", p.TechnicalADCTorqueStepCalc);
+    Preferences.Get("TechnicalPedalCadence", p.TechnicalPedalCadence);
+    Preferences.Get("TechnicalPWMDutyCycle", p.TechnicalPWMDutyCycle);
+    Preferences.Get("TechnicalMotorSpeed", p.TechnicalMotorSpeed);
+    Preferences.Get("TechnicalMotorFOC", p.TechnicalMotorFOC);
+    Preferences.Get("TechnicalHallSensors", p.TechnicalHallSensors);
+
+    Preferences.Get("TorqueSensorAssistWOPedal", p.TorqueSensorAssistWOPedal);
+    Preferences.Get("TorqueSensorADCThreshold", p.TorqueSensorADCThreshold);
+    Preferences.Get("TorqueSensorCoastBrake", p.TorqueSensorCoastBrake);
+    Preferences.Get("TorqueSensorCoastBrakeADC", p.TorqueSensorCoastBrakeADC);
+    Preferences.Get("TorqueSensorCalibration", p.TorqueSensorCalibration);
+    Preferences.Get("TorqueSensorADCStep", p.TorqueSensorADCStep);
+    Preferences.Get("TorqueSensorADCOffset", p.TorqueSensorADCOffset);
+    Preferences.Get("TorqueSensorADCMax", p.TorqueSensorADCMax);
+    Preferences.Get("TorqueSensorWeightOnPedal", p.TorqueSensorWeightOnPedal);
+    Preferences.Get("TorqueSensorADCOnWeight", p.TorqueSensorADCOnWeight);
+    Preferences.Get("TorqueSensorDefaultWeight", p.TorqueSensorDefaultWeight);
+
+    Preferences.Get("WheelMaxSpeed", p.WheelMaxSpeed);
+    Preferences.Get("WheelCircumference", p.WheelCircumference);
+
+    Preferences.Get("TripMemoriesOdometer", p.TripMemoriesOdometer);
+    Preferences.Get("TripMemoriesTripA", p.TripMemoriesTripA);
+    Preferences.Get("TripMemoriesTripB", p.TripMemoriesTripB);
+    Preferences.Get("TripMemoriesTripAReset", p.TripMemoriesTripAAutoReset);
+    Preferences.Get("TripMemoriesTripAAutoResetHours", p.TripMemoriesTripAAutoResetHours);
+    Preferences.Get("TripMemoriesTripBReset", p.TripMemoriesTripBAutoReset);
+    Preferences.Get("TripMemoriesTripBResetHours", p.TripMemoriesTripBAutoResetHours);
   }
 }

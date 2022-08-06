@@ -2,10 +2,368 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TSDZ2Monitor.Pages.Parameters.TorqueSensorPage"
-             Title="Torque Sensor Page">
-  <StackLayout>
-    <Label Text="Torque Sensor"
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-  </StackLayout>
+             Title="Torque Sensor">
+
+  <Grid RowDefinitions="60,60,60,60,60,60,60,60,60,60,60"
+        ColumnDefinitions="220,*"
+        Margin="5,0,0,0">
+
+    <Label Grid.Row="0" Grid.Column="0"
+           Text="Assist W/O Pedal "
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnTorqueSensorAssistWOPedalLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Switch Grid.Row="0" Grid.Column="1" 
+            x:Name="TorqueSensorAssistWOPedal"
+            Toggled="TorqueSensorAssistWOPedal_Toggled"
+            Margin="0,0,20,15"/>
+
+    
+    <Label Grid.Row="1" Grid.Column="0"
+           Text="ADC Threshold"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnTorqueSensorADCThresholdLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="1" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="TorqueSensorADCThreshold" 
+        Text=""
+        TextColor="LightGreen"
+        FontSize="20" 
+        Margin ="0,0,0,0" 
+        VerticalTextAlignment="Start"
+        HorizontalTextAlignment="Start"
+        WidthRequest="120"
+        HeightRequest="50"
+        ClearButtonVisibility="WhileEditing"
+        TextChanged="TorqueSensorADCThreshold_TextChanged"
+        Completed="TorqueSensorADCThreshold_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="2" Grid.Column="0"
+           Text="Coast Brake "
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnTorqueSensorCoastBrakeLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Switch Grid.Row="2" Grid.Column="1" 
+            x:Name="TorqueSensorCoastBrake"
+            Toggled="TorqueSensorCoastBrake_Toggled"
+            Margin="0,0,20,15"/>
+
+
+    <Label Grid.Row="3" Grid.Column="0"
+           Text="Coast Brake ADC"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnTorqueSensorCoastBrakeADCLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="3" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="TorqueSensorCoastBrakeADC" 
+        Text=""
+        TextColor="LightGreen"
+        FontSize="20" 
+        Margin ="0,0,0,0" 
+        VerticalTextAlignment="Start"
+        HorizontalTextAlignment="Start"
+        WidthRequest="120"
+        HeightRequest="50"
+        ClearButtonVisibility="WhileEditing"
+        TextChanged="TorqueSensorCoastBrakeADC_TextChanged"
+        Completed="TorqueSensorCoastBrakeADC_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="4" Grid.Column="0"
+           Text="Calibration"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnTorqueSensorCalibrationLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Switch Grid.Row="4" Grid.Column="1" 
+            x:Name="TorqueSensorCalibration"
+            Toggled="TorqueSensorCalibration_Toggled"
+            Margin="0,0,20,15"/>
+
+
+    <Label Grid.Row="5" Grid.Column="0"
+           Text="Torque ADC Step"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnTorqueSensorADCStepLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="5" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="TorqueSensorADCStep" 
+        Text=""
+        TextColor="LightGreen"
+        FontSize="20" 
+        Margin ="0,0,0,0" 
+        VerticalTextAlignment="Start"
+        HorizontalTextAlignment="Start"
+        WidthRequest="120"
+        HeightRequest="50"
+        ClearButtonVisibility="WhileEditing"
+        TextChanged="TorqueSensorADCStep_TextChanged"
+        Completed="TorqueSensorADCStep_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="6" Grid.Column="0"
+           Text="Torque ADC Offset"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnTorqueSensorADCOffsetLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="6" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="TorqueSensorADCOffset" 
+        Text=""
+        TextColor="LightGreen"
+        FontSize="20" 
+        Margin ="0,0,0,0" 
+        VerticalTextAlignment="Start"
+        HorizontalTextAlignment="Start"
+        WidthRequest="120"
+        HeightRequest="50"
+        ClearButtonVisibility="WhileEditing"
+        TextChanged="TorqueSensorADCOffset_TextChanged"
+        Completed="TorqueSensorADCOffset_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="7" Grid.Column="0"
+           Text="Torque ADC Max"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnTorqueSensorADCMaxLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="7" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="TorqueSensorADCMax" 
+        Text=""
+        TextColor="LightGreen"
+        FontSize="20" 
+        Margin ="0,0,0,0" 
+        VerticalTextAlignment="Start"
+        HorizontalTextAlignment="Start"
+        WidthRequest="120"
+        HeightRequest="50"
+        ClearButtonVisibility="WhileEditing"
+        TextChanged="TorqueSensorADCMax_TextChanged"
+        Completed="TorqueSensorADCMax_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="8" Grid.Column="0"
+           Text="Weight On Pedal"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnTorqueSensorWeightOnPedalLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="8" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="TorqueSensorWeightOnPedal" 
+        Text=""
+        TextColor="LightGreen"
+        FontSize="20" 
+        Margin ="0,0,0,0" 
+        VerticalTextAlignment="Start"
+        HorizontalTextAlignment="Start"
+        WidthRequest="120"
+        HeightRequest="50"
+        ClearButtonVisibility="WhileEditing"
+        TextChanged="TorqueSensorWeightOnPedal_TextChanged"
+        Completed="TorqueSensorWeightOnPedal_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="9" Grid.Column="0"
+           Text="Torque ADC On Weight"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnTorqueSensorADCOnWeightLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="9" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="TorqueSensorADCOnWeight" 
+        Text=""
+        TextColor="LightGreen"
+        FontSize="20" 
+        Margin ="0,0,0,0" 
+        VerticalTextAlignment="Start"
+        HorizontalTextAlignment="Start"
+        WidthRequest="120"
+        HeightRequest="50"
+        ClearButtonVisibility="WhileEditing"
+        TextChanged="TorqueSensorADCOnWeight_TextChanged"
+        Completed="TorqueSensorADCOnWeight_Completed"/>
+    </Border>
+    
+
+    <Label Grid.Row="10" Grid.Column="0"
+           Text="DefaultWeight"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnTorqueSensorDefaultWeightLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Switch Grid.Row="10" Grid.Column="1" 
+            x:Name="TorqueSensorDefaultWeight"
+            Toggled="TorqueSensorDefaultWeight_Toggled"
+            Margin="0,0,20,15"/>
+
+  </Grid>
+
 </ContentPage>

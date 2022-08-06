@@ -2,10 +2,443 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TSDZ2Monitor.Pages.Parameters.TechnicalPage"
-             Title="Technical Page">
-  <StackLayout>
-    <Label Text="Technical"
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-  </StackLayout>
+             Title="Technical ">
+  <ScrollView>
+    <Grid RowDefinitions="60,60,60,60,60,60,60,60,60,60,60,60,60,60"
+          ColumnDefinitions="220,*"
+          Margin="5,0,0,0">
+
+      <Label Grid.Row="0" Grid.Column="0"
+             Text="ADC Battery Current"
+             TextColor="White"
+             FontSize="20" 
+             HorizontalTextAlignment="Start"
+             VerticalTextAlignment="Start" 
+             HeightRequest="50"
+             Margin="0,0,0,0"
+             Padding="0,0,0,0">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer Tapped="OnTechnicalADCBatteryCurrentLabelTapped"
+                                NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+
+      <Border Grid.Row="0" Grid.Column="1" 
+              HeightRequest="50" 
+              WidthRequest="150"
+              HorizontalOptions="Start"
+              VerticalOptions="Start"
+              BackgroundColor="Black"
+              StrokeThickness="1.2"
+              Stroke="Yellow"
+              StrokeShape="RoundRectangle 10,10,10,10">
+        <Label x:Name="TechnicalADCBatteryCurrent" 
+          Text=""
+          TextColor="Orange"
+          FontSize="20" 
+          Margin ="0,20,0,0" 
+          VerticalTextAlignment="Start"
+          HorizontalTextAlignment="Start"
+          WidthRequest="120"
+          HeightRequest="50"/>
+      </Border>
+
+
+      <Label Grid.Row="1" Grid.Column="0"
+             Text="ADC Throttle Sensor"
+             TextColor="White"
+             FontSize="20" 
+             HorizontalTextAlignment="Start"
+             VerticalTextAlignment="Start" 
+             HeightRequest="50"
+             Margin="0,0,0,0"
+             Padding="0,0,0,0">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer Tapped="OnTechnicalADCThrottleSensorLabelTapped"
+                                NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+
+      <Border Grid.Row="1" Grid.Column="1" 
+              HeightRequest="50" 
+              WidthRequest="150"
+              HorizontalOptions="Start"
+              VerticalOptions="Start"
+              BackgroundColor="Black"
+              StrokeThickness="1.2"
+              Stroke="Yellow"
+              StrokeShape="RoundRectangle 10,10,10,10">
+        <Label x:Name="TechnicalADCThrottleSensor" 
+          Text=""
+          TextColor="Orange"
+          FontSize="20" 
+          Margin ="0,20,0,0" 
+          VerticalTextAlignment="Start"
+          HorizontalTextAlignment="Start"
+          WidthRequest="120"
+          HeightRequest="50"/>
+      </Border>
+
+
+      <Label Grid.Row="2" Grid.Column="0"
+             Text="Throttle Sensor"
+             TextColor="White"
+             FontSize="20" 
+             HorizontalTextAlignment="Start"
+             VerticalTextAlignment="Start" 
+             HeightRequest="50"
+             Margin="0,0,0,0"
+             Padding="0,0,0,0">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer Tapped="OnTechnicalThrottleSensorLabelTapped"
+                                NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+
+      <Border Grid.Row="2" Grid.Column="1" 
+              HeightRequest="50" 
+              WidthRequest="150"
+              HorizontalOptions="Start"
+              VerticalOptions="Start"
+              BackgroundColor="Black"
+              StrokeThickness="1.2"
+              Stroke="Yellow"
+              StrokeShape="RoundRectangle 10,10,10,10">
+        <Label x:Name="TechnicalThrottleSensor" 
+          Text=""
+          TextColor="Orange"
+          FontSize="20" 
+          Margin ="0,20,0,0" 
+          VerticalTextAlignment="Start"
+          HorizontalTextAlignment="Start"
+          WidthRequest="120"
+          HeightRequest="50"/>
+      </Border>
+
+    
+      <Label Grid.Row="3" Grid.Column="0"
+             Text="ADC Torque Sensor"
+             TextColor="White"
+             FontSize="20" 
+             HorizontalTextAlignment="Start"
+             VerticalTextAlignment="Start" 
+             HeightRequest="50"
+             Margin="0,0,0,0"
+             Padding="0,0,0,0">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer Tapped="OnTechnicalADCTorqueSensorLabelTapped"
+                                NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+
+      <Border Grid.Row="3" Grid.Column="1" 
+              HeightRequest="50" 
+              WidthRequest="150"
+              HorizontalOptions="Start"
+              VerticalOptions="Start"
+              BackgroundColor="Black"
+              StrokeThickness="1.2"
+              Stroke="Yellow"
+              StrokeShape="RoundRectangle 10,10,10,10">
+        <Label x:Name="TechnicalADCTorqueSensor" 
+          Text=""
+          TextColor="Orange"
+          FontSize="20" 
+          Margin ="0,20,0,0" 
+          VerticalTextAlignment="Start"
+          HorizontalTextAlignment="Start"
+          WidthRequest="120"
+          HeightRequest="50"/>
+      </Border>
+
+    
+      <Label Grid.Row="4" Grid.Column="0"
+             Text="ADC Toque Delta"
+             TextColor="White"
+             FontSize="20" 
+             HorizontalTextAlignment="Start"
+             VerticalTextAlignment="Start" 
+             HeightRequest="50"
+             Margin="0,0,0,0"
+             Padding="0,0,0,0">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer Tapped="OnTechnicalADCTorqueDeltaLabelTapped"
+                                NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+
+      <Border Grid.Row="4" Grid.Column="1" 
+              HeightRequest="50" 
+              WidthRequest="150"
+              HorizontalOptions="Start"
+              VerticalOptions="Start"
+              BackgroundColor="Black"
+              StrokeThickness="1.2"
+              Stroke="Yellow"
+              StrokeShape="RoundRectangle 10,10,10,10">
+        <Label x:Name="TechnicalADCTorqueDelta" 
+          Text=""
+          TextColor="Orange"
+          FontSize="20" 
+          Margin ="0,20,0,0" 
+          VerticalTextAlignment="Start"
+          HorizontalTextAlignment="Start"
+          WidthRequest="120"
+          HeightRequest="50"/>
+      </Border>
+
+    
+      <Label Grid.Row="5" Grid.Column="0"
+             Text="ADC Torque Boost"
+             TextColor="White"
+             FontSize="20" 
+             HorizontalTextAlignment="Start"
+             VerticalTextAlignment="Start" 
+             HeightRequest="50"
+             Margin="0,0,0,0"
+             Padding="0,0,0,0">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer Tapped="OnTechnicalADCTorqueBoostLabelTapped"
+                                NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+
+      <Border Grid.Row="5" Grid.Column="1" 
+              HeightRequest="50" 
+              WidthRequest="150"
+              HorizontalOptions="Start"
+              VerticalOptions="Start"
+              BackgroundColor="Black"
+              StrokeThickness="1.2"
+              Stroke="Yellow"
+              StrokeShape="RoundRectangle 10,10,10,10">
+        <Label x:Name="TechnicalADCTorqueBoost" 
+          Text=""
+          TextColor="Orange"
+          FontSize="20" 
+          Margin ="0,20,0,0" 
+          VerticalTextAlignment="Start"
+          HorizontalTextAlignment="Start"
+          WidthRequest="120"
+          HeightRequest="50"/>
+      </Border>
+
+    
+      <Label Grid.Row="6" Grid.Column="0"
+             Text="ADC Torque Step Calc"
+             TextColor="White"
+             FontSize="20" 
+             HorizontalTextAlignment="Start"
+             VerticalTextAlignment="Start" 
+             HeightRequest="50"
+             Margin="0,0,0,0"
+             Padding="0,0,0,0">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer Tapped="OnTechnicalADCTorqueStepCalcLabelTapped"
+                                NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+
+      <Border Grid.Row="6" Grid.Column="1" 
+              HeightRequest="50" 
+              WidthRequest="150"
+              HorizontalOptions="Start"
+              VerticalOptions="Start"
+              BackgroundColor="Black"
+              StrokeThickness="1.2"
+              Stroke="Yellow"
+              StrokeShape="RoundRectangle 10,10,10,10">
+        <Label x:Name="TechnicalADCTorqueStepCalc" 
+          Text=""
+          TextColor="Orange"
+          FontSize="20" 
+          Margin ="0,20,0,0" 
+          VerticalTextAlignment="Start"
+          HorizontalTextAlignment="Start"
+          WidthRequest="120"
+          HeightRequest="50"/>
+      </Border>
+
+    
+      <Label Grid.Row="7" Grid.Column="0"
+             Text="Pedal Cadence"
+             TextColor="White"
+             FontSize="20" 
+             HorizontalTextAlignment="Start"
+             VerticalTextAlignment="Start" 
+             HeightRequest="50"
+             Margin="0,0,0,0"
+             Padding="0,0,0,0">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer Tapped="OnTechnicalPedalCadenceLabelTapped"
+                                NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+
+      <Border Grid.Row="7" Grid.Column="1" 
+              HeightRequest="50" 
+              WidthRequest="150"
+              HorizontalOptions="Start"
+              VerticalOptions="Start"
+              BackgroundColor="Black"
+              StrokeThickness="1.2"
+              Stroke="Yellow"
+              StrokeShape="RoundRectangle 10,10,10,10">
+        <Label x:Name="TechnicalPedalCadence" 
+          Text=""
+          TextColor="Orange"
+          FontSize="20" 
+          Margin ="0,20,0,0" 
+          VerticalTextAlignment="Start"
+          HorizontalTextAlignment="Start"
+          WidthRequest="120"
+          HeightRequest="50"/>
+      </Border>
+
+    
+      <Label Grid.Row="8" Grid.Column="0"
+             Text="PWM Duty Cycle"
+             TextColor="White"
+             FontSize="20" 
+             HorizontalTextAlignment="Start"
+             VerticalTextAlignment="Start" 
+             HeightRequest="50"
+             Margin="0,0,0,0"
+             Padding="0,0,0,0">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer Tapped="OnTechnicalPWMDutyCycleLabelTapped"
+                                NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+
+      <Border Grid.Row="8" Grid.Column="1" 
+              HeightRequest="50" 
+              WidthRequest="150"
+              HorizontalOptions="Start"
+              VerticalOptions="Start"
+              BackgroundColor="Black"
+              StrokeThickness="1.2"
+              Stroke="Yellow"
+              StrokeShape="RoundRectangle 10,10,10,10">
+        <Label x:Name="TechnicalPWMDutyCycle" 
+          Text=""
+          TextColor="Orange"
+          FontSize="20" 
+          Margin ="0,20,0,0" 
+          VerticalTextAlignment="Start"
+          HorizontalTextAlignment="Start"
+          WidthRequest="120"
+          HeightRequest="50"/>
+      </Border>
+
+    
+      <Label Grid.Row="9" Grid.Column="0"
+             Text="Motor Speed"
+             TextColor="White"
+             FontSize="20" 
+             HorizontalTextAlignment="Start"
+             VerticalTextAlignment="Start" 
+             HeightRequest="50"
+             Margin="0,0,0,0"
+             Padding="0,0,0,0">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer Tapped="OnTechnicalMotorSpeedLabelTapped"
+                                NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+
+      <Border Grid.Row="9" Grid.Column="1" 
+              HeightRequest="50" 
+              WidthRequest="150"
+              HorizontalOptions="Start"
+              VerticalOptions="Start"
+              BackgroundColor="Black"
+              StrokeThickness="1.2"
+              Stroke="Yellow"
+              StrokeShape="RoundRectangle 10,10,10,10">
+        <Label x:Name="TechnicalMotorSpeed" 
+          Text=""
+          TextColor="Orange"
+          FontSize="20" 
+          Margin ="0,20,0,0" 
+          VerticalTextAlignment="Start"
+          HorizontalTextAlignment="Start"
+          WidthRequest="120"
+          HeightRequest="50"/>
+      </Border>
+
+    
+      <Label Grid.Row="10" Grid.Column="0"
+             Text="Motor FOC"
+             TextColor="White"
+             FontSize="20" 
+             HorizontalTextAlignment="Start"
+             VerticalTextAlignment="Start" 
+             HeightRequest="50"
+             Margin="0,0,0,0"
+             Padding="0,0,0,0">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer Tapped="OnTechnicalMotorFOCLabelTapped"
+                                NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+
+      <Border Grid.Row="10" Grid.Column="1" 
+              HeightRequest="50" 
+              WidthRequest="150"
+              HorizontalOptions="Start"
+              VerticalOptions="Start"
+              BackgroundColor="Black"
+              StrokeThickness="1.2"
+              Stroke="Yellow"
+              StrokeShape="RoundRectangle 10,10,10,10">
+        <Label x:Name="TechnicalMotorFOC" 
+          Text=""
+          TextColor="Orange"
+          FontSize="20" 
+          Margin ="0,20,0,0" 
+          VerticalTextAlignment="Start"
+          HorizontalTextAlignment="Start"
+          WidthRequest="120"
+          HeightRequest="50"/>
+      </Border>
+
+    
+      <Label Grid.Row="11" Grid.Column="0"
+             Text="Hall Sensors"
+             TextColor="White"
+             FontSize="20" 
+             HorizontalTextAlignment="Start"
+             VerticalTextAlignment="Start" 
+             HeightRequest="50"
+             Margin="0,0,0,0"
+             Padding="0,0,0,0">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer Tapped="OnTechnicalHallSensorsLabelTapped"
+                                NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+
+      <Border Grid.Row="11" Grid.Column="1" 
+              HeightRequest="50" 
+              WidthRequest="150"
+              HorizontalOptions="Start"
+              VerticalOptions="Start"
+              BackgroundColor="Black"
+              StrokeThickness="1.2"
+              Stroke="Yellow"
+              StrokeShape="RoundRectangle 10,10,10,10">
+        <Label x:Name="TechnicalHallSensors" 
+          Text=""
+          TextColor="Orange"
+          FontSize="20" 
+          Margin ="0,20,0,0" 
+          VerticalTextAlignment="Start"
+          HorizontalTextAlignment="Start"
+          WidthRequest="120"
+          HeightRequest="50"/>
+      </Border>
+
+    </Grid>
+  </ScrollView>
 </ContentPage>
