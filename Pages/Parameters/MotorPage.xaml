@@ -67,17 +67,18 @@
             Stroke="Yellow"
             StrokeShape="RoundRectangle 10,10,10,10">
       <Entry x:Name="MotorPowerMax" 
-        Text=""
-        TextColor="LightGreen"
-        FontSize="20" 
-        Margin ="0,0,0,0" 
-        VerticalTextAlignment="Start"
-        HorizontalTextAlignment="Start"
-        WidthRequest="120"
-        HeightRequest="50"
-        ClearButtonVisibility="WhileEditing"
-        TextChanged="MotorPowerMax_TextChanged"
-        Completed="MotorPowerMax_Completed"/>
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="MotorPowerMax_TextChanged"
+             Completed="MotorPowerMax_Completed"/>
     </Border>
 
 
@@ -106,17 +107,18 @@
             Stroke="Yellow"
             StrokeShape="RoundRectangle 10,10,10,10">
       <Entry x:Name="MotorAcceleration" 
-        Text=""
-        TextColor="LightGreen"
-        FontSize="20" 
-        Margin ="0,0,0,0" 
-        VerticalTextAlignment="Start"
-        HorizontalTextAlignment="Start"
-        WidthRequest="120"
-        HeightRequest="50"
-        ClearButtonVisibility="WhileEditing"
-        TextChanged="MotorAcceleration_TextChanged"
-        Completed="MotorAcceleration_Completed"/>
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="MotorAcceleration_TextChanged"
+             Completed="MotorAcceleration_Completed"/>
     </Border>
 
     
@@ -145,17 +147,18 @@
             Stroke="Yellow"
             StrokeShape="RoundRectangle 10,10,10,10">
       <Entry x:Name="MotorDeceleration" 
-        Text=""
-        TextColor="LightGreen"
-        FontSize="20" 
-        Margin ="0,0,0,0" 
-        VerticalTextAlignment="Start"
-        HorizontalTextAlignment="Start"
-        WidthRequest="120"
-        HeightRequest="50"
-        ClearButtonVisibility="WhileEditing"
-        TextChanged="MotorDeceleration_TextChanged"
-        Completed="MotorDeceleration_Completed"/>
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="MotorDeceleration_TextChanged"
+             Completed="MotorDeceleration_Completed"/>
     </Border>
 
     

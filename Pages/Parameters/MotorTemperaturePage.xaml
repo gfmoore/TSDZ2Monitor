@@ -4,7 +4,7 @@
              x:Class="TSDZ2Monitor.Pages.Parameters.MotorTemperaturePage"
              Title="Motor Temperature">
 
-  <Grid RowDefinitions="60,60,60,60,60"
+  <Grid RowDefinitions="60,40,60,60,60"
         ColumnDefinitions="220,*"
         Margin="5,0,0,0">
 
@@ -42,7 +42,7 @@
     </Border>
 
 
-    <Label Grid.Row="1" Grid.Column="0"
+    <Label Grid.Row="2" Grid.Column="0"
            Text="Temp Min Limit"
            TextColor="White"
            FontSize="20" 
@@ -57,7 +57,7 @@
       </Label.GestureRecognizers>
     </Label>
 
-    <Border Grid.Row="1" Grid.Column="1" 
+    <Border Grid.Row="2" Grid.Column="1" 
             HeightRequest="50" 
             WidthRequest="150"
             HorizontalOptions="Start"
@@ -67,21 +67,22 @@
             Stroke="Yellow"
             StrokeShape="RoundRectangle 10,10,10,10">
       <Entry x:Name="MotorTemperatureMinLimit" 
-        Text=""
-        TextColor="LightGreen"
-        FontSize="20" 
-        Margin ="0,0,0,0" 
-        VerticalTextAlignment="Start"
-        HorizontalTextAlignment="Start"
-        WidthRequest="120"
-        HeightRequest="50"
-        ClearButtonVisibility="WhileEditing"
-        TextChanged="MotorTemperatureMinLimit_TextChanged"
-        Completed="MotorTemperatureMinLimit_Completed"/>
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="MotorTemperatureMinLimit_TextChanged"
+             Completed="MotorTemperatureMinLimit_Completed"/>
     </Border>
 
 
-    <Label Grid.Row="2" Grid.Column="0"
+    <Label Grid.Row="3" Grid.Column="0"
            Text="Temp Max Limit"
            TextColor="White"
            FontSize="20" 
@@ -96,7 +97,7 @@
       </Label.GestureRecognizers>
     </Label>
 
-    <Border Grid.Row="2" Grid.Column="1" 
+    <Border Grid.Row="3" Grid.Column="1" 
             HeightRequest="50" 
             WidthRequest="150"
             HorizontalOptions="Start"
@@ -106,65 +107,20 @@
             Stroke="Yellow"
             StrokeShape="RoundRectangle 10,10,10,10">
       <Entry x:Name="MotorTemperatureMaxLimit" 
-        Text=""
-        TextColor="LightGreen"
-        FontSize="20" 
-        Margin ="0,0,0,0" 
-        VerticalTextAlignment="Start"
-        HorizontalTextAlignment="Start"
-        WidthRequest="120"
-        HeightRequest="50"
-        ClearButtonVisibility="WhileEditing"
-        TextChanged="MotorTemperatureMaxLimit_TextChanged"
-        Completed="MotorTemperatureMaxLimit_Completed"/>
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="MotorTemperatureMaxLimit_TextChanged"
+             Completed="MotorTemperatureMaxLimit_Completed"/>
     </Border>
 
-    <Label Grid.Row="3" Grid.Column="0"
-           Text="Temperature Units"
-           TextColor="White"
-           FontSize="20" 
-           HorizontalTextAlignment="Start"
-           VerticalTextAlignment="Start" 
-           HeightRequest="50"
-           Margin="0,0,0,0"
-           Padding="0,0,0,0">
-      <Label.GestureRecognizers>
-        <TapGestureRecognizer Tapped="TemperatureUnitsLabelTapped"
-                              NumberOfTapsRequired="1" />
-      </Label.GestureRecognizers>
-    </Label>
-
-    <Grid Grid.Row="4" Grid.Column="0"
-          ColumnDefinitions="120,50,120"
-          Margin="0,-40,0,0">
-
-      <Label Grid.Column="0"
-           Text="Fahrenheit"
-           TextColor="White"
-           FontSize="20" 
-           HorizontalTextAlignment="Start"
-           VerticalTextAlignment="Start" 
-           HeightRequest="50"
-           Margin="0,0,0,0"
-           Padding="0,0,0,0" />
-
-      <Switch Grid.Column="1" 
-            x:Name="TemperatureUnits"
-            IsToggled="True"
-            Toggled="TemperatureUnits_Toggled"
-            Margin="0,0,0,15"/>
-
-      <Label Grid.Column="2"
-           Text="Celsius"
-           TextColor="White"
-           FontSize="20" 
-           HorizontalTextAlignment="Start"
-           VerticalTextAlignment="Start" 
-           HeightRequest="50"
-           Margin="30,0,0,0"
-           Padding="0,0,0,0" />
-      </Grid>
-
-    </Grid>
+  </Grid>
 
 </ContentPage>

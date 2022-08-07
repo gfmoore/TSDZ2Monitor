@@ -3,9 +3,24 @@ namespace TSDZ2Monitor.Pages.Parameters;
 public partial class TorqueSensorPage : ContentPage
 {
   public bool checkInput = false;
+
+  public string variousUnits;
   public TorqueSensorPage()
 	{
 		InitializeComponent();
+  }
+
+
+  protected override void OnAppearing()
+  {
+    base.OnAppearing();
+
+    Setup();
+  }
+
+  public void Setup()
+  {
+    variousUnits = Preferences.Get("VariousUnits", "Metric");
 
     if (Preferences.Get("TorqueSensorAssistWOPedal", "false") == "true")
     {
@@ -48,7 +63,19 @@ public partial class TorqueSensorPage : ContentPage
     TorqueSensorADCStep.Text = Preferences.Get("TorqueSensorADCStep", "30");
     TorqueSensorADCOffset.Text = Preferences.Get("TorqueSensorADCOffset", "148");
     TorqueSensorADCMax.Text = Preferences.Get("TorqueSensorADCMax", "306");
-    TorqueSensorWeightOnPedal.Text = Preferences.Get("TorqueSensorWeightOnPedal", "20");
+
+    if (variousUnits == "Metric")
+    {
+      TorqueSensorWeightOnPedal.Text = Preferences.Get("TorqueSensorWeightOnPedal", "20");
+    }
+    else
+    {
+      double w = Double.Parse(Preferences.Get("TorqueSensorWeightOnPedal", "20"));
+      w = w * 2.20462262185;
+      TorqueSensorWeightOnPedal.Text = Math.Round(w).ToString();
+    }
+
+
     TorqueSensorADCOnWeight.Text = Preferences.Get("TorqueSensorADCOnWeight", "263");
 
     if (Preferences.Get("TorqueSensorDefaultWeight", "false") == "true")
@@ -63,8 +90,8 @@ public partial class TorqueSensorPage : ContentPage
     }
 
     checkInput = true;
-  }
 
+  }
 
   //-------TorqueSensor Assist WO Pedal------------------------------------------------
   private void TorqueSensorAssistWOPedal_Toggled(object sender, EventArgs e)
@@ -305,7 +332,6 @@ public partial class TorqueSensorPage : ContentPage
   }
 
 
-  //TODO allow for imperial or metric
   //-------Torque Sensor Weight On Pedal------------------------------------------------
   private void TorqueSensorWeightOnPedal_TextChanged(object sender, TextChangedEventArgs e)
   {
@@ -316,7 +342,7 @@ public partial class TorqueSensorPage : ContentPage
 
     if (TorqueSensorWeightOnPedal.TextColor != Colors.Red && TorqueSensorWeightOnPedal.Text.Length != 0)
     {
-      Preferences.Set("TorqueSensorWeightOnPedal", TorqueSensorWeightOnPedal.Text);
+      SaveWeight();
     }
   }
 
@@ -324,7 +350,7 @@ public partial class TorqueSensorPage : ContentPage
   {
     if (TorqueSensorWeightOnPedal.TextColor != Colors.Red && TorqueSensorWeightOnPedal.Text.Length != 0)
     {
-      Preferences.Set("TorqueSensorWeightOnPedal", TorqueSensorWeightOnPedal.Text);
+      SaveWeight();
     }
 
     //dismiss keyboard
@@ -332,6 +358,19 @@ public partial class TorqueSensorPage : ContentPage
     TorqueSensorWeightOnPedal.IsEnabled = true;
   }
 
+  public void SaveWeight()
+  {
+    if (variousUnits == "Metric")
+    {
+      Preferences.Set("TorqueSensorWeightOnPedal", TorqueSensorWeightOnPedal.Text);
+    }
+    else
+    {
+      double w = Double.Parse(TorqueSensorWeightOnPedal.Text);
+      w = w / 2.20462262185;
+      Preferences.Set("TorqueSensorWeightOnPedal", Math.Round(w).ToString());
+    }
+  }
   private async void OnTorqueSensorWeightOnPedalLabelTapped(object sender, EventArgs e)
   {
     await DisplayAlert("Information", "Weight to be applied to the pedal for the calibration of the ADC value of the torque sensor used for the calculation of the human power to be shown on the display. Use a weight of for example 25 Kg or 55 lb.\r\nIt is not essential, it does not affect the operation of the motor, it only serves for a correct display of human power.\r\n", "OK");

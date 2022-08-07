@@ -4,7 +4,7 @@
              x:Class="TSDZ2Monitor.Pages.Parameters.WheelPage"
              Title="Wheel">
 
-  <Grid RowDefinitions="60,60"
+  <Grid RowDefinitions="60,60,60,60,60"
         ColumnDefinitions="220,*"
         Margin="5,0,0,0">
 
@@ -33,17 +33,18 @@
             Stroke="Yellow"
             StrokeShape="RoundRectangle 10,10,10,10">
       <Entry x:Name="WheelMaxSpeed" 
-        Text=""
-        TextColor="LightGreen"
-        FontSize="20" 
-        Margin ="0,0,0,0" 
-        VerticalTextAlignment="Start"
-        HorizontalTextAlignment="Start"
-        WidthRequest="120"
-        HeightRequest="50"
-        ClearButtonVisibility="WhileEditing"
-        TextChanged="WheelMaxSpeed_TextChanged"
-        Completed="WheelMaxSpeed_Completed"/>
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="WheelMaxSpeed_TextChanged"
+             Completed="WheelMaxSpeed_Completed"/>
     </Border>
 
 
@@ -73,17 +74,113 @@
             Stroke="Yellow"
             StrokeShape="RoundRectangle 10,10,10,10">
       <Entry x:Name="WheelCircumference" 
-        Text=""
-        TextColor="LightGreen"
-        FontSize="20" 
-        Margin ="0,0,0,0" 
-        VerticalTextAlignment="Start"
-        HorizontalTextAlignment="Start"
-        WidthRequest="120"
-        HeightRequest="50"
-        ClearButtonVisibility="WhileEditing"
-        TextChanged="WheelCircumference_TextChanged"
-        Completed="WheelCircumference_Completed"/>
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="WheelCircumference_TextChanged"
+             Completed="WheelCircumference_Completed"/>
+    </Border>
+
+
+    <Border Grid.Row="3" 
+            Grid.ColumnSpan="2"
+            Margin="0,0,5,0"
+            Padding="10,20,10,0"
+            HeightRequest="200"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+
+      <Grid RowDefinitions="40,30,50,60,60"
+            ColumnDefinitions="200,*"
+            Margin="5,0,0,0">
+
+        <Label Grid.Row="0" Grid.Column="0"
+               Text="Enter Diameter for Circumference Calc"
+               TextColor="Yellow"
+               FontSize="20" 
+               HorizontalTextAlignment="Start"
+               VerticalTextAlignment="Start" 
+               HeightRequest="50"
+               Margin="0,0,0,0"
+               Padding="0,0,0,0">
+          <Label.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnWheelDiameterLabelTapped"
+                                  NumberOfTapsRequired="1" />
+          </Label.GestureRecognizers>
+        </Label>
+
+
+        <Border Grid.Row="0" Grid.Column="1" 
+                HeightRequest="50" 
+                WidthRequest="135"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"
+                BackgroundColor="Black"
+                StrokeThickness="1.2"
+                Stroke="Yellow"
+                StrokeShape="RoundRectangle 10,10,10,10">
+          <Entry x:Name="WheelDiameter" 
+                 Text=""
+                 TextColor="Orange"
+                 FontSize="20" 
+                 Margin ="10,0,0,0" 
+                 VerticalTextAlignment="Start"
+                 HorizontalTextAlignment="Start"
+                 WidthRequest="120"
+                 HeightRequest="50"
+                 ClearButtonVisibility="WhileEditing"
+                 Keyboard="Numeric"
+                 TextChanged="WheelDiameter_TextChanged"
+                 Completed="WheelDiameter_Completed"/>
+        </Border>
+
+        <Grid Grid.Row="2" Grid.Column="0"
+          ColumnDefinitions="120,50,140"
+          Margin="0,0,0,20">
+
+          <Label Grid.Column="0"
+                 Text="Imperial (inches)"
+                 TextColor="White"
+                 FontSize="20" 
+                 HorizontalTextAlignment="Start"
+                 VerticalTextAlignment="Start" 
+                 HeightRequest="50"
+                 Margin="0,0,0,0"
+                 Padding="0,0,0,0" />
+
+          <Switch Grid.Column="1" 
+                  x:Name="DiameterUnits"
+                  IsToggled="True"
+                  Toggled="DiameterUnits_Toggled"
+                  Margin="0,0,0,15"/>
+
+          <Label Grid.Column="2"
+                 Text="Metric (SI) (mm)"
+                 TextColor="White"
+                 FontSize="20" 
+                 HorizontalTextAlignment="Start"
+                 VerticalTextAlignment="Start" 
+                 HeightRequest="50"
+                 Margin="30,0,0,0"
+                 Padding="0,0,0,0" />
+        </Grid>
+
+        <Label Grid.Row="3" Grid.ColumnSpan="2"
+               Text="Only for input value, output depends on system selection (in Various)."
+               TextColor="Yellow"
+               FontSize="15" />
+      </Grid>
     </Border>
 
 

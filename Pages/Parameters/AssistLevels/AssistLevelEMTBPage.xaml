@@ -2,10 +2,373 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TSDZ2Monitor.Pages.Parameters.AssistLevels.AssistLevelEMTBPage"
-             Title="Assist Level EMTB Page">
-  <StackLayout>
-    <Label Text="Assist Level EMTB"
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-  </StackLayout>
+             Title="Assist Level EMTB">
+  
+  <Grid RowDefinitions="60,60,60,60,60,60,60,60,60,60"
+        ColumnDefinitions="220,*"
+        Margin="5,0,0,0">
+
+    <Label Grid.Row="0" Grid.Column="0"
+           x:Name="AssistLevelEMTBLabel1"
+           Text="Level 1"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="0" Grid.Column="1" 
+            x:Name="AssistLevelEMTBBorder1"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelEMTB1" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelEMTB1_TextChanged"
+             Completed="AssistLevelEMTB1_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="1" Grid.Column="0"
+           Text="Level 2"
+           x:Name="AssistLevelEMTBLabel2"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="1" Grid.Column="1" 
+            x:Name="AssistLevelEMTBBorder2"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelEMTB2" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelEMTB2_TextChanged"
+             Completed="AssistLevelEMTB2_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="2" Grid.Column="0"
+           Text="Level 3"
+           x:Name="AssistLevelEMTBLabel3"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="2" Grid.Column="1" 
+            x:Name="AssistLevelEMTBBorder3"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelEMTB3" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelEMTB3_TextChanged"
+             Completed="AssistLevelEMTB3_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="3" Grid.Column="0"
+           Text="Level 4"
+           x:Name="AssistLevelEMTBLabel4"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="3" Grid.Column="1" 
+            x:Name="AssistLevelEMTBBorder4"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelEMTB4" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelEMTB4_TextChanged"
+             Completed="AssistLevelEMTB4_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="4" Grid.Column="0"
+           Text="Level 5"
+           x:Name="AssistLevelEMTBLabel5"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="4" Grid.Column="1" 
+            x:Name="AssistLevelEMTBBorder5"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelEMTB5" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelEMTB5_TextChanged"
+             Completed="AssistLevelEMTB5_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="5" Grid.Column="0"
+           Text="Level 6"
+           x:Name="AssistLevelEMTBLabel6"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="5" Grid.Column="1" 
+            x:Name="AssistLevelEMTBBorder6"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelEMTB6" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelEMTB6_TextChanged"
+             Completed="AssistLevelEMTB6_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="6" Grid.Column="0"
+           Text="Level 7"
+           x:Name="AssistLevelEMTBLabel7"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="6" Grid.Column="1" 
+            x:Name="AssistLevelEMTBBorder7"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelEMTB7" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelEMTB7_TextChanged"
+             Completed="AssistLevelEMTB7_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="7" Grid.Column="0"
+           Text="Level 8"
+           x:Name="AssistLevelEMTBLabel8"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="7" Grid.Column="1" 
+            x:Name="AssistLevelEMTBBorder8"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelEMTB8" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelEMTB8_TextChanged"
+             Completed="AssistLevelEMTB8_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="8" Grid.Column="0"
+           Text="Level 9"
+           x:Name="AssistLevelEMTBLabel9"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="8" Grid.Column="1" 
+            x:Name="AssistLevelEMTBBorder9"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelEMTB9" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelEMTB9_TextChanged"
+             Completed="AssistLevelEMTB9_Completed"/>
+    </Border>
+
+
+  </Grid>
+
 </ContentPage>
+

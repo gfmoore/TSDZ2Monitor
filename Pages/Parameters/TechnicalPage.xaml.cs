@@ -6,18 +6,18 @@ public partial class TechnicalPage : ContentPage
 	{
 		InitializeComponent();
 		//TODO Need to mkae sure gets updated when values change
-    TechnicalADCBatteryCurrent.Text = Preferences.Get("TechnicalADCBatteryCurrent", "25");
-    TechnicalADCThrottleSensor.Text = Preferences.Get("TechnicalADCThrottleSensor", "25");
-    TechnicalThrottleSensor.Text = Preferences.Get("TechnicalADCBatteryCurrent", "25");
-    TechnicalADCTorqueSensor.Text = Preferences.Get("TechnicalADCTorqueSensor", "25");
-    TechnicalADCTorqueDelta.Text = Preferences.Get("TechnicalADCTorqueDelta", "25");
-    TechnicalADCTorqueBoost.Text = Preferences.Get("TechnicalADCTorqueBoost", "25");
-    TechnicalADCTorqueStepCalc.Text = Preferences.Get("TechnicalADCTorqueStepCalc", "25");
-    TechnicalPedalCadence.Text = Preferences.Get("TechnicalPedalCadence", "25");
-    TechnicalPWMDutyCycle.Text = Preferences.Get("TechnicalPWMDutyCycle", "25");
-    TechnicalMotorSpeed.Text = Preferences.Get("TechnicalADCBatteryCurrent", "25");
-    TechnicalMotorFOC.Text = Preferences.Get("TechnicalADCBatteryCurrent", "25");
-    TechnicalHallSensors.Text = Preferences.Get("TechnicalADCBatteryCurrent", "25");
+    TechnicalADCBatteryCurrent.Text = Preferences.Get("TechnicalADCBatteryCurrent", "-");
+    TechnicalADCThrottleSensor.Text = Preferences.Get("TechnicalADCThrottleSensor", "-");
+    TechnicalThrottleSensor.Text = Preferences.Get("TechnicalADCBatteryCurrent", "-");
+    TechnicalADCTorqueSensor.Text = Preferences.Get("TechnicalADCTorqueSensor", "-");
+    TechnicalADCTorqueDelta.Text = Preferences.Get("TechnicalADCTorqueDelta", "-");
+    TechnicalADCTorqueBoost.Text = Preferences.Get("TechnicalADCTorqueBoost", "-");
+    TechnicalADCTorqueStepCalc.Text = Preferences.Get("TechnicalADCTorqueStepCalc", "-");
+    TechnicalPedalCadence.Text = Preferences.Get("TechnicalPedalCadence", "-");
+    TechnicalPWMDutyCycle.Text = Preferences.Get("TechnicalPWMDutyCycle", "-");
+    TechnicalMotorSpeed.Text = Preferences.Get("TechnicalADCBatteryCurrent", "-");
+    TechnicalMotorFOC.Text = Preferences.Get("TechnicalADCBatteryCurrent", "-");
+    TechnicalHallSensors.Text = Preferences.Get("TechnicalADCBatteryCurrent", "-");
 
   }
 

@@ -3,9 +3,25 @@ namespace TSDZ2Monitor.Pages.Parameters;
 public partial class StreetModePage : ContentPage
 {
   public bool checkInput = false;
+
+  public string variousUnits;
+
   public StreetModePage()
 	{
 		InitializeComponent();
+
+  }
+
+  protected override void OnAppearing()
+  {
+    base.OnAppearing();
+
+    Setup();
+  }
+
+  public void Setup()
+  {
+    variousUnits = Preferences.Get("VariousUnits", "Metric");
 
     if (Preferences.Get("StreetModeEnableMode", "true") == "true")
     {
@@ -29,8 +45,18 @@ public partial class StreetModePage : ContentPage
       StreetModeEnableAtStartup.ThumbColor = Colors.Red;
     }
 
-    checkInput = false;  //stop activating text changed events
-    StreetModeSpeedLimit.Text = Preferences.Get("StreetModeSpeedLimit", "25");
+
+    if (variousUnits == "Metric")
+    {
+      StreetModeSpeedLimit.Text = Preferences.Get("StreetModeSpeedLimit", "25");
+    }
+    else
+    {
+      double s = Double.Parse(Preferences.Get("StreetModeSpeedLimit", "25"));
+      s = Math.Round(s / 1.609344);
+      StreetModeSpeedLimit.Text = s.ToString();
+    }
+
     StreetModeMotorPowerLimit.Text = Preferences.Get("StreetModeMotorPowerLimit", "250");
     checkInput = true;
 
@@ -56,17 +82,7 @@ public partial class StreetModePage : ContentPage
       StreetModeCruiseEnable.ThumbColor = Colors.Red;
     }
 
-    if (Preferences.Get("StreetModeHotkeyEnable", "false") == "true")
-    {
-      StreetModeHotkeyEnable.IsToggled = true;
-      StreetModeHotkeyEnable.ThumbColor = Colors.Green;
-    }
-    else
-    {
-      StreetModeHotkeyEnable.IsToggled = false;
-      StreetModeHotkeyEnable.ThumbColor = Colors.Red;
-    }
-
+    checkInput = false;  //stop activating text changed events
   }
 
   //-------Street Mode Enable Mode------------------------------------------------
@@ -129,7 +145,7 @@ public partial class StreetModePage : ContentPage
 
     if (StreetModeSpeedLimit.TextColor != Colors.Red && StreetModeSpeedLimit.Text.Length != 0)
     {
-      Preferences.Set("StreetModeSpeedLimit", StreetModeSpeedLimit.Text);
+      SaveSpeedLimit();
     }
   }
 
@@ -137,12 +153,27 @@ public partial class StreetModePage : ContentPage
   {
     if (StreetModeSpeedLimit.TextColor != Colors.Red && StreetModeSpeedLimit.Text.Length != 0)
     {
-      Preferences.Set("StreetModeSpeedLimit", StreetModeSpeedLimit.Text);
+      SaveSpeedLimit();
     }
 
     //dismiss keyboard
     StreetModeSpeedLimit.IsEnabled = false;
     StreetModeSpeedLimit.IsEnabled = true;
+  }
+
+  public void SaveSpeedLimit()
+  {
+    if (variousUnits == "Metric")
+    {
+      Preferences.Set("StreetModeSpeedLimit", StreetModeSpeedLimit.Text);
+    }
+    else
+    {
+      double s = Double.Parse(StreetModeSpeedLimit.Text);
+      s = Math.Round(s * 1.609344);
+      Preferences.Set("StreetModeSpeedLimit", s);
+    }
+
   }
 
   private async void OnStreetModeSpeedLimitLabelTapped(object sender, EventArgs e)
@@ -185,7 +216,7 @@ public partial class StreetModePage : ContentPage
 
   private async void OnStreetModeMotorPowerLimitLabelTapped(object sender, EventArgs e)
   {
-    await DisplayAlert("Information", "The power limit in watts when Street Mode is active.", "OK");
+    await DisplayAlert("Information", "The power limit in Watts when Street Mode is active.", "OK");
   }
 
 
@@ -207,7 +238,7 @@ public partial class StreetModePage : ContentPage
 
   private async void OnStreetModeThrottleEnablelabelTapped(object sender, EventArgs e)
   {
-    await DisplayAlert("Information", "When this feature is disabled, you cannot activate it from the main screen.", "OK");
+    await DisplayAlert("Information", "Determines if the throttle is enabled in Street Mode.", "OK");
   }
 
 
@@ -230,31 +261,11 @@ public partial class StreetModePage : ContentPage
 
   private async void OnStreetModeCruiseEnablelabelTapped(object sender, EventArgs e)
   {
-    await DisplayAlert("Information", "When this feature is disabled, you cannot activate it from the main screen.", "OK");
+    await DisplayAlert("Information", "Enable/disable the cruise function in \"Street mode\".", "OK");
   }
 
 
 
-  //-------Street Mode Hotkey Enable------------------------------------------------
-  private void StreetModeHotkeyEnable_Toggled(object sender, EventArgs e)
-  {
-    //Write to preferences
-    if (StreetModeHotkeyEnable.IsToggled)
-    {
-      Preferences.Set("StreetModeHotkeyEnable", "true");
-      StreetModeHotkeyEnable.ThumbColor = Colors.Green;
-    }
-    else
-    {
-      Preferences.Set("StreetModeHotkeyEnable", "false");
-      StreetModeHotkeyEnable.ThumbColor = Colors.Red;
-    }
-  }
-
-  private async void OnStreetModeHotkeyEnablelabelTapped(object sender, EventArgs e)
-  {
-    await DisplayAlert("Information", "M in 860C display\r\nNo / Yes, enable activation via a combination of buttons, the functions:\r\nStreet mode: on / off\r\nMotor max power: set value Virtual throttle: set and use.\r\n", "OK");
-  }
 
 
   //----------Helper functions--------------------------------------

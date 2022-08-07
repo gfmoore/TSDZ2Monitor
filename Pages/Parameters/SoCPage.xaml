@@ -66,17 +66,18 @@
             Stroke="Yellow"
             StrokeShape="RoundRectangle 10,10,10,10">
       <Entry x:Name="SoCResetAtVoltage" 
-        Text=""
-        TextColor="LightGreen"
-        FontSize="20" 
-        Margin ="0,0,0,0" 
-        VerticalTextAlignment="Start"
-        HorizontalTextAlignment="Start"
-        WidthRequest="120"
-        HeightRequest="50"
-        ClearButtonVisibility="WhileEditing"
-        TextChanged="SoCResetAtVoltage_TextChanged"
-        Completed="SoCResetAtVoltage_Completed"/>
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="SoCResetAtVoltage_TextChanged"
+             Completed="SoCResetAtVoltage_Completed"/>
     </Border>
 
 
@@ -105,17 +106,18 @@
             Stroke="Yellow"
             StrokeShape="RoundRectangle 10,10,10,10">
       <Entry x:Name="SoCBatteryTotalWattHr" 
-        Text=""
-        TextColor="LightGreen"
-        FontSize="20" 
-        Margin ="0,0,0,0" 
-        VerticalTextAlignment="Start"
-        HorizontalTextAlignment="Start"
-        WidthRequest="120"
-        HeightRequest="50"
-        ClearButtonVisibility="WhileEditing"
-        TextChanged="SoCBatteryTotalWattHr_TextChanged"
-        Completed="SoCBatteryTotalWattHr_Completed"/>
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="SoCBatteryTotalWattHr_TextChanged"
+            Completed="SoCBatteryTotalWattHr_Completed"/>
     </Border>
 
     
@@ -145,17 +147,18 @@
             Stroke="Yellow"
             StrokeShape="RoundRectangle 10,10,10,10">
       <Entry x:Name="SoCUsedWattHr" 
-        Text=""
-        TextColor="LightGreen"
-        FontSize="20" 
-        Margin ="0,0,0,0" 
-        VerticalTextAlignment="Start"
-        HorizontalTextAlignment="Start"
-        WidthRequest="120"
-        HeightRequest="50"
-        ClearButtonVisibility="WhileEditing"
-        TextChanged="SoCUsedWattHr_TextChanged"
-        Completed="SoCUsedWattHr_Completed"/>
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="SoCUsedWattHr_TextChanged"
+             Completed="SoCUsedWattHr_Completed"/>
     </Border>
 
 

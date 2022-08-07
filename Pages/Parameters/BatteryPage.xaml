@@ -33,17 +33,18 @@
             Stroke="Yellow"
             StrokeShape="RoundRectangle 10,10,10,10">
       <Entry x:Name="MaxCurrent" 
-        Text=""
-        TextColor="LightGreen"
-        FontSize="20" 
-        Margin ="0,0,0,0" 
-        VerticalTextAlignment="Start"
-        HorizontalTextAlignment="Start"
-        WidthRequest="120"
-        HeightRequest="50"
-        ClearButtonVisibility="WhileEditing"
-        TextChanged="MaxCurrent_TextChanged"
-        Completed="MaxCurrent_Completed"/>
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="MaxCurrent_TextChanged"
+             Completed="MaxCurrent_Completed"/>
     </Border>
 
 
@@ -72,17 +73,18 @@
             Stroke="Yellow"
             StrokeShape="RoundRectangle 10,10,10,10">
       <Entry x:Name="LowCutOff"
-        Text=""
-        TextColor="LightGreen"
-        FontSize="20" 
-        Margin ="0,0,0,0" 
-        VerticalTextAlignment="Start"
-        HorizontalTextAlignment="Start"
-        WidthRequest="120"
-        HeightRequest="50"
-        ClearButtonVisibility="WhileEditing"
-        TextChanged="LowCutOff_TextChanged"
-        Completed="LowCutOff_Completed"/>
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="LowCutOff_TextChanged"
+             Completed="LowCutOff_Completed"/>
     </Border>
 
 
@@ -111,17 +113,18 @@
             Stroke="Yellow"
             StrokeShape="RoundRectangle 10,10,10,10">
       <Entry x:Name="Resistance"
-        Text=""
-        TextColor="LightGreen"
-        FontSize="20" 
-        Margin ="0,0,0,0" 
-        VerticalTextAlignment="Start"
-        HorizontalTextAlignment="Start"
-        WidthRequest="120"
-        HeightRequest="50"
-        ClearButtonVisibility="WhileEditing"
-        TextChanged="Resistance_TextChanged"
-        Completed="Resistance_Completed"/>
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="Resistance_TextChanged"
+             Completed="Resistance_Completed"/>
     </Border>
 
 
@@ -150,17 +153,18 @@
             Stroke="Yellow"
             StrokeShape="RoundRectangle 10,10,10,10">
       <Entry x:Name="VoltageEstimate"
-        Text=""
-        TextColor="LightGreen"
-        FontSize="20" 
-        Margin ="0,0,0,0" 
-        VerticalTextAlignment="Start"
-        HorizontalTextAlignment="Start"
-        WidthRequest="120"
-        HeightRequest="50"
-        ClearButtonVisibility="WhileEditing"
-        TextChanged="VoltageEstimate_TextChanged"
-        Completed="VoltageEstimate_Completed"/>
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="VoltageEstimate_TextChanged"
+             Completed="VoltageEstimate_Completed"/>
     </Border>
 
 
@@ -189,17 +193,18 @@
             Stroke="Yellow"
             StrokeShape="RoundRectangle 10,10,10,10">
       <Entry x:Name="ResistanceEstimate"
-        Text=""
-        TextColor="LightGreen"
-        FontSize="20" 
-        Margin ="0,0,0,0" 
-        VerticalTextAlignment="Start"
-        HorizontalTextAlignment="Start"
-        WidthRequest="120"
-        HeightRequest="50"
-        ClearButtonVisibility="WhileEditing"
-        TextChanged="ResistanceEstimate_TextChanged"
-        Completed="ResistanceEstimate_Completed"/>
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="ResistanceEstimate_TextChanged"
+             Completed="ResistanceEstimate_Completed"/>
     </Border>
 
 
@@ -228,17 +233,18 @@
             Stroke="Yellow"
             StrokeShape="RoundRectangle 10,10,10,10">
       <Entry x:Name="PowerLossEstimate"
-        Text=""
-        TextColor="LightGreen"
-        FontSize="20" 
-        Margin ="0,0,0,0" 
-        VerticalTextAlignment="Start"
-        HorizontalTextAlignment="Start"
-        WidthRequest="120"
-        HeightRequest="50"
-        ClearButtonVisibility="WhileEditing"
-        TextChanged="PowerLossEstimate_TextChanged"
-        Completed="PowerLossEstimate_Completed"/>
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="PowerLossEstimate_TextChanged"
+             Completed="PowerLossEstimate_Completed"/>
     </Border>
     
   </Grid>

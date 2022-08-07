@@ -12,6 +12,21 @@ public partial class MotorTemperaturePage : ContentPage
   {
     InitializeComponent();
 
+  }
+
+  protected override void OnAppearing()
+  {
+    base.OnAppearing();
+
+    Setup();
+  }
+
+  public void Setup()
+  {
+    checkValues = false;
+
+    temperatureUnit = Preferences.Get("VariousTemperatureUnits", "Celsius");
+
     motorTemperatureFeature = new() { "Throttle", "Temperature", "Disabled" };
     MotorTemperatureFeature.ItemsSource = motorTemperatureFeature;
     for (int i = 0; i < motorTemperatureFeature.Count; i++)
@@ -19,26 +34,18 @@ public partial class MotorTemperaturePage : ContentPage
       if (motorTemperatureFeature[i] == Preferences.Get("MotorTemperatureFeature", "Throttle")) MotorTemperatureFeature.SelectedIndex = i;
     }
 
-    //display temp, stored in Celsius, but display as required by state of toggle
-    if (Preferences.Get("TemperatureUnits", "Celsius") == "Celsius")
+    if (temperatureUnit == "Celsius")
     {
-      temperatureUnit = "Celsius";
-      TemperatureUnits.ThumbColor = Colors.Blue;
-      TemperatureUnits.IsToggled = true;
-      MotorTemperatureMinLimit.Text = Preferences.Get("MotorTemperatureMinLimit", "65");
-      MotorTemperatureMaxLimit.Text = Preferences.Get("MotorTemperatureMaxLimit", "85");
-
+      //no conversion needed as store in Celsius
+      MotorTemperatureMinLimit.Text = Preferences.Get("MotorTemperatureMinLimit", "");
+      MotorTemperatureMaxLimit.Text = Preferences.Get("MotorTemperatureMaxLimit", "");
     }
-    else
+    else //Fahrenheit
     {
-      temperatureUnit = "Fahrenheit";
-      TemperatureUnits.ThumbColor = Colors.Green;
-      TemperatureUnits.IsToggled = false;
-      MotorTemperatureMinLimit.Text = MotorTemperaturePage.CelsiusToFahrenheit(Preferences.Get("MotorTemperatureMinLimit", "65"));
-      MotorTemperatureMaxLimit.Text = MotorTemperaturePage.CelsiusToFahrenheit(Preferences.Get("MotorTemperatureMaxLimit", "85"));
+      MotorTemperatureMinLimit.Text = CelsiusToFahrenheit(Preferences.Get("MotorTemperatureMinLimit", ""));
+      MotorTemperatureMaxLimit.Text = CelsiusToFahrenheit(Preferences.Get("MotorTemperatureMaxLimit", ""));
     }
 
-    switchEventDisable = false;
     checkValues = true;
   }
 
@@ -52,7 +59,7 @@ public partial class MotorTemperaturePage : ContentPage
 
   private async void OnMotorTemperatureFeatureLabelTapped(object sender, EventArgs e)
   {
-    await DisplayAlert("Information", "NOTE: THIS SETTING ENABLES THROTTLE. You must also enable throttle in STREET MODE to fully activate. \r\n\"disabled\" means that neither motor temperature limit function nor throttle is enabled. \r\n", "OK");
+    await DisplayAlert("Information", "NOTE: THIS SETTING ENABLES THROTTLE. You must also enable throttle in STREET MODE to fully activate. \r\n\"disabled\" means that neither motor temperature limit function nor throttle is enabled. \r\nSet to \"temperature\" to enable the automatic motor temperature control limit or set to \"throttle\" to enable the throttle.\r\nNOTE: Do NOT enable the throttle if you have installed the motor temperature sensor. If you have the temp sensor installed you need to either have the motor temperature limit function enabled or everything disabled.\r\n", "OK");
   }
 
 
@@ -143,39 +150,7 @@ public partial class MotorTemperaturePage : ContentPage
   }
 
 
-  //-------Motor Temperature units------------------------------------------------
-  private void TemperatureUnits_Toggled(object sender, EventArgs e)
-  {
-    if (switchEventDisable) return; //on first set up of page
-
-    //if I toggle I don't want to do check on text
-    checkValues = false;
-
-    if (TemperatureUnits.IsToggled)  //Celsius
-    {
-      Preferences.Set("TemperatureUnits", "Celsius");
-      temperatureUnit = "Celsius";
-      TemperatureUnits.ThumbColor = Colors.Blue;
-      MotorTemperatureMinLimit.Text = Preferences.Get("MotorTemperatureMinLimit", "0");
-      MotorTemperatureMaxLimit.Text = Preferences.Get("MotorTemperatureMaxLimit", "0");
-    }
-    else
-    {
-      Preferences.Set("TemperatureUnits", "Fahrenheit");
-      temperatureUnit = "Fahrenheit";
-      TemperatureUnits.ThumbColor = Colors.Green;
-      MotorTemperatureMinLimit.Text = MotorTemperaturePage.CelsiusToFahrenheit(Preferences.Get("MotorTemperatureMinLimit", "0"));
-      MotorTemperatureMaxLimit.Text = MotorTemperaturePage.CelsiusToFahrenheit(Preferences.Get("MotorTemperatureMaxLimit", "0"));
-    }
-
-    checkValues = true;
-  }
-
-  private async void TemperatureUnitsLabelTapped(object sender, EventArgs e)
-  {
-    await DisplayAlert("Information", "The temperature is stored internally in Celsius, but flipping the switch will display it as Celsius or Fahrenheit", "OK");
-  }
-
+ 
 
   //----------helpers--------------------------------------------------
   public static bool CheckNumeric(string t)

@@ -2,10 +2,373 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TSDZ2Monitor.Pages.Parameters.AssistLevels.AssistLevelTorquePage"
-             Title="Assist Level Torque Page">
-  <StackLayout>
-    <Label Text="Assist Level Torque"
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-  </StackLayout>
+             Title="Assist Level Torque">
+
+  <Grid RowDefinitions="60,60,60,60,60,60,60,60,60,60"
+        ColumnDefinitions="220,*"
+        Margin="5,0,0,0">
+
+    <Label Grid.Row="0" Grid.Column="0"
+           x:Name="AssistLevelTorqueLabel1"
+           Text="Level 1"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="0" Grid.Column="1" 
+            x:Name="AssistLevelTorqueBorder1"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelTorque1" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelTorque1_TextChanged"
+             Completed="AssistLevelTorque1_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="1" Grid.Column="0"
+           Text="Level 2"
+           x:Name="AssistLevelTorqueLabel2"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="1" Grid.Column="1" 
+            x:Name="AssistLevelTorqueBorder2"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelTorque2" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelTorque2_TextChanged"
+             Completed="AssistLevelTorque2_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="2" Grid.Column="0"
+           Text="Level 3"
+           x:Name="AssistLevelTorqueLabel3"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="2" Grid.Column="1" 
+            x:Name="AssistLevelTorqueBorder3"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelTorque3" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelTorque3_TextChanged"
+             Completed="AssistLevelTorque3_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="3" Grid.Column="0"
+           Text="Level 4"
+           x:Name="AssistLevelTorqueLabel4"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="3" Grid.Column="1" 
+            x:Name="AssistLevelTorqueBorder4"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelTorque4" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelTorque4_TextChanged"
+             Completed="AssistLevelTorque4_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="4" Grid.Column="0"
+           Text="Level 5"
+           x:Name="AssistLevelTorqueLabel5"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="4" Grid.Column="1" 
+            x:Name="AssistLevelTorqueBorder5"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelTorque5" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelTorque5_TextChanged"
+             Completed="AssistLevelTorque5_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="5" Grid.Column="0"
+           Text="Level 6"
+           x:Name="AssistLevelTorqueLabel6"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="5" Grid.Column="1" 
+            x:Name="AssistLevelTorqueBorder6"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelTorque6" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelTorque6_TextChanged"
+             Completed="AssistLevelTorque6_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="6" Grid.Column="0"
+           Text="Level 7"
+           x:Name="AssistLevelTorqueLabel7"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="6" Grid.Column="1" 
+            x:Name="AssistLevelTorqueBorder7"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelTorque7" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelTorque7_TextChanged"
+             Completed="AssistLevelTorque7_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="7" Grid.Column="0"
+           Text="Level 8"
+           x:Name="AssistLevelTorqueLabel8"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="7" Grid.Column="1" 
+            x:Name="AssistLevelTorqueBorder8"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelTorque8" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelTorque8_TextChanged"
+             Completed="AssistLevelTorque8_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="8" Grid.Column="0"
+           Text="Level 9"
+           x:Name="AssistLevelTorqueLabel9"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="8" Grid.Column="1" 
+            x:Name="AssistLevelTorqueBorder9"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelTorque9" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelTorque9_TextChanged"
+             Completed="AssistLevelTorque9_Completed"/>
+    </Border>
+
+
+  </Grid>
+
 </ContentPage>
+

@@ -4,6 +4,7 @@ public partial class VariousPage : ContentPage
 {
   public bool switchEventDisable = true; //need to stop IsToggled event when first loading preferences
   public bool checkInput = false;
+  public string temperatureUnit;
   
   public List<string> variousLightsConfiguration;
 
@@ -22,6 +23,21 @@ public partial class VariousPage : ContentPage
       VariousUnits.ThumbColor = Colors.Green;
       VariousUnits.IsToggled = false;
     }
+
+    //display temp, stored in Celsius, but display as required by state of toggle
+    temperatureUnit = Preferences.Get("VariousTemperatureUnits", "Celsius");
+
+    if (temperatureUnit == "Celsius")
+    {
+      VariousTemperatureUnits.ThumbColor = Colors.Blue;
+      VariousTemperatureUnits.IsToggled = true;
+    }
+    else
+    {
+      VariousTemperatureUnits.ThumbColor = Colors.Green;
+      VariousTemperatureUnits.IsToggled = false;
+    }
+
 
     variousLightsConfiguration = new() 
     { 
@@ -54,9 +70,8 @@ public partial class VariousPage : ContentPage
 
     checkInput = false;  //stop activating text changed events
     VariousVirtualThrottleStep.Text = Preferences.Get("VariousVirtualThrottleStep", "20");
+
     checkInput = true;
-
-
 
     switchEventDisable = false;
   }
@@ -83,6 +98,36 @@ public partial class VariousPage : ContentPage
   private async void VariousUnitsLabelTapped(object sender, EventArgs e)
   {
     await DisplayAlert("Information", "The system units are stored internally as Metric (SI), but will be displayed in Imperial by fliiping the switch.", "OK");
+  }
+
+
+  //-------Various Temperature units------------------------------------------------
+  private void VariousTemperatureUnits_Toggled(object sender, EventArgs e)
+  {
+    if (switchEventDisable) return; //on first set up of page
+
+    //if I toggle I don't want to do check on text
+    checkInput = false;
+
+    if (VariousTemperatureUnits.IsToggled)  //Celsius
+    {
+      Preferences.Set("VariousTemperatureUnits", "Celsius");
+      temperatureUnit = "Celsius";
+      VariousTemperatureUnits.ThumbColor = Colors.Blue;
+    }
+    else
+    {
+      Preferences.Set("VariousTemperatureUnits", "Fahrenheit");
+      temperatureUnit = "Fahrenheit";
+      VariousTemperatureUnits.ThumbColor = Colors.Green;
+    }
+
+    checkInput = true;
+  }
+
+  private async void VariousTemperatureUnitsLabelTapped(object sender, EventArgs e)
+  {
+    await DisplayAlert("Information", "The temperature is stored internally in Celsius, but flipping the switch will display it as Celsius or Fahrenheit", "OK");
   }
 
 

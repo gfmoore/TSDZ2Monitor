@@ -67,7 +67,6 @@ public partial class SettingsPage : ContentPage
     Preferences.Get("MotorTemperatureFeature", p.MotorTemperatureFeature);
     Preferences.Get("MotorTemperatureMinLimit", p.MotorTemperatureMinLimit);
     Preferences.Get("MotorTemperatureMaxLimit", p.MotorTemperatureMaxLimit);
-    Preferences.Get("MotorTemperatureTemperatureUnits", p.MotorTemperatureUnits);
 
     Preferences.Get("SoCDisplayText", p.SoCDisplayText);
     Preferences.Get("SoCResetAtVoltage", p.SoCResetAtVoltage);
@@ -88,6 +87,8 @@ public partial class SettingsPage : ContentPage
     Preferences.Get("StreetModeHotkeyEnable", p.StreetModeHotkeyEnable);
 
     Preferences.Get("VariousUnits", p.VariousUnits);
+    Preferences.Get("VariousTemperatureUnits", p.VariousUnits);
+
     Preferences.Get("VariousLightsConfiguration", p.VariousLightsConfiguration);
     Preferences.Get("VariousAssistWithError", p.VariousAssistWithError);
     Preferences.Get("VariousVirtualThrottleStep", p.VariousVirtualThrottleStep);
@@ -127,5 +128,47 @@ public partial class SettingsPage : ContentPage
     Preferences.Get("TripMemoriesTripAAutoResetHours", p.TripMemoriesTripAAutoResetHours);
     Preferences.Get("TripMemoriesTripBReset", p.TripMemoriesTripBAutoReset);
     Preferences.Get("TripMemoriesTripBResetHours", p.TripMemoriesTripBAutoResetHours);
+
+    Preferences.Get("AssistLevelsNumberOfAssistLevels", p.AssistLevelsNumberOfAssistLevels);
+
+    Preferences.Get("AssistLevelPower1", p.AssistLevelPower1);
+    Preferences.Get("AssistLevelPower2", p.AssistLevelPower2);
+    Preferences.Get("AssistLevelPower3", p.AssistLevelPower3);
+    Preferences.Get("AssistLevelPower4", p.AssistLevelPower4);
+    Preferences.Get("AssistLevelPower5", p.AssistLevelPower5);
+    Preferences.Get("AssistLevelPower6", p.AssistLevelPower6);
+    Preferences.Get("AssistLevelPower7", p.AssistLevelPower7);
+    Preferences.Get("AssistLevelPower8", p.AssistLevelPower8);
+    Preferences.Get("AssistLevelPower9", p.AssistLevelPower9);
+
+    Preferences.Get("AssistLevelTorque1", p.AssistLevelTorque1);
+    Preferences.Get("AssistLevelTorque2", p.AssistLevelTorque2);
+    Preferences.Get("AssistLevelTorque3", p.AssistLevelTorque3);
+    Preferences.Get("AssistLevelTorque4", p.AssistLevelTorque4);
+    Preferences.Get("AssistLevelTorque5", p.AssistLevelTorque5);
+    Preferences.Get("AssistLevelTorque6", p.AssistLevelTorque6);
+    Preferences.Get("AssistLevelTorque7", p.AssistLevelTorque7);
+    Preferences.Get("AssistLevelTorque8", p.AssistLevelTorque8);
+    Preferences.Get("AssistLevelTorque9", p.AssistLevelTorque9);
+
+    Preferences.Get("AssistLevelCadence1", p.AssistLevelCadence1);
+    Preferences.Get("AssistLevelCadence2", p.AssistLevelCadence2);
+    Preferences.Get("AssistLevelCadence3", p.AssistLevelCadence3);
+    Preferences.Get("AssistLevelCadence4", p.AssistLevelCadence4);
+    Preferences.Get("AssistLevelCadence5", p.AssistLevelCadence5);
+    Preferences.Get("AssistLevelCadence6", p.AssistLevelCadence6);
+    Preferences.Get("AssistLevelCadence7", p.AssistLevelCadence7);
+    Preferences.Get("AssistLevelCadence8", p.AssistLevelCadence8);
+    Preferences.Get("AssistLevelCadence9", p.AssistLevelCadence9);
+
+    Preferences.Get("AssistLevelEMTB1", p.AssistLevelEMTB1);
+    Preferences.Get("AssistLevelEMTB2", p.AssistLevelEMTB2);
+    Preferences.Get("AssistLevelEMTB3", p.AssistLevelEMTB3);
+    Preferences.Get("AssistLevelEMTB4", p.AssistLevelEMTB4);
+    Preferences.Get("AssistLevelEMTB5", p.AssistLevelEMTB5);
+    Preferences.Get("AssistLevelEMTB6", p.AssistLevelEMTB6);
+    Preferences.Get("AssistLevelEMTB7", p.AssistLevelEMTB7);
+    Preferences.Get("AssistLevelEMTB8", p.AssistLevelEMTB8);
+    Preferences.Get("AssistLevelEMTB9", p.AssistLevelEMTB9);
   }
 }

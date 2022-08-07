@@ -2,10 +2,372 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TSDZ2Monitor.Pages.Parameters.AssistLevels.AssistLevelPowerPage"
-             Title="Assist Level Power Page">
-  <StackLayout>
-    <Label Text="Assist Level Power"
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-  </StackLayout>
+             Title="Assist Level Power">
+  
+  <Grid RowDefinitions="60,60,60,60,60,60,60,60,60,60"
+        ColumnDefinitions="220,*"
+        Margin="5,0,0,0">
+
+    <Label Grid.Row="0" Grid.Column="0"
+           x:Name="AssistLevelPowerLabel1"
+           Text="Level 1"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="0" Grid.Column="1" 
+            x:Name="AssistLevelPowerBorder1"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelPower1" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelPower1_TextChanged"
+             Completed="AssistLevelPower1_Completed"/>
+    </Border>
+
+    
+    <Label Grid.Row="1" Grid.Column="0"
+           Text="Level 2"
+           x:Name="AssistLevelPowerLabel2"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="1" Grid.Column="1" 
+            x:Name="AssistLevelPowerBorder2"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelPower2" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelPower2_TextChanged"
+             Completed="AssistLevelPower2_Completed"/>
+    </Border>
+
+    
+    <Label Grid.Row="2" Grid.Column="0"
+           Text="Level 3"
+           x:Name="AssistLevelPowerLabel3"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="2" Grid.Column="1" 
+            x:Name="AssistLevelPowerBorder3"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelPower3" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelPower3_TextChanged"
+             Completed="AssistLevelPower3_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="3" Grid.Column="0"
+           Text="Level 4"
+           x:Name="AssistLevelPowerLabel4"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="3" Grid.Column="1" 
+            x:Name="AssistLevelPowerBorder4"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelPower4" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelPower4_TextChanged"
+             Completed="AssistLevelPower4_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="4" Grid.Column="0"
+           Text="Level 5"
+           x:Name="AssistLevelPowerLabel5"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="4" Grid.Column="1" 
+            x:Name="AssistLevelPowerBorder5"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelPower5" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelPower5_TextChanged"
+             Completed="AssistLevelPower5_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="5" Grid.Column="0"
+           Text="Level 6"
+           x:Name="AssistLevelPowerLabel6"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="5" Grid.Column="1" 
+            x:Name="AssistLevelPowerBorder6"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelPower6" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelPower6_TextChanged"
+             Completed="AssistLevelPower6_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="6" Grid.Column="0"
+           Text="Level 7"
+           x:Name="AssistLevelPowerLabel7"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="6" Grid.Column="1" 
+            x:Name="AssistLevelPowerBorder7"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelPower7" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelPower7_TextChanged"
+             Completed="AssistLevelPower7_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="7" Grid.Column="0"
+           Text="Level 8"
+           x:Name="AssistLevelPowerLabel8"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="7" Grid.Column="1" 
+            x:Name="AssistLevelPowerBorder8"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelPower8" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelPower8_TextChanged"
+             Completed="AssistLevelPower8_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="8" Grid.Column="0"
+           Text="Level 9"
+           x:Name="AssistLevelPowerLabel9"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="8" Grid.Column="1" 
+            x:Name="AssistLevelPowerBorder9"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelPower9" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelPower9_TextChanged"
+             Completed="AssistLevelPower9_Completed"/>
+    </Border>
+
+
+  </Grid>
+
 </ContentPage>

@@ -75,17 +75,18 @@
             Stroke="Yellow"
             StrokeShape="RoundRectangle 10,10,10,10">
       <Entry x:Name="StreetModeSpeedLimit" 
-        Text=""
-        TextColor="LightGreen"
-        FontSize="20" 
-        Margin ="0,0,0,0" 
-        VerticalTextAlignment="Start"
-        HorizontalTextAlignment="Start"
-        WidthRequest="120"
-        HeightRequest="50"
-        ClearButtonVisibility="WhileEditing"
-        TextChanged="StreetModeSpeedLimit_TextChanged"
-        Completed="StreetModeSpeedLimit_Completed"/>
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="StreetModeSpeedLimit_TextChanged"
+             Completed="StreetModeSpeedLimit_Completed"/>
     </Border>
 
 
@@ -114,17 +115,18 @@
             Stroke="Yellow"
             StrokeShape="RoundRectangle 10,10,10,10">
       <Entry x:Name="StreetModeMotorPowerLimit" 
-        Text=""
-        TextColor="LightGreen"
-        FontSize="20" 
-        Margin ="0,0,0,0" 
-        VerticalTextAlignment="Start"
-        HorizontalTextAlignment="Start"
-        WidthRequest="120"
-        HeightRequest="50"
-        ClearButtonVisibility="WhileEditing"
-        TextChanged="StreetModeMotorPowerLimit_TextChanged"
-        Completed="StreetModeMotorPowerLimit_Completed"/>
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="StreetModeMotorPowerLimit_TextChanged"
+             Completed="StreetModeMotorPowerLimit_Completed"/>
     </Border>
 
 
@@ -167,27 +169,6 @@
     <Switch Grid.Row="5" Grid.Column="1" 
             x:Name="StreetModeCruiseEnable"
             Toggled="StreetModeCruiseEnable_Toggled"
-            Margin="0,0,20,15"/>
-
-    
-    <Label Grid.Row="6" Grid.Column="0"
-           Text="Hotkey Enable"
-           TextColor="White"
-           FontSize="20" 
-           HorizontalTextAlignment="Start"
-           VerticalTextAlignment="Start" 
-           HeightRequest="50"
-           Margin="0,0,0,0"
-           Padding="0,0,0,0">
-      <Label.GestureRecognizers>
-        <TapGestureRecognizer Tapped="OnStreetModeHotkeyEnablelabelTapped"
-                              NumberOfTapsRequired="1" />
-      </Label.GestureRecognizers>
-    </Label>
-
-    <Switch Grid.Row="6" Grid.Column="1" 
-            x:Name="StreetModeHotkeyEnable"
-            Toggled="StreetModeHotkeyEnable_Toggled"
             Margin="0,0,20,15"/>
 
   </Grid>

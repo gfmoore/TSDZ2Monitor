@@ -4,7 +4,7 @@
              x:Class="TSDZ2Monitor.Pages.Parameters.VariousPage"
              Title="Various">
 
-  <Grid RowDefinitions="60,60,60,60,60,60,60"
+  <Grid RowDefinitions="60,60,60,60,60,60,60,60,60"
         ColumnDefinitions="220,*"
         Margin="5,0,0,0">
 
@@ -54,9 +54,56 @@
            Padding="0,0,0,0" />
     </Grid>
 
-    
-    
+
     <Label Grid.Row="2" Grid.Column="0"
+           Text="Temperature Units"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="VariousTemperatureUnitsLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Grid Grid.Row="3" Grid.Column="0"
+          ColumnDefinitions="120,50,120"
+          Margin="0,-40,0,0">
+
+      <Label Grid.Column="0"
+           Text="Fahrenheit"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0" />
+
+      <Switch Grid.Column="1" 
+            x:Name="VariousTemperatureUnits"
+            IsToggled="True"
+            Toggled="VariousTemperatureUnits_Toggled"
+            Margin="0,0,0,15"/>
+
+      <Label Grid.Column="2"
+           Text="Celsius"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="30,0,0,0"
+           Padding="0,0,0,0" />
+    </Grid>
+
+
+
+    <Label Grid.Row="4" Grid.Column="0"
            Text="Lights Configuration"
            TextColor="White"
            FontSize="20" 
@@ -71,7 +118,7 @@
       </Label.GestureRecognizers>
     </Label>
 
-    <Border Grid.Row="2" Grid.Column="1" 
+    <Border Grid.Row="4" Grid.Column="1" 
             HeightRequest="50" 
             WidthRequest="150"
             HorizontalOptions="Start"
@@ -90,7 +137,7 @@
     </Border>
 
 
-    <Label Grid.Row="3" Grid.Column="0"
+    <Label Grid.Row="5" Grid.Column="0"
            Text="Assist With Error"
            TextColor="White"
            FontSize="20" 
@@ -105,13 +152,13 @@
       </Label.GestureRecognizers>
     </Label>
 
-    <Switch Grid.Row="3" Grid.Column="1" 
+    <Switch Grid.Row="5" Grid.Column="1" 
             x:Name="VariousAssistWithError"
             Toggled="VariousAssistWithError_Toggled"
             Margin="0,0,20,15"/>
 
 
-    <Label Grid.Row="4" Grid.Column="0"
+    <Label Grid.Row="6" Grid.Column="0"
            Text="Virtual Throttle Step"
            TextColor="White"
            FontSize="20" 
@@ -126,7 +173,7 @@
       </Label.GestureRecognizers>
     </Label>
 
-    <Border Grid.Row="4" Grid.Column="1" 
+    <Border Grid.Row="6" Grid.Column="1" 
             HeightRequest="50" 
             WidthRequest="150"
             HorizontalOptions="Start"
@@ -150,7 +197,7 @@
     </Border>
 
 
-    <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
+    <Label Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"
            Text="Odometer setting has been moved to Trip Memories :)"
            TextColor="Pink"
            FontSize="20"

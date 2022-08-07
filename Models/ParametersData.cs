@@ -24,7 +24,7 @@ public class ParametersData
   public string MotorTemperatureFeature { get; set; }
   public string MotorTemperatureMinLimit { get; set; }
   public string MotorTemperatureMaxLimit { get; set; }
-  public string MotorTemperatureUnits { get; set; }
+
 
 
   //SoC
@@ -53,6 +53,8 @@ public class ParametersData
 
   //Various
   public string VariousUnits { get; set; }
+
+  public string VariousTemperatureUnits { get; set; }
   public string VariousLightsConfiguration { get; set; }
   public string VariousAssistWithError { get; set; }
   public string VariousVirtualThrottleStep { get; set; }
@@ -86,9 +88,13 @@ public class ParametersData
   public string TorqueSensorADCOnWeight{ get; set; }
   public string TorqueSensorDefaultWeight { get; set; }
 
+
+  //Wheel
   public string WheelMaxSpeed { get; set; }
   public string WheelCircumference { get; set; }
   
+
+  //Trip Memories
   public string TripMemoriesOdometer { get; set; }
   public string TripMemoriesTripA { get; set; }
   public string TripMemoriesTripB { get; set; }
@@ -98,4 +104,49 @@ public class ParametersData
   public string TripMemoriesTripBAutoResetHours { get; set; }
 
 
+  //Assist
+  public string AssistLevelsNumberOfAssistLevels { get; set; }
+
+  public string AssistLevelPower1 { get; set; }
+  public string AssistLevelPower2 { get; set; }
+  public string AssistLevelPower3 { get; set; }
+  public string AssistLevelPower4 { get; set; }
+  public string AssistLevelPower5 { get; set; }
+  public string AssistLevelPower6 { get; set; }
+  public string AssistLevelPower7 { get; set; }
+  public string AssistLevelPower8 { get; set; }
+  public string AssistLevelPower9 { get; set; }
+
+
+  public string AssistLevelTorque1 { get; set; }
+  public string AssistLevelTorque2 { get; set; }
+  public string AssistLevelTorque3 { get; set; }
+  public string AssistLevelTorque4 { get; set; }
+  public string AssistLevelTorque5 { get; set; }
+  public string AssistLevelTorque6 { get; set; }
+  public string AssistLevelTorque7 { get; set; }
+  public string AssistLevelTorque8 { get; set; }
+  public string AssistLevelTorque9 { get; set; }
+
+
+  public string AssistLevelCadence1 { get; set; }
+  public string AssistLevelCadence2 { get; set; }
+  public string AssistLevelCadence3 { get; set; }
+  public string AssistLevelCadence4 { get; set; }
+  public string AssistLevelCadence5 { get; set; }
+  public string AssistLevelCadence6 { get; set; }
+  public string AssistLevelCadence7 { get; set; }
+  public string AssistLevelCadence8 { get; set; }
+  public string AssistLevelCadence9 { get; set; }
+
+
+  public string AssistLevelEMTB1 { get; set; }
+  public string AssistLevelEMTB2 { get; set; }
+  public string AssistLevelEMTB3 { get; set; }
+  public string AssistLevelEMTB4 { get; set; }
+  public string AssistLevelEMTB5 { get; set; }
+  public string AssistLevelEMTB6 { get; set; }
+  public string AssistLevelEMTB7 { get; set; }
+  public string AssistLevelEMTB8 { get; set; }
+  public string AssistLevelEMTB9 { get; set; }
 }

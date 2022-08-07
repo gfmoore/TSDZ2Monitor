@@ -2,10 +2,373 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TSDZ2Monitor.Pages.Parameters.AssistLevels.AssistLevelCadencePage"
-             Title="Assist Level Cadence Page">
-  <StackLayout>
-    <Label Text="Assist Level Cadence"
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-  </StackLayout>
+             Title="Assist Level Cadence">
+
+  <Grid RowDefinitions="60,60,60,60,60,60,60,60,60,60"
+        ColumnDefinitions="220,*"
+        Margin="5,0,0,0">
+
+    <Label Grid.Row="0" Grid.Column="0"
+           x:Name="AssistLevelCadenceLabel1"
+           Text="Level 1"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="0" Grid.Column="1" 
+            x:Name="AssistLevelCadenceBorder1"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelCadence1" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelCadence1_TextChanged"
+             Completed="AssistLevelCadence1_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="1" Grid.Column="0"
+           Text="Level 2"
+           x:Name="AssistLevelCadenceLabel2"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="1" Grid.Column="1" 
+            x:Name="AssistLevelCadenceBorder2"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelCadence2" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelCadence2_TextChanged"
+             Completed="AssistLevelCadence2_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="2" Grid.Column="0"
+           Text="Level 3"
+           x:Name="AssistLevelCadenceLabel3"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="2" Grid.Column="1" 
+            x:Name="AssistLevelCadenceBorder3"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelCadence3" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelCadence3_TextChanged"
+             Completed="AssistLevelCadence3_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="3" Grid.Column="0"
+           Text="Level 4"
+           x:Name="AssistLevelCadenceLabel4"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="3" Grid.Column="1" 
+            x:Name="AssistLevelCadenceBorder4"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelCadence4" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelCadence4_TextChanged"
+             Completed="AssistLevelCadence4_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="4" Grid.Column="0"
+           Text="Level 5"
+           x:Name="AssistLevelCadenceLabel5"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="4" Grid.Column="1" 
+            x:Name="AssistLevelCadenceBorder5"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelCadence5" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelCadence5_TextChanged"
+             Completed="AssistLevelCadence5_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="5" Grid.Column="0"
+           Text="Level 6"
+           x:Name="AssistLevelCadenceLabel6"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="5" Grid.Column="1" 
+            x:Name="AssistLevelCadenceBorder6"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelCadence6" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelCadence6_TextChanged"
+             Completed="AssistLevelCadence6_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="6" Grid.Column="0"
+           Text="Level 7"
+           x:Name="AssistLevelCadenceLabel7"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="6" Grid.Column="1" 
+            x:Name="AssistLevelCadenceBorder7"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelCadence7" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelCadence7_TextChanged"
+             Completed="AssistLevelCadence7_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="7" Grid.Column="0"
+           Text="Level 8"
+           x:Name="AssistLevelCadenceLabel8"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="7" Grid.Column="1" 
+            x:Name="AssistLevelCadenceBorder8"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelCadence8" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelCadence8_TextChanged"
+             Completed="AssistLevelCadence8_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="8" Grid.Column="0"
+           Text="Level 9"
+           x:Name="AssistLevelCadenceLabel9"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="8" Grid.Column="1" 
+            x:Name="AssistLevelCadenceBorder9"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelCadence9" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelCadence9_TextChanged"
+             Completed="AssistLevelCadence9_Completed"/>
+    </Border>
+
+
+  </Grid>
+
 </ContentPage>
+
