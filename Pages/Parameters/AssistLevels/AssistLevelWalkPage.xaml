@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TSDZ2Monitor.Pages.Parameters.AssistLevels.AssistLevelWalkPage"
+             Title="Assist Level Walk">
+  
+  <Grid RowDefinitions="60,60,60,60,60,60,60,60,60,60"
+        ColumnDefinitions="220,*"
+        Margin="5,0,0,0">
+
+    <Label Grid.Row="0" Grid.Column="0"
+           Text="Walk Assist Feature"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnAssistLevelWalkFeatureLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Switch Grid.Row="0" Grid.Column="1" 
+            x:Name="AssistLevelWalkFeature"
+            Toggled="AssistLevelWalkFeature_Toggled"
+            Margin="0,0,0,15"/>
+    
+    
+
+    <Label Grid.Row="1" Grid.Column="0"
+           Text="Cruise Control"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnAssistLevelWalkCruiseControlLabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Switch Grid.Row="1" Grid.Column="1" 
+            x:Name="AssistLevelWalkCruiseControl"
+            Toggled="AssistLevelWalkCruiseControl_Toggled"
+            Margin="0,0,0,15"/>
+    
+    
+    <Label Grid.Row="2" Grid.Column="0"
+           x:Name="AssistLevelWalkLabel1"
+           Text="Level 1"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="2" Grid.Column="1" 
+            x:Name="AssistLevelWalkBorder1"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelWalk1" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelWalk1_TextChanged"
+             Completed="AssistLevelWalk1_Completed"/>
+    </Border>
+
+    
+    <Label Grid.Row="3" Grid.Column="0"
+           Text="Level 2"
+           x:Name="AssistLevelWalkLabel2"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="3" Grid.Column="1" 
+            x:Name="AssistLevelWalkBorder2"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelWalk2" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelWalk2_TextChanged"
+             Completed="AssistLevelWalk2_Completed"/>
+    </Border>
+
+    
+    <Label Grid.Row="4" Grid.Column="0"
+           Text="Level 3"
+           x:Name="AssistLevelWalkLabel3"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="4" Grid.Column="1" 
+            x:Name="AssistLevelWalkBorder3"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelWalk3" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelWalk3_TextChanged"
+             Completed="AssistLevelWalk3_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="5" Grid.Column="0"
+           Text="Level 4"
+           x:Name="AssistLevelWalkLabel4"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="5" Grid.Column="1" 
+            x:Name="AssistLevelWalkBorder4"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelWalk4" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelWalk4_TextChanged"
+             Completed="AssistLevelWalk4_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="6" Grid.Column="0"
+           Text="Level 5"
+           x:Name="AssistLevelWalkLabel5"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="6" Grid.Column="1" 
+            x:Name="AssistLevelWalkBorder5"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelWalk5" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelWalk5_TextChanged"
+             Completed="AssistLevelWalk5_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="7" Grid.Column="0"
+           Text="Level 6"
+           x:Name="AssistLevelWalkLabel6"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="7" Grid.Column="1" 
+            x:Name="AssistLevelWalkBorder6"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelWalk6" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelWalk6_TextChanged"
+             Completed="AssistLevelWalk6_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="8" Grid.Column="0"
+           Text="Level 7"
+           x:Name="AssistLevelWalkLabel7"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="8" Grid.Column="1" 
+            x:Name="AssistLevelWalkBorder7"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelWalk7" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelWalk7_TextChanged"
+             Completed="AssistLevelWalk7_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="9" Grid.Column="0"
+           Text="Level 8"
+           x:Name="AssistLevelWalkLabel8"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="9" Grid.Column="1" 
+            x:Name="AssistLevelWalkBorder8"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelWalk8" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelWalk8_TextChanged"
+             Completed="AssistLevelWalk8_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="10" Grid.Column="0"
+           Text="Level 9"
+           x:Name="AssistLevelWalkLabel9"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+    </Label>
+
+    <Border Grid.Row="10" Grid.Column="1" 
+            x:Name="AssistLevelWalkBorder9"
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            IsVisible="True">
+      <Entry x:Name="AssistLevelWalk9" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             IsVisible="True"
+             TextChanged="AssistLevelWalk9_TextChanged"
+             Completed="AssistLevelWalk9_Completed"/>
+    </Border>
+   
+  </Grid>
+
+</ContentPage>

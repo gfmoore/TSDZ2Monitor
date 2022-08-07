@@ -72,8 +72,11 @@
 	  <Compile Update="Pages\Parameters\AssistLevels\AssistLevelEMTBPage.xaml.cs">
 	    <DependentUpon>AssistLevelEMTBPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\Parameters\GraphVariablesPage.xaml.cs">
-	    <DependentUpon>GraphVariablesPage.xaml</DependentUpon>
+	  <Compile Update="Pages\Parameters\AssistLevels\AssistLevelWalkPage.xaml.cs">
+	    <DependentUpon>AssistLevelWalkPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Parameters\xGraphVariablesPage.xaml.cs">
+	    <DependentUpon>xGraphVariablesPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\TracksPage.xaml.cs">
 	    <DependentUpon>TracksPage.xaml</DependentUpon>
@@ -106,6 +109,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Parameters\AssistLevels\AssistLevelEMTBPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Parameters\AssistLevels\AssistLevelWalkPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Parameters\AssistLevels\AssistLevelPowerPage.xaml">
@@ -183,7 +189,7 @@
 	  <MauiXaml Update="Pages\Parameters\TripMemoriesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Parameters\GraphVariablesPage.xaml">
+	  <MauiXaml Update="Pages\Parameters\xGraphVariablesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Parameters\VariousPage.xaml">

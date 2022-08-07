@@ -159,17 +159,21 @@
     ContentTemplate="{DataTemplate assistlevels:AssistLevelTorquePage}" />
   
   <ShellContent 
-    Title="Assist LevelCadence"
+    Title="Assist Level Cadence"
     Shell.FlyoutItemIsVisible="{Binding ShowAssistLevels}"
     ContentTemplate="{DataTemplate assistlevels:AssistLevelCadencePage}" />
   
   <ShellContent 
-    Title="Assist LevelEMTB"
+    Title="Assist Level EMTB"
     Shell.FlyoutItemIsVisible="{Binding ShowAssistLevels}"
     ContentTemplate="{DataTemplate assistlevels:AssistLevelEMTBPage}" />
-    
 
-  
+  <ShellContent 
+    Title="Assist Level Walk"
+    Shell.FlyoutItemIsVisible="{Binding ShowAssistLevels}"
+    ContentTemplate="{DataTemplate assistlevels:AssistLevelWalkPage}" />
+
+
   <ShellContent 
     Title="Battery"
     Shell.FlyoutItemIsVisible="{Binding ShowParameters}"
@@ -238,11 +242,7 @@
     Shell.FlyoutItemIsVisible="{Binding ShowParameters}"
     Command="{Binding DisplayGraphVariablesCommand}" />
 
-  <ShellContent 
-    Title="Graph Variables"
-    Shell.FlyoutItemIsVisible="{Binding ShowGraphParameters}"
-    ContentTemplate="{DataTemplate parameters:GraphVariablesPage}" />
-  
+
   <ShellContent 
     Title="Battery Current Graph"
     Shell.FlyoutItemIsVisible="{Binding ShowGraphParameters}"

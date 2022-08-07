@@ -170,5 +170,17 @@ public partial class SettingsPage : ContentPage
     Preferences.Get("AssistLevelEMTB7", p.AssistLevelEMTB7);
     Preferences.Get("AssistLevelEMTB8", p.AssistLevelEMTB8);
     Preferences.Get("AssistLevelEMTB9", p.AssistLevelEMTB9);
+
+    Preferences.Get("AssistLevelWalkFeature", p.AssistLevelWalkFeature);
+    Preferences.Get("AssistLevelWalk1", p.AssistLevelWalk1);
+    Preferences.Get("AssistLevelWalk2", p.AssistLevelWalk2);
+    Preferences.Get("AssistLevelWalk3", p.AssistLevelWalk3);
+    Preferences.Get("AssistLevelWalk4", p.AssistLevelWalk4);
+    Preferences.Get("AssistLevelWalk5", p.AssistLevelWalk5);
+    Preferences.Get("AssistLevelWalk6", p.AssistLevelWalk6);
+    Preferences.Get("AssistLevelWalk7", p.AssistLevelWalk7);
+    Preferences.Get("AssistLevelWalk8", p.AssistLevelWalk8);
+    Preferences.Get("AssistLevelWalk9", p.AssistLevelWalk9);
+    Preferences.Get("AssistLevelWalkCruiseControl", p.AssistLevelWalkCruiseControl);
   }
 }

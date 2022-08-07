@@ -149,4 +149,16 @@ public class ParametersData
   public string AssistLevelEMTB7 { get; set; }
   public string AssistLevelEMTB8 { get; set; }
   public string AssistLevelEMTB9 { get; set; }
+
+  public string AssistLevelWalkFeature { get; set; }
+  public string AssistLevelWalk1 { get; set; }
+  public string AssistLevelWalk2 { get; set; }
+  public string AssistLevelWalk3 { get; set; }
+  public string AssistLevelWalk4 { get; set; }
+  public string AssistLevelWalk5 { get; set; }
+  public string AssistLevelWalk6 { get; set; }
+  public string AssistLevelWalk7 { get; set; }
+  public string AssistLevelWalk8 { get; set; }
+  public string AssistLevelWalk9 { get; set; }
+  public string AssistLevelWalkCruiseControl { get; set; }
 }
