@@ -2,10 +2,227 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TSDZ2Monitor.Pages.Parameters.GraphVariables.VarsBatteryVoltagePage"
-             Title="Vars Battery Voltage Page">
-  <StackLayout>
-    <Label Text="Battery Voltage"
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-  </StackLayout>
+             Title="Vars Battery Voltage">
+
+  <Grid RowDefinitions="60,60,60,60,60,60"
+        ColumnDefinitions="220,*"
+        Margin="5,0,0,0">
+
+    <Label Grid.Row="0" Grid.Column="0"
+           Text="Graph Auto Max/Min?"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnGraphBatteryVoltageAutoMaxMinlabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Switch Grid.Row="0" Grid.Column="1" 
+            x:Name="GraphBatteryVoltageAutoMaxMin"
+            Toggled="GraphBatteryVoltageAutoMaxMin_Toggled"
+            Margin="0,0,20,15"/>
+
+
+    <Label Grid.Row="1" Grid.Column="0"
+           Text="Graph Minimum"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="GraphBatteryVoltageMinlabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="1" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="GraphBatteryVoltageMin" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="GraphBatteryVoltageMin_TextChanged"
+             Completed="GraphBatteryVoltageMin_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="2" Grid.Column="0"
+           Text="Graph Maximum"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="GraphBatteryVoltageMaxlabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="2" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="GraphBatteryVoltageMax" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="GraphBatteryVoltageMax_TextChanged"
+             Completed="GraphBatteryVoltageMax_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="3" Grid.Column="0"
+           Text="Thresholds"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnGraphBatteryVoltageThresholdslabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="3" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Picker x:Name="GraphBatteryVoltageThresholds"
+              FontSize="20"
+              TextColor="LightGreen"
+              Margin="15,0,0,0"
+              SelectedIndexChanged="GraphBatteryVoltageThresholds_SelectedIndexChanged">
+
+      </Picker>
+    </Border>
+
+
+    <Label Grid.Row="4" Grid.Column="0"
+           Text="Yellow Max Threshold"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="GraphBatteryVoltageYellowMaxThresholdlabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="4" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="GraphBatteryVoltageYellowMaxThreshold" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="GraphBatteryVoltageYellowMaxThreshold_TextChanged"
+             Completed="GraphBatteryVoltageYellowMaxThreshold_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="5" Grid.Column="0"
+           Text="Red Max Threshold"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="GraphBatteryVoltageRedMaxThresholdlabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="5" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="GraphBatteryVoltageRedMaxThreshold" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="GraphBatteryVoltageRedMaxThreshold_TextChanged"
+             Completed="GraphBatteryVoltageRedMaxThreshold_Completed"/>
+    </Border>
+
+
+  </Grid>
+
 </ContentPage>

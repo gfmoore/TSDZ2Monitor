@@ -2,10 +2,226 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TSDZ2Monitor.Pages.Parameters.GraphVariables.VarsTripDistancePage"
-             Title="Vars Trip Distance Page">
-  <StackLayout>
-    <Label Text="Trip Distance"
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-  </StackLayout>
+             Title="Vars Trip Distance">
+
+  <Grid RowDefinitions="60,60,60,60,60,60"
+        ColumnDefinitions="220,*"
+        Margin="5,0,0,0">
+
+    <Label Grid.Row="0" Grid.Column="0"
+           Text="Graph Auto Max/Min?"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnGraphTripDistanceAutoMaxMinlabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Switch Grid.Row="0" Grid.Column="1" 
+            x:Name="GraphTripDistanceAutoMaxMin"
+            Toggled="GraphTripDistanceAutoMaxMin_Toggled"
+            Margin="0,0,20,15"/>
+
+
+    <Label Grid.Row="1" Grid.Column="0"
+           Text="Graph Minimum"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="GraphTripDistanceMinlabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="1" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="GraphTripDistanceMin" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="GraphTripDistanceMin_TextChanged"
+             Completed="GraphTripDistanceMin_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="2" Grid.Column="0"
+           Text="Graph Maximum"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="GraphTripDistanceMaxlabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="2" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="GraphTripDistanceMax" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="GraphTripDistanceMax_TextChanged"
+             Completed="GraphTripDistanceMax_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="3" Grid.Column="0"
+           Text="Thresholds"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnGraphTripDistanceThresholdslabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="3" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Picker x:Name="GraphTripDistanceThresholds"
+              FontSize="20"
+              TextColor="LightGreen"
+              Margin="15,0,0,0"
+              SelectedIndexChanged="GraphTripDistanceThresholds_SelectedIndexChanged">
+
+      </Picker>
+    </Border>
+
+
+    <Label Grid.Row="4" Grid.Column="0"
+           Text="Yellow Max Threshold"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="GraphTripDistanceYellowMaxThresholdlabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="4" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="GraphTripDistanceYellowMaxThreshold" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="GraphTripDistanceYellowMaxThreshold_TextChanged"
+             Completed="GraphTripDistanceYellowMaxThreshold_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="5" Grid.Column="0"
+           Text="Red Max Threshold"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="GraphTripDistanceRedMaxThresholdlabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="5" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="GraphTripDistanceRedMaxThreshold" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="GraphTripDistanceRedMaxThreshold_TextChanged"
+             Completed="GraphTripDistanceRedMaxThreshold_Completed"/>
+    </Border>
+
+  </Grid>
+
 </ContentPage>

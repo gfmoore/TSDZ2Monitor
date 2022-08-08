@@ -2,10 +2,226 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TSDZ2Monitor.Pages.Parameters.GraphVariables.VarsMotorSpeedPage"
-             Title="Vars Motor Speed Page">
-  <StackLayout>
-    <Label Text="Motor Speed"
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-  </StackLayout>
+             Title="Vars Motor Speed">
+  <Grid RowDefinitions="60,60,60,60,60,60"
+        ColumnDefinitions="220,*"
+        Margin="5,0,0,0">
+
+    <Label Grid.Row="0" Grid.Column="0"
+           Text="Graph Auto Max/Min?"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnGraphMotorSpeedAutoMaxMinlabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Switch Grid.Row="0" Grid.Column="1" 
+            x:Name="GraphMotorSpeedAutoMaxMin"
+            Toggled="GraphMotorSpeedAutoMaxMin_Toggled"
+            Margin="0,0,20,15"/>
+
+
+    <Label Grid.Row="1" Grid.Column="0"
+           Text="Graph Minimum"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="GraphMotorSpeedMinlabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="1" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="GraphMotorSpeedMin" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="GraphMotorSpeedMin_TextChanged"
+             Completed="GraphMotorSpeedMin_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="2" Grid.Column="0"
+           Text="Graph Maximum"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="GraphMotorSpeedMaxlabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="2" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="GraphMotorSpeedMax" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="GraphMotorSpeedMax_TextChanged"
+             Completed="GraphMotorSpeedMax_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="3" Grid.Column="0"
+           Text="Thresholds"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnGraphMotorSpeedThresholdslabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="3" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Picker x:Name="GraphMotorSpeedThresholds"
+              FontSize="20"
+              TextColor="LightGreen"
+              Margin="15,0,0,0"
+              SelectedIndexChanged="GraphMotorSpeedThresholds_SelectedIndexChanged">
+
+      </Picker>
+    </Border>
+
+
+    <Label Grid.Row="4" Grid.Column="0"
+           Text="Yellow Max Threshold"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="GraphMotorSpeedYellowMaxThresholdlabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="4" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="GraphMotorSpeedYellowMaxThreshold" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="GraphMotorSpeedYellowMaxThreshold_TextChanged"
+             Completed="GraphMotorSpeedYellowMaxThreshold_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="5" Grid.Column="0"
+           Text="Red Max Threshold"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="GraphMotorSpeedRedMaxThresholdlabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="5" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="GraphMotorSpeedRedMaxThreshold" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="GraphMotorSpeedRedMaxThreshold_TextChanged"
+             Completed="GraphMotorSpeedRedMaxThreshold_Completed"/>
+    </Border>
+
+
+  </Grid>
+
 </ContentPage>

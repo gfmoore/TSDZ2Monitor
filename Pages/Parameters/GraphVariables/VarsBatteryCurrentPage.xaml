@@ -4,4 +4,224 @@
              x:Class="TSDZ2Monitor.Pages.Parameters.GraphVariables.VarsBatteryCurrentPage"
              Title="Vars Battery Current">
 
+  <Grid RowDefinitions="60,60,60,60,60,60"
+        ColumnDefinitions="220,*"
+        Margin="5,0,0,0">
+
+    <Label Grid.Row="0" Grid.Column="0"
+           Text="Graph Auto Max/Min?"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnGraphBatteryCurrentAutoMaxMinlabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Switch Grid.Row="0" Grid.Column="1" 
+            x:Name="GraphBatteryCurrentAutoMaxMin"
+            Toggled="GraphBatteryCurrentAutoMaxMin_Toggled"
+            Margin="0,0,20,15"/>
+
+
+    <Label Grid.Row="1" Grid.Column="0"
+           Text="Graph Minimum"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="GraphBatteryCurrentMinlabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="1" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="GraphBatteryCurrentMin" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="GraphBatteryCurrentMin_TextChanged"
+             Completed="GraphBatteryCurrentMin_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="2" Grid.Column="0"
+           Text="Graph Maximum"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="GraphBatteryCurrentMaxlabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="2" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="GraphBatteryCurrentMax" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="GraphBatteryCurrentMax_TextChanged"
+             Completed="GraphBatteryCurrentMax_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="3" Grid.Column="0"
+           Text="Thresholds"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnGraphBatteryCurrentThresholdslabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="3" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Picker x:Name="GraphBatteryCurrentThresholds"
+              FontSize="20"
+              TextColor="LightGreen"
+              Margin="15,0,0,0"
+              SelectedIndexChanged="GraphBatteryCurrentThresholds_SelectedIndexChanged">
+
+      </Picker>
+    </Border>
+
+
+    <Label Grid.Row="4" Grid.Column="0"
+           Text="Yellow Max Threshold"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="GraphBatteryCurrentYellowMaxThresholdlabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="4" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="GraphBatteryCurrentYellowMaxThreshold" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="GraphBatteryCurrentYellowMaxThreshold_TextChanged"
+             Completed="GraphBatteryCurrentYellowMaxThreshold_Completed"/>
+    </Border>
+
+
+    <Label Grid.Row="5" Grid.Column="0"
+           Text="Red Max Threshold"
+           TextColor="White"
+           FontSize="20" 
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start" 
+           HeightRequest="50"
+           Margin="0,0,0,0"
+           Padding="0,0,0,0">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Tapped="GraphBatteryCurrentRedMaxThresholdlabelTapped"
+                              NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+
+    <Border Grid.Row="5" Grid.Column="1" 
+            HeightRequest="50" 
+            WidthRequest="150"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            BackgroundColor="Black"
+            StrokeThickness="1.2"
+            Stroke="Yellow"
+            StrokeShape="RoundRectangle 10,10,10,10">
+      <Entry x:Name="GraphBatteryCurrentRedMaxThreshold" 
+             Text=""
+             TextColor="LightGreen"
+             FontSize="20" 
+             Margin ="0,0,0,0" 
+             VerticalTextAlignment="Start"
+             HorizontalTextAlignment="Start"
+             WidthRequest="120"
+             HeightRequest="50"
+             ClearButtonVisibility="WhileEditing"
+             Keyboard="Numeric"
+             TextChanged="GraphBatteryCurrentRedMaxThreshold_TextChanged"
+             Completed="GraphBatteryCurrentRedMaxThreshold_Completed"/>
+    </Border>
+
+
+  </Grid>
 </ContentPage>

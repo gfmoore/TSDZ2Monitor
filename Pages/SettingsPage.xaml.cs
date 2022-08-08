@@ -182,5 +182,104 @@ public partial class SettingsPage : ContentPage
     Preferences.Get("AssistLevelWalk8", p.AssistLevelWalk8);
     Preferences.Get("AssistLevelWalk9", p.AssistLevelWalk9);
     Preferences.Get("AssistLevelWalkCruiseControl", p.AssistLevelWalkCruiseControl);
+    
+    Preferences.Get("GraphBatteryCurrentAutoMaxMin", p.GraphBatteryCurrentAutoMaxMin);
+    Preferences.Get("GraphBatteryCurrentMin", p.GraphBatteryCurrentMin);
+    Preferences.Get("GraphBatteryCurrentMax", p.GraphBatteryCurrentMax);
+    Preferences.Get("GraphBatteryCurrentThresholds", p.GraphBatteryCurrentThresholds);
+    Preferences.Get("GraphBatteryCurrentYellowMaxThreshold", p.GraphBatteryCurrentYellowMaxThreshold);
+    Preferences.Get("GraphBatteryCurrentRedMaxThreshold", p.GraphBatteryCurrentRedMaxThreshold);
+
+    Preferences.Get("GraphBatteryVoltageAutoMaxMin", p.GraphBatteryVoltageAutoMaxMin);
+    Preferences.Get("GraphBatteryVoltageMin", p.GraphBatteryVoltageMin);
+    Preferences.Get("GraphBatteryVoltageMax", p.GraphBatteryVoltageMax);
+    Preferences.Get("GraphBatteryVoltageThresholds", p.GraphBatteryVoltageThresholds);
+    Preferences.Get("GraphBatteryVoltageYellowMaxThreshold", p.GraphBatteryVoltageYellowMaxThreshold);
+    Preferences.Get("GraphBatteryVoltageRedMaxThreshold", p.GraphBatteryVoltageRedMaxThreshold);
+
+    Preferences.Get("GraphBatterySoCAutoMaxMin", p.GraphBatterySoCAutoMaxMin);
+    Preferences.Get("GraphBatterySoCMin", p.GraphBatterySoCMin);
+    Preferences.Get("GraphBatterySoCMax", p.GraphBatterySoCMax);
+    Preferences.Get("GraphBatterySoCThresholds", p.GraphBatterySoCThresholds);
+    Preferences.Get("GraphBatterySoCYellowMaxThreshold", p.GraphBatterySoCYellowMaxThreshold);
+    Preferences.Get("GraphBatterySoCRedMaxThreshold", p.GraphBatterySoCRedMaxThreshold);
+
+    Preferences.Get("GraphMotorCurrentAutoMaxMin", p.GraphMotorCurrentAutoMaxMin);
+    Preferences.Get("GraphMotorCurrentMin", p.GraphMotorCurrentMin);
+    Preferences.Get("GraphMotorCurrentMax", p.GraphMotorCurrentMax);
+    Preferences.Get("GraphMotorCurrentThresholds", p.GraphMotorCurrentThresholds);
+    Preferences.Get("GraphMotorCurrentYellowMaxThreshold", p.GraphMotorCurrentYellowMaxThreshold);
+    Preferences.Get("GraphMotorCurrentRedMaxThreshold", p.GraphMotorCurrentRedMaxThreshold);
+
+    Preferences.Get("GraphMotorTemperatureAutoMaxMin", p.GraphMotorTemperatureAutoMaxMin);
+    Preferences.Get("GraphMotorTemperatureMin", p.GraphMotorTemperatureMin);
+    Preferences.Get("GraphMotorTemperatureMax", p.GraphMotorTemperatureMax);
+    Preferences.Get("GraphMotorTemperatureThresholds", p.GraphMotorTemperatureThresholds);
+    Preferences.Get("GraphMotorTemperatureYellowMaxThreshold", p.GraphMotorTemperatureYellowMaxThreshold);
+    Preferences.Get("GraphMotorTemperatureRedMaxThreshold", p.GraphMotorTemperatureRedMaxThreshold);
+
+    Preferences.Get("GraphMotorSpeedAutoMaxMin", p.GraphMotorSpeedAutoMaxMin);
+    Preferences.Get("GraphMotorSpeedMin", p.GraphMotorSpeedMin);
+    Preferences.Get("GraphMotorSpeedMax", p.GraphMotorSpeedMax);
+    Preferences.Get("GraphMotorSpeedThresholds", p.GraphMotorSpeedThresholds);
+    Preferences.Get("GraphMotorSpeedYellowMaxThreshold", p.GraphMotorSpeedYellowMaxThreshold);
+    Preferences.Get("GraphMotorSpeedRedMaxThreshold", p.GraphMotorSpeedRedMaxThreshold);
+
+    Preferences.Get("GraphMotorPWMAutoMaxMin", p.GraphMotorPWMAutoMaxMin);
+    Preferences.Get("GraphMotorPWMMin", p.GraphMotorPWMMin);
+    Preferences.Get("GraphMotorPWMMax", p.GraphMotorPWMMax);
+    Preferences.Get("GraphMotorPWMThresholds", p.GraphMotorPWMThresholds);
+    Preferences.Get("GraphMotorPWMYellowMaxThreshold", p.GraphMotorPWMYellowMaxThreshold);
+    Preferences.Get("GraphMotorPWMRedMaxThreshold", p.GraphMotorPWMRedMaxThreshold);
+
+    Preferences.Get("GraphMotorFOCAutoMaxMin", p.GraphMotorFOCAutoMaxMin);
+    Preferences.Get("GraphMotorFOCMin", p.GraphMotorFOCMin);
+    Preferences.Get("GraphMotorFOCMax", p.GraphMotorFOCMax);
+    Preferences.Get("GraphMotorFOCThresholds", p.GraphMotorFOCThresholds);
+    Preferences.Get("GraphMotorFOCYellowMaxThreshold", p.GraphMotorFOCYellowMaxThreshold);
+    Preferences.Get("GraphMotorFOCRedMaxThreshold", p.GraphMotorFOCRedMaxThreshold);
+
+    Preferences.Get("GraphSpeedAutoMaxMin", p.GraphSpeedAutoMaxMin);
+    Preferences.Get("GraphSpeedMin", p.GraphSpeedMin);
+    Preferences.Get("GraphSpeedMax", p.GraphSpeedMax);
+    Preferences.Get("GraphSpeedThresholds", p.GraphSpeedThresholds);
+    Preferences.Get("GraphSpeedYellowMaxThreshold", p.GraphSpeedYellowMaxThreshold);
+    Preferences.Get("GraphSpeedRedMaxThreshold", p.GraphSpeedRedMaxThreshold);
+
+    Preferences.Get("GraphTripDistanceAutoMaxMin", p.GraphTripDistanceAutoMaxMin);
+    Preferences.Get("GraphTripDistanceMin", p.GraphTripDistanceMin);
+    Preferences.Get("GraphTripDistanceMax", p.GraphTripDistanceMax);
+    Preferences.Get("GraphTripDistanceThresholds", p.GraphTripDistanceThresholds);
+    Preferences.Get("GraphTripDistanceYellowMaxThreshold", p.GraphTripDistanceYellowMaxThreshold);
+    Preferences.Get("GraphTripDistanceRedMaxThreshold", p.GraphTripDistanceRedMaxThreshold);
+
+    Preferences.Get("GraphCadenceAutoMaxMin", p.GraphCadenceAutoMaxMin);
+    Preferences.Get("GraphCadenceMin", p.GraphCadenceMin);
+    Preferences.Get("GraphCadenceMax", p.GraphCadenceMax);
+    Preferences.Get("GraphCadenceThresholds", p.GraphCadenceThresholds);
+    Preferences.Get("GraphCadenceYellowMaxThreshold", p.GraphCadenceYellowMaxThreshold);
+    Preferences.Get("GraphCadenceRedMaxThreshold", p.GraphCadenceRedMaxThreshold);
+
+    Preferences.Get("GraphHumanPowerAutoMaxMin", p.GraphHumanPowerAutoMaxMin);
+    Preferences.Get("GraphHumanPowerMin", p.GraphHumanPowerMin);
+    Preferences.Get("GraphHumanPowerMax", p.GraphHumanPowerMax);
+    Preferences.Get("GraphHumanPowerThresholds", p.GraphHumanPowerThresholds);
+    Preferences.Get("GraphHumanPowerYellowMaxThreshold", p.GraphHumanPowerYellowMaxThreshold);
+    Preferences.Get("GraphHumanPowerRedMaxThreshold", p.GraphHumanPowerRedMaxThreshold);
+
+    Preferences.Get("GraphMotorPowerAutoMaxMin", p.GraphMotorPowerAutoMaxMin);
+    Preferences.Get("GraphMotorPowerMin", p.GraphMotorPowerMin);
+    Preferences.Get("GraphMotorPowerMax", p.GraphMotorPowerMax);
+    Preferences.Get("GraphMotorPowerThresholds", p.GraphMotorPowerThresholds);
+    Preferences.Get("GraphMotorPowerYellowMaxThreshold", p.GraphMotorPowerYellowMaxThreshold);
+    Preferences.Get("GraphMotorPowerRedMaxThreshold", p.GraphMotorPowerRedMaxThreshold);
+
+    Preferences.Get("GraphWattsPerKmAutoMaxMin", p.GraphWattsPerKmAutoMaxMin);
+    Preferences.Get("GraphWattsPerKmMin", p.GraphWattsPerKmMin);
+    Preferences.Get("GraphWattsPerKmMax", p.GraphWattsPerKmMax);
+    Preferences.Get("GraphWattsPerKmThresholds", p.GraphWattsPerKmThresholds);
+    Preferences.Get("GraphWattsPerKmYellowMaxThreshold", p.GraphWattsPerKmYellowMaxThreshold);
+    Preferences.Get("GraphWattsPerKmRedMaxThreshold", p.GraphWattsPerKmRedMaxThreshold);
+
   }
 }

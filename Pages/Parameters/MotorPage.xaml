@@ -180,7 +180,7 @@
     <Switch Grid.Row="4" Grid.Column="1" 
             x:Name="MotorFastStop"
             Toggled="MotorFastStop_Toggled"
-            Margin="0,0,0,15"/>
+            Margin="0,0,20,15"/>
 
 
     <Label Grid.Row="5" Grid.Column="0"
@@ -201,7 +201,7 @@
     <Switch Grid.Row="5" Grid.Column="1" 
             x:Name="MotorFieldWeakening" 
             Toggled="MotorFieldWeakening_Toggled"
-            Margin="0,0,0,15"/>
+            Margin="0,0,20,15"/>
 
   </Grid>
 </ContentPage>

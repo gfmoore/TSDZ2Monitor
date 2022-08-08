@@ -43,7 +43,7 @@ public partial class MotorPage : ContentPage
     }
   }
 
-
+  //------------Motor Voltage----------------------------------------------- 
   private void MotorVoltage_SelectedIndexChanged(object sender, EventArgs e)
   {
     var picker = (Picker)sender;

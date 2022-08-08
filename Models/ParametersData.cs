@@ -161,4 +161,103 @@ public class ParametersData
   public string AssistLevelWalk8 { get; set; }
   public string AssistLevelWalk9 { get; set; }
   public string AssistLevelWalkCruiseControl { get; set; }
+
+  //Graph data
+  public string GraphBatteryCurrentAutoMaxMin { get; set; }
+  public string GraphBatteryCurrentMin { get; set; }
+  public string GraphBatteryCurrentMax { get; set; }
+  public string GraphBatteryCurrentThresholds { get; set; }
+  public string GraphBatteryCurrentYellowMaxThreshold { get; set; }
+  public string GraphBatteryCurrentRedMaxThreshold { get; set; }
+
+  public string GraphBatteryVoltageAutoMaxMin { get; set; }
+  public string GraphBatteryVoltageMin { get; set; }
+  public string GraphBatteryVoltageMax { get; set; }
+  public string GraphBatteryVoltageThresholds { get; set; }
+  public string GraphBatteryVoltageYellowMaxThreshold { get; set; }
+  public string GraphBatteryVoltageRedMaxThreshold { get; set; }
+
+  public string GraphBatterySoCAutoMaxMin { get; set; }
+  public string GraphBatterySoCMin { get; set; }
+  public string GraphBatterySoCMax { get; set; }
+  public string GraphBatterySoCThresholds { get; set; }
+  public string GraphBatterySoCYellowMaxThreshold { get; set; }
+  public string GraphBatterySoCRedMaxThreshold { get; set; }
+
+  public string GraphMotorCurrentAutoMaxMin { get; set; }
+  public string GraphMotorCurrentMin { get; set; }
+  public string GraphMotorCurrentMax { get; set; }
+  public string GraphMotorCurrentThresholds { get; set; }
+  public string GraphMotorCurrentYellowMaxThreshold { get; set; }
+  public string GraphMotorCurrentRedMaxThreshold { get; set; }
+
+  public string GraphMotorTemperatureAutoMaxMin { get; set; }
+  public string GraphMotorTemperatureMin { get; set; }
+  public string GraphMotorTemperatureMax { get; set; }
+  public string GraphMotorTemperatureThresholds { get; set; }
+  public string GraphMotorTemperatureYellowMaxThreshold { get; set; }
+  public string GraphMotorTemperatureRedMaxThreshold { get; set; }
+
+  public string GraphMotorSpeedAutoMaxMin { get; set; }
+  public string GraphMotorSpeedMin { get; set; }
+  public string GraphMotorSpeedMax { get; set; }
+  public string GraphMotorSpeedThresholds { get; set; }
+  public string GraphMotorSpeedYellowMaxThreshold { get; set; }
+  public string GraphMotorSpeedRedMaxThreshold { get; set; }
+
+  public string GraphMotorPWMAutoMaxMin { get; set; }
+  public string GraphMotorPWMMin { get; set; }
+  public string GraphMotorPWMMax { get; set; }
+  public string GraphMotorPWMThresholds { get; set; }
+  public string GraphMotorPWMYellowMaxThreshold { get; set; }
+  public string GraphMotorPWMRedMaxThreshold { get; set; }
+
+  public string GraphMotorFOCAutoMaxMin { get; set; }
+  public string GraphMotorFOCMin { get; set; }
+  public string GraphMotorFOCMax { get; set; }
+  public string GraphMotorFOCThresholds { get; set; }
+  public string GraphMotorFOCYellowMaxThreshold { get; set; }
+  public string GraphMotorFOCRedMaxThreshold { get; set; }
+
+  public string GraphSpeedAutoMaxMin { get; set; }
+  public string GraphSpeedMin { get; set; }
+  public string GraphSpeedMax { get; set; }
+  public string GraphSpeedThresholds { get; set; }
+  public string GraphSpeedYellowMaxThreshold { get; set; }
+  public string GraphSpeedRedMaxThreshold { get; set; }
+
+  public string GraphTripDistanceAutoMaxMin { get; set; }
+  public string GraphTripDistanceMin { get; set; }
+  public string GraphTripDistanceMax { get; set; }
+  public string GraphTripDistanceThresholds { get; set; }
+  public string GraphTripDistanceYellowMaxThreshold { get; set; }
+  public string GraphTripDistanceRedMaxThreshold { get; set; }
+
+  public string GraphCadenceAutoMaxMin { get; set; }
+  public string GraphCadenceMin { get; set; }
+  public string GraphCadenceMax { get; set; }
+  public string GraphCadenceThresholds { get; set; }
+  public string GraphCadenceYellowMaxThreshold { get; set; }
+  public string GraphCadenceRedMaxThreshold { get; set; }
+
+  public string GraphHumanPowerAutoMaxMin { get; set; }
+  public string GraphHumanPowerMin { get; set; }
+  public string GraphHumanPowerMax { get; set; }
+  public string GraphHumanPowerThresholds { get; set; }
+  public string GraphHumanPowerYellowMaxThreshold { get; set; }
+  public string GraphHumanPowerRedMaxThreshold { get; set; }
+
+  public string GraphMotorPowerAutoMaxMin { get; set; }
+  public string GraphMotorPowerMin { get; set; }
+  public string GraphMotorPowerMax { get; set; }
+  public string GraphMotorPowerThresholds { get; set; }
+  public string GraphMotorPowerYellowMaxThreshold { get; set; }
+  public string GraphMotorPowerRedMaxThreshold { get; set; }
+
+  public string GraphWattsPerKmAutoMaxMin { get; set; }
+  public string GraphWattsPerKmMin { get; set; }
+  public string GraphWattsPerKmMax { get; set; }
+  public string GraphWattsPerKmThresholds { get; set; }
+  public string GraphWattsPerKmYellowMaxThreshold { get; set; }
+  public string GraphWattsPerKmRedMaxThreshold { get; set; }
 }

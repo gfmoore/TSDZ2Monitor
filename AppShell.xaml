@@ -83,13 +83,6 @@
   </Shell.MenuItemTemplate>
 
 
-
-  <MenuItem 
-    Text="Parameters"
-    IconImageSource="parameters.svg"
-    Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
-    Command="{Binding DisplayParametersCommand}" />
-
   <ShellContent 
     Title="Display"
     Icon="speedometer.svg"
@@ -107,10 +100,13 @@
     Icon="bluetooth.svg"
     Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
     ContentTemplate="{DataTemplate pages:BluetoothPage}" />
-  
 
-  
-  
+  <MenuItem 
+    Text="Parameters"
+    IconImageSource="parameters.svg"
+    Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
+    Command="{Binding DisplayParametersCommand}" />
+
   <ShellContent 
     Title="Settings"
     Icon="settings.svg"
@@ -252,7 +248,12 @@
     Title="Battery Voltage Graph"
     Shell.FlyoutItemIsVisible="{Binding ShowGraphParameters}"
     ContentTemplate="{DataTemplate graphvariables:VarsBatteryVoltagePage}" />
-  
+
+  <ShellContent 
+    Title="Battery SoC Graph"
+    Shell.FlyoutItemIsVisible="{Binding ShowGraphParameters}"
+    ContentTemplate="{DataTemplate graphvariables:VarsBatterySoCPage}" />
+
   <ShellContent 
     Title="Cedence Graph"
     Shell.FlyoutItemIsVisible="{Binding ShowGraphParameters}"
@@ -302,10 +303,15 @@
     Title="Trip Distance Graph"
     Shell.FlyoutItemIsVisible="{Binding ShowGraphParameters}"
     ContentTemplate="{DataTemplate graphvariables:VarsTripDistancePage}" />
-  
+
+  <ShellContent 
+    Title="Cadence Graph"
+    Shell.FlyoutItemIsVisible="{Binding ShowGraphParameters}"
+    ContentTemplate="{DataTemplate graphvariables:VarsCadencePage}" />
+
   <ShellContent 
     Title="Watts / Km Graph"
     Shell.FlyoutItemIsVisible="{Binding ShowGraphParameters}"
-    ContentTemplate="{DataTemplate graphvariables:VarsWattsKmPage}" />
+    ContentTemplate="{DataTemplate graphvariables:VarsWattsPerKmPage}" />
   
 </Shell>

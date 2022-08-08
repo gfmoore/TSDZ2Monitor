@@ -75,8 +75,8 @@
 	  <Compile Update="Pages\Parameters\AssistLevels\AssistLevelWalkPage.xaml.cs">
 	    <DependentUpon>AssistLevelWalkPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\Parameters\xGraphVariablesPage.xaml.cs">
-	    <DependentUpon>xGraphVariablesPage.xaml</DependentUpon>
+	  <Compile Update="Pages\Parameters\GraphVariables\VarsWattsPerKmPage.xaml.cs">
+	    <DependentUpon>VarsWattsPerKmPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\TracksPage.xaml.cs">
 	    <DependentUpon>TracksPage.xaml</DependentUpon>
@@ -162,7 +162,7 @@
 	  <MauiXaml Update="Pages\Parameters\GraphVariables\VarsTripDistancePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Parameters\GraphVariables\VarsWattsKmPage.xaml">
+	  <MauiXaml Update="Pages\Parameters\GraphVariables\VarsWattsPerKmPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Parameters\MotorPage.xaml">
@@ -187,9 +187,6 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Parameters\TripMemoriesPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\Parameters\xGraphVariablesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Parameters\VariousPage.xaml">
