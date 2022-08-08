@@ -66,6 +66,21 @@
 	  <Compile Update="Pages\BluetoothPage.xaml.cs">
 	    <DependentUpon>BluetoothPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\Display6Page.xaml.cs">
+	    <DependentUpon>Display6Page.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Display5Page.xaml.cs">
+	    <DependentUpon>Display5Page.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Display4Page.xaml.cs">
+	    <DependentUpon>Display4Page.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Display3Page.xaml.cs">
+	    <DependentUpon>Display3Page.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Display2Page.xaml.cs">
+	    <DependentUpon>Display2Page.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\Dummy.xaml.cs">
 	    <DependentUpon>Dummy.xaml</DependentUpon>
 	  </Compile>
@@ -91,6 +106,21 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\BluetoothPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Display6Page.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Display5Page.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Display4Page.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Display3Page.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Display2Page.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\DisplayPage.xaml">

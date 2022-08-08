@@ -20,26 +20,39 @@ public static class MauiProgram
 
 
     builder.Services.AddTransient<DisplayPage>();
+    builder.Services.AddTransient<Display2Page>();
+    builder.Services.AddTransient<Display3Page>();
+    builder.Services.AddTransient<Display4Page>();
+    builder.Services.AddTransient<Display5Page>();
+    builder.Services.AddTransient<Display6Page>();
+
+    builder.Services.AddTransient<DisplayPageViewModel>();
+    builder.Services.AddTransient<Display2PageViewModel>();
+    builder.Services.AddTransient<Display3PageViewModel>();
+    builder.Services.AddTransient<Display4PageViewModel>();
+    builder.Services.AddTransient<Display5PageViewModel>();
+    builder.Services.AddTransient<Display6PageViewModel>();
+
 
     builder.Services.AddTransient<BluetoothPage>();
     builder.Services.AddTransient<BluetoothDetailPage>();
 
+    builder.Services.AddTransient<BluetoothPeripheralsViewModel>();
+    builder.Services.AddTransient<BluetoothPeripheralsDetailViewModel>();
+
+
     builder.Services.AddTransient<TracksPage>();
     builder.Services.AddTransient<TracksListPage>();
+
+    builder.Services.AddTransient<TracksViewModel>();
+    builder.Services.AddTransient<TracksListViewModel>();
+
 
     builder.Services.AddTransient<ParametersPage>();
     builder.Services.AddTransient<SettingsPage>();
     builder.Services.AddTransient<AboutPage>();
 
     builder.Services.AddTransient<ControlMenuViewModel>();
-
-    builder.Services.AddTransient<DisplayPageViewModel>();
-
-    builder.Services.AddTransient<BluetoothPeripheralsViewModel>();
-    builder.Services.AddTransient<BluetoothPeripheralsDetailViewModel>();
-
-    builder.Services.AddTransient<TracksViewModel>();
-    builder.Services.AddTransient<TracksListViewModel>();
 
     return builder.Build();
 	}
