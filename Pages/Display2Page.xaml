@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:TSDZ2Monitor.ViewModels"
+             xmlns:local2="clr-namespace:TSDZ2Monitor.Classes"
              x:Class="TSDZ2Monitor.Pages.Display2Page"
              Title="Display 2">
   
@@ -9,144 +10,173 @@
     <local:Display2PageViewModel />
   </ContentPage.BindingContext>
 
-  <Grid RowDefinitions="*">
-    <Border Grid.Row="0"
+  <local2:SwipeContainer Swipe="OnSwiped">
+    <Grid RowDefinitions="*, 50">
+      <Border Grid.Row="0"
             Stroke="Green"
             StrokeThickness="2"
             StrokeShape="RoundRectangle 10,10,10,10"
             Background="Black"
             Margin="5,0,5,0"
             Padding="5,5,5,5">
-      
-      <Grid RowDefinitions="35,35,35,35,35,35,35,35"
+
+        <Grid RowDefinitions="35,35,35,35,35,35,35,35"
             RowSpacing="5" >
 
-        <Grid Grid.Row="0"
+          <Grid Grid.Row="0"
               ColumnDefinitions="220, 200"
               ColumnSpacing="5" >
-          
-          <Label Grid.Column="0" 
+
+            <Label Grid.Column="0" 
                  Text="HRM" 
                  TextColor="White"
                  FontSize="20"/>
 
-          <Label Grid.Column="1" 
+            <Label Grid.Column="1" 
                  Text="{Binding BTData.HRM}"
                  TextColor="LightGreen"
-                 FontSize="20"/>             
-        </Grid>
+                 FontSize="20"/>
+          </Grid>
 
 
-        <Grid Grid.Row="1"
+          <Grid Grid.Row="1"
               ColumnDefinitions="220, 200"
               ColumnSpacing="5" >
 
-          <Label Grid.Column="0" 
+            <Label Grid.Column="0" 
                  Text="HRR" 
                  TextColor="White"
                  FontSize="20"/>
 
-          <Label Grid.Column="1" 
+            <Label Grid.Column="1" 
                  Text="{Binding BTData.HRR, StringFormat='{}{0:0.0000}'}"
                  TextColor="Yellow"
                  FontSize="20"/>
-        </Grid>
+          </Grid>
 
 
-        <Grid Grid.Row="2"
+          <Grid Grid.Row="2"
               ColumnDefinitions="220, 100"
               ColumnSpacing="5" >
 
-          <Label Grid.Column="0" 
+            <Label Grid.Column="0" 
                  Text="SPD Wheel Revolutions" 
                  TextColor="White"
                  FontSize="20"/>
 
-          <Label Grid.Column="1" 
+            <Label Grid.Column="1" 
                  Text="{Binding BTData.SPDWheelRevolutions}"
                  TextColor="Yellow"
                  FontSize="20"/>
-        </Grid>
+          </Grid>
 
 
-        <Grid Grid.Row="3"
+          <Grid Grid.Row="3"
               ColumnDefinitions="220, 200"
               ColumnSpacing="5" >
 
-          <Label Grid.Column="0" 
+            <Label Grid.Column="0" 
                  Text="SPD Wheel Event Time" 
                  TextColor="White"
                  FontSize="20"/>
 
-          <Label Grid.Column="1" 
+            <Label Grid.Column="1" 
                  Text="{Binding BTData.SPDWheelEventTime, StringFormat='{}{0:0.0000}'}"
                  TextColor="Yellow"
                  FontSize="20"/>
-        </Grid>
+          </Grid>
 
-        <Grid Grid.Row="4"
+          <Grid Grid.Row="4"
               ColumnDefinitions="220, 200"
               ColumnSpacing="5" >
 
-          <Label Grid.Column="0" 
+            <Label Grid.Column="0" 
                  Text="Wheel RPM" 
                  TextColor="White"
                  FontSize="20"/>
 
-          <Label Grid.Column="1" 
+            <Label Grid.Column="1" 
                  Text="{Binding BTData.WheelRPM, StringFormat='{}{0:0.0000}'}"
                  TextColor="LightGreen"
                  FontSize="20"/>
-        </Grid>
+          </Grid>
 
-        <Grid Grid.Row="5"
+          <Grid Grid.Row="5"
               ColumnDefinitions="220, 200"
               ColumnSpacing="5" >
 
-          <Label Grid.Column="0" 
+            <Label Grid.Column="0" 
                  Text="CAD Crank Revolutions" 
                  TextColor="White"
                  FontSize="20"/>
 
-          <Label Grid.Column="1" 
+            <Label Grid.Column="1" 
                  Text="{Binding BTData.CADCrankRevolutions}"
                  TextColor="Yellow"
                  FontSize="20"/>
-        </Grid>
+          </Grid>
 
 
-        <Grid Grid.Row="6"
+          <Grid Grid.Row="6"
               ColumnDefinitions="220, 200"
               ColumnSpacing="5" >
 
-          <Label Grid.Column="0" 
+            <Label Grid.Column="0" 
                  Text="CAD Crank Event Time" 
                  TextColor="White"
                  FontSize="20"/>
 
-          <Label Grid.Column="1" 
+            <Label Grid.Column="1" 
                  Text="{Binding BTData.CADCrankEventTime, StringFormat='{}{0:0.0000}'}"
                  TextColor="Yellow"
                  FontSize="20"/>
-        </Grid>
+          </Grid>
 
-        <Grid Grid.Row="7"
+          <Grid Grid.Row="7"
               ColumnDefinitions="220, 200"
               ColumnSpacing="5" >
 
-          <Label Grid.Column="0" 
+            <Label Grid.Column="0" 
                  Text="Cadence RPM" 
                  TextColor="White"
                  FontSize="20"/>
 
-          <Label Grid.Column="1" 
+            <Label Grid.Column="1" 
                  Text="{Binding BTData.Cadence, StringFormat='{}{0:0.0000}'}"
                  TextColor="LightGreen"
                  FontSize="20"/>
+          </Grid>
+
         </Grid>
 
-      </Grid>
+      </Border>
 
-    </Border>
-  </Grid>
+      <Button Grid.Row="1" 
+            Text="L"
+            TextColor="White"
+            BackgroundColor="Green"
+            FontSize="15"
+            WidthRequest="40"
+            HeightRequest="30"
+            CornerRadius="5" 
+            VerticalOptions="End"
+            HorizontalOptions="Start"
+            Padding="0,0,0,0"
+            Command="{Binding PrevPageCommand}"/>
+
+      <Button Grid.Row="1" 
+            Text="R"
+            TextColor="White"
+            BackgroundColor="Green"
+            FontSize="15"
+            WidthRequest="40"
+            HeightRequest="30"
+            CornerRadius="5" 
+            VerticalOptions="End"
+            HorizontalOptions="End"
+            Padding="0,0,0,0"
+            Command="{Binding NextPageCommand}"/>
+
+    </Grid>
+  </local2:SwipeContainer>
 </ContentPage>

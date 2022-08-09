@@ -19,14 +19,14 @@ public static class MauiProgram
     builder.Services.AddSingleton<IGeolocation>(Geolocation.Default);
 
 
-    builder.Services.AddTransient<DisplayPage>();
+    builder.Services.AddTransient<Display1Page>();
     builder.Services.AddTransient<Display2Page>();
     builder.Services.AddTransient<Display3Page>();
     builder.Services.AddTransient<Display4Page>();
     builder.Services.AddTransient<Display5Page>();
     builder.Services.AddTransient<Display6Page>();
 
-    builder.Services.AddTransient<DisplayPageViewModel>();
+    builder.Services.AddTransient<Display1PageViewModel>();
     builder.Services.AddTransient<Display2PageViewModel>();
     builder.Services.AddTransient<Display3PageViewModel>();
     builder.Services.AddTransient<Display4PageViewModel>();

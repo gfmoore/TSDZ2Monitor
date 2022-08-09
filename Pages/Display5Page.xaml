@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:TSDZ2Monitor.ViewModels"
+             xmlns:local2="clr-namespace:TSDZ2Monitor.Classes"
              x:Class="TSDZ2Monitor.Pages.Display5Page"
              Title="Display 5">
   
@@ -9,7 +10,33 @@
     <local:Display5PageViewModel />
   </ContentPage.BindingContext>
 
-  <Grid RowDefinitions="*">
-    
-  </Grid>
+  <local2:SwipeContainer Swipe="OnSwiped">
+    <Grid RowDefinitions="*, 30">
+      <Button Grid.Row="1" 
+              Text="L"
+              TextColor="White"
+              BackgroundColor="Green"
+              FontSize="15"
+              WidthRequest="40"
+              HeightRequest="30"
+              CornerRadius="5" 
+              VerticalOptions="End"
+              HorizontalOptions="Start"
+              Padding="0,0,0,0"
+              Command="{Binding PrevPageCommand}"/>
+
+      <Button Grid.Row="1" 
+              Text="R"
+              TextColor="White"
+              BackgroundColor="Green"
+              FontSize="15"
+              WidthRequest="40"
+              HeightRequest="30"
+              CornerRadius="5" 
+              VerticalOptions="End"
+              HorizontalOptions="End"
+              Padding="0,0,0,0"
+              Command="{Binding NextPageCommand}"/>
+    </Grid>
+  </local2:SwipeContainer>
 </ContentPage>

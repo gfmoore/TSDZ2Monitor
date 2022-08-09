@@ -87,7 +87,7 @@
     Title="Display"
     Icon="speedometer.svg"
     Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
-    ContentTemplate="{DataTemplate pages:DisplayPage}" />
+    ContentTemplate="{DataTemplate pages:Display1Page}" />
 
   <ShellContent 
     Title="Tracks"

@@ -81,6 +81,9 @@
 	  <Compile Update="Pages\Display2Page.xaml.cs">
 	    <DependentUpon>Display2Page.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\Display1Page.xaml.cs">
+	    <DependentUpon>Display1Page.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\Dummy.xaml.cs">
 	    <DependentUpon>Dummy.xaml</DependentUpon>
 	  </Compile>
@@ -123,7 +126,7 @@
 	  <MauiXaml Update="Pages\Display2Page.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\DisplayPage.xaml">
+	  <MauiXaml Update="Pages\Display1Page.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Dummy.xaml">

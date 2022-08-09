@@ -3,16 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:TSDZ2Monitor.ViewModels"
              xmlns:local2="clr-namespace:TSDZ2Monitor.Classes"
-             x:Class="TSDZ2Monitor.Pages.Display4Page"
-             Title="Display 4">
+             x:Class="TSDZ2Monitor.Pages.Display1Page"
+             Title="Display Page">
   
   <ContentPage.BindingContext>
-    <local:Display4PageViewModel />
+    <local:Display1PageViewModel />
   </ContentPage.BindingContext>
 
   <local2:SwipeContainer Swipe="OnSwiped">
-    <Grid RowDefinitions="*, 30">
-      <Button Grid.Row="1" 
+    <Grid RowDefinitions="*,30">
+      <!--<Button Grid.Row="1" 
               Text="L"
               TextColor="White"
               BackgroundColor="Green"
@@ -23,7 +23,7 @@
               VerticalOptions="End"
               HorizontalOptions="Start"
               Padding="0,0,0,0"
-              Command="{Binding PrevPageCommand}"/>
+              Command="{Binding PrevPageCommand}"/>-->
 
       <Button Grid.Row="1" 
               Text="R"
@@ -37,6 +37,9 @@
               HorizontalOptions="End"
               Padding="0,0,0,0"
               Command="{Binding NextPageCommand}"/>
-    </Grid>
+
+    </Grid>    
   </local2:SwipeContainer>
+  
+
 </ContentPage>

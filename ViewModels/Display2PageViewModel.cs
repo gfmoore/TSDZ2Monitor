@@ -27,5 +27,21 @@ public partial class Display2PageViewModel : ObservableObject
   [ObservableProperty]
   private BluetoothData bTData;
 
+  [RelayCommand]
+  public async void PrevPage()
+  {
+    await Shell.Current.GoToAsync("..");
+  }
+
+  [RelayCommand]
+  public async void NextPage()
+  {
+    //navigate to next page
+    var navigationParameter = new Dictionary<string, object>
+    {
+        { "TestData", "Test Data" }
+    };
+    await Shell.Current.GoToAsync(nameof(Display3Page), true, navigationParameter);
+  }
 
 }
