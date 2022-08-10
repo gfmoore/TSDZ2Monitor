@@ -29,3 +29,6 @@ global using Location = Microsoft.Maui.Devices.Sensors.Location;
 
 global using System.Text.Json;
 global using System.Text.RegularExpressions;
+
+global using Microsoft.Maui.Graphics;
+global using Microsoft.Maui.Graphics.Skia;

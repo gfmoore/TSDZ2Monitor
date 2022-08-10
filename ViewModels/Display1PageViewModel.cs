@@ -7,6 +7,13 @@ public partial class Display1PageViewModel : ObservableObject
 
   }
 
+  [RelayCommand]
+  public void DoIt()
+  {
+    Debug.WriteLine("heyupski");
+
+  }
+
 
   //[RelayCommand]
   //public async void PrevPage()
