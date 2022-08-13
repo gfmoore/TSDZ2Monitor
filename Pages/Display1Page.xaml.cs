@@ -6,6 +6,12 @@ public partial class Display1Page : ContentPage
 {
   public bool runSpeedo = false;
 
+  public bool showTripTime = false;
+  public string tripTimeStatus = "Stopped";
+
+  public TimeSpan tripTime = TimeSpan.Zero;
+  public DateTime tripStartTime;
+
   public float[] speeds = {0.0f, 0.0f, 2.0f, 2.5f, 3.0f, 4.0f, 5.0f, 7.0f, 10.0f, 10.0f, 10.0f, 12.0f,
                       13.0f, 15.0f, 15.0f, 10.0f, 10.0f, 12.0f, 13.0f, 15.0f, 15.0f, 17.0f,
                       19.0f, 20.0f, 21.0f, 25.0f, 24.0f, 23.0f, 26.0f, 30.0f, 34.0f, 34.0f, 38.0f, 38.0f,
@@ -31,8 +37,10 @@ public partial class Display1Page : ContentPage
   public Speedometer speedometer = new();
 
   private static readonly System.Timers.Timer timer = new(200);
+  private static readonly System.Timers.Timer clock = new(1000);
 
-  public static int i = 0;
+  public static int i = 0;  //for looping through speeds array
+  public int assistLevels;
 
   public Display1Page(Display1PageViewModel viewModel)
 	{
@@ -42,7 +50,15 @@ public partial class Display1Page : ContentPage
     timer.Elapsed += OnTimedEvent;
     timer.AutoReset = true;
 
+    clock.Elapsed += OnClockEvent;
+    clock.AutoReset = true;
+    clock.Start();
+
+    RideStop.IsVisible = false;
+
     i = 0;
+
+    assistLevels = int.Parse(Preferences.Get("AssistLevelsNumberOfAssistLevels", "9"));
   }
 
   private void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
@@ -55,23 +71,73 @@ public partial class Display1Page : ContentPage
     if (i == speeds.Length) i = 0;
   }
 
-  private void DoIt_Clicked(object sender, EventArgs e)
+  private void OnClockEvent(Object source, System.Timers.ElapsedEventArgs e)
+  {
+    //Need this otherwise clock doesn't update
+    MainThread.BeginInvokeOnMainThread(() =>
+    {
+      ClockT.Text = DateTime.Now.ToString("T");
+    });
+
+    if (showTripTime)
+    {
+      if (tripTimeStatus == "Running") tripTime += TimeSpan.FromSeconds(1);
+
+      MainThread.BeginInvokeOnMainThread(() =>
+      {
+        TripT.Text = tripTime.ToString("T");
+      });
+    }
+  }
+
+
+
+  private void StartRide(object sender, EventArgs e)
   {
     if (!runSpeedo)
     {
       timer.Start();
       runSpeedo = true;
+      RideStatus.Source = "pausesvgrepocom.svg";
+      RideStop.IsVisible = true;
+      //get current triptime, but only if tripTime == TimeSpan.Zero
+      if (tripTime == TimeSpan.Zero) tripStartTime = DateTime.Now;
+      showTripTime = true;
+      tripTimeStatus = "Running";
     }
-    else
+    else //pause
     {
       timer.Stop();
       runSpeedo = false;
+      RideStatus.Source = "playsvgrepocom.svg";
+      tripTimeStatus = "Paused";
     }
+  }
+
+  private void StopRide(object sender, EventArgs e)
+  {
+    timer.Stop();
+    runSpeedo = false;
+    RideStatus.Source = "playsvgrepocom.svg";
+    RideStop.IsVisible = false;
+    
+    i = 0;
+    ((Speedometer)Speedometer.Drawable).SpeedData(speeds[i]);
+    Speedometer.Invalidate();
+
+    tripTime = TimeSpan.Zero;
+    MainThread.BeginInvokeOnMainThread(() =>
+    {
+      TripT.Text = tripTime.ToString("T");
+    });
+
+    showTripTime = false;
+    tripTimeStatus = "Stopped";
+    
   }
 
   public async void OnSwiped(object Sender, SwipedEventArgs e)
 	{
-		Debug.WriteLine($"Swiped {e.Direction}");
 		if (e.Direction == SwipeDirection.Left)
 		{
       var navigationParameter = new Dictionary<string, object>
@@ -79,9 +145,15 @@ public partial class Display1Page : ContentPage
         { "TestData", "Test Data" }
       };
       await Shell.Current.GoToAsync(nameof(Display2Page), true, navigationParameter);
-
     }
   }
+  public void AssistDown(object sender, EventArgs args)
+  {
+    if (int.Parse(AssistLevel.Text) > 0) AssistLevel.Text = (int.Parse(AssistLevel.Text) - 1).ToString();
+  }
 
-
+  public void AssistUp(object sender, EventArgs args)
+  {
+    if (int.Parse(AssistLevel.Text) < assistLevels) AssistLevel.Text = (int.Parse(AssistLevel.Text) + 1).ToString();
+  }
 }

@@ -16,33 +16,124 @@
   </ContentPage.Resources>
 
   <local2:SwipeContainer Swipe="OnSwiped">
-    <Grid RowDefinitions="*,50,30">
+    <Grid RowDefinitions="40,*,60,20,70">
 
-      <GraphicsView Grid.Row="0" 
+      <Grid Grid.Row="0"
+            ColumnDefinitions="50,120,50,110">
+
+        <Label Grid.Column="0"
+               Text="Time"
+               TextColor="LightGreen"
+               FontSize="20"
+               Margin="0,4,0,0"
+               />
+
+        <Label Grid.Column="1"
+               x:Name="ClockT"
+               Text="00:00:00"
+               TextColor="Yellow"
+               FontSize="25"
+               WidthRequest="100"
+               Margin="0,0,0,0"
+               />
+
+        <Label Grid.Column="2"
+               Text="Trip"
+               TextColor="LightGreen"
+               FontSize="20"
+               WidthRequest="80"
+               Margin="40,4,0,0"
+               />
+
+        <Label Grid.Column="3"
+               x:Name="TripT"
+               Text="00:00:00"
+               TextColor="Yellow"
+               FontSize="25"
+               WidthRequest="100"
+               Margin="0,0,0,0"
+               />
+
+        
+      </Grid>
+      
+      
+      <GraphicsView Grid.Row="1" 
                     x:Name="Speedometer"
                     Drawable="{StaticResource drawable}"
-                    HeightRequest="1000"
-                    WidthRequest="1000" 
+                    HeightRequest="400"
+                    WidthRequest="400" 
                     
                     VerticalOptions="Start"
                     HorizontalOptions="Start"/>
 
-      <Button Grid.Row="1" 
-              Text="Doit"
-              TextColor="Black"
-              BackgroundColor="LightBlue"
-              FontSize="15"
-              WidthRequest="60"
-              HeightRequest="40"
-              CornerRadius="5" 
-              VerticalOptions="Start"
-              HorizontalOptions="Start"
-              Padding="0,0,0,0"
-              Clicked="DoIt_Clicked"
-              
-              Command="{Binding DoItCommand}"/>
 
-      <Button Grid.Row="2" 
+      <Grid Grid.Row="2"
+            ColumnDefinitions="*,*,*,*,*"
+            ColumnSpacing="5" >
+
+
+        <Polygon Grid.Column="1"
+                 Points="0, 25, 50, 0, 50, 50"
+                 Fill="CornFlowerBlue"
+                 Stroke="CornFlowerBlue"
+                 StrokeThickness="3" 
+                 HorizontalOptions="End"
+                 Margin="0,0,0,0" >
+                 <Shape.GestureRecognizers>
+                   <TapGestureRecognizer Tapped="AssistDown"
+                                         NumberOfTapsRequired="1" />
+                </Shape.GestureRecognizers>
+        </Polygon>
+
+
+        <Polygon Grid.Column="3"
+                 Points="0,0 0,50 50,25"
+                 Fill="CornFlowerBlue"
+                 Stroke="CornFlowerBlue"
+                 StrokeThickness="3"
+                 HorizontalOptions="End"
+                 Margin="20,0,0,0" >
+                <Shape.GestureRecognizers>
+                  <TapGestureRecognizer Tapped="AssistUp"
+                                        NumberOfTapsRequired="1" />
+                </Shape.GestureRecognizers>
+        </Polygon>
+
+                
+
+        <Label Grid.Column="2"
+               x:Name="AssistLevel"
+               Text="0"
+               TextColor="Yellow"
+               FontSize="40"
+               Margin="0,0,0,0"
+               HorizontalOptions="Center" />
+
+      </Grid>
+
+      <Grid Grid.Row="4"
+            ColumnDefinitions="80,80, *"
+            ColumnSpacing="10">
+        
+        <ImageButton Grid.Column="0"
+                     x:Name="RideStatus"
+                     Source="playsvgrepocom.svg"
+                     WidthRequest="70"
+                     HeightRequest="70"
+                     Clicked="StartRide"/>
+
+        <ImageButton Grid.Column="1"
+                     x:Name="RideStop"
+                     Source="stopsvgrepocom.svg"
+                     WidthRequest="70"
+                     HeightRequest="70"
+                     Clicked="StopRide"/>
+
+      </Grid>
+
+
+      <Button Grid.Row="4" 
               Text="R"
               TextColor="White"
               BackgroundColor="Green"
@@ -58,5 +149,4 @@
     </Grid>    
   </local2:SwipeContainer>
   
-
 </ContentPage>

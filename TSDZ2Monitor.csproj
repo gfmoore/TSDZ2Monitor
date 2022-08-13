@@ -55,8 +55,11 @@
 	  <None Remove="Resources\Images\deletebin.svg" />
     <None Remove="Resources\Images\cancelbin.svg" />
 	  <None Remove="Resources\Images\parameters.svg" />
+	  <None Remove="Resources\Images\pausesvgrepocom.svg" />
+	  <None Remove="Resources\Images\playsvgrepocom.svg" />
 	  <None Remove="Resources\Images\settings.svg" />
 	  <None Remove="Resources\Images\speedometer.svg" />
+	  <None Remove="Resources\Images\stopsvgrepocom.svg" />
 	  <None Remove="Resources\Images\tracks.svg" />
 	  <None Remove="Resources\Images\xreturn.svg" />
     <None Remove="Resources\Raw\parameters.json" />

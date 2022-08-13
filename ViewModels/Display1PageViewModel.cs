@@ -2,10 +2,27 @@
 
 public partial class Display1PageViewModel : ObservableObject
 {
+  public int assistLevels;
   public Display1PageViewModel()
   {
+    assistLevels = int.Parse( Preferences.Get("AssistLevelsNumberOfAssistLe", "9"));
 
   }
+
+  //[ObservableProperty]
+  //private string assistLevel;
+
+  //[RelayCommand]
+  //public void AssistDown()
+  //{
+  //  if (int.Parse(AssistLevel) > 0) AssistLevel = (int.Parse(AssistLevel) - 1).ToString();
+  //}
+
+  //[RelayCommand]
+  //public void AssistUp()
+  //{
+  //  if (int.Parse(AssistLevel) < assistLevels ) AssistLevel = (int.Parse(AssistLevel) + 1).ToString();
+  //}
 
   [RelayCommand]
   public void DoIt()
