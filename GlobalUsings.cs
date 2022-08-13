@@ -32,3 +32,5 @@ global using System.Text.RegularExpressions;
 
 global using Microsoft.Maui.Graphics;
 global using Microsoft.Maui.Graphics.Skia;
+
+global using Font = Microsoft.Maui.Graphics.Font;

@@ -10,7 +10,7 @@ public partial class Display1PageViewModel : ObservableObject
   [RelayCommand]
   public void DoIt()
   {
-    Debug.WriteLine("heyupski");
+    //Debug.WriteLine("heyupski");
 
   }
 

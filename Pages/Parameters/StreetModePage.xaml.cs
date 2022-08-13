@@ -163,6 +163,7 @@ public partial class StreetModePage : ContentPage
 
   public void SaveSpeedLimit()
   {
+    //save as kph regardless
     if (variousUnits == "Metric")
     {
       Preferences.Set("StreetModeSpeedLimit", StreetModeSpeedLimit.Text);

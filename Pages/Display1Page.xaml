@@ -12,14 +12,14 @@
   </ContentPage.BindingContext>
 
   <ContentPage.Resources>
-    <drawable:GraphicsDrawable x:Key="drawable" />
+    <drawable:Speedometer x:Key="drawable" />
   </ContentPage.Resources>
 
   <local2:SwipeContainer Swipe="OnSwiped">
     <Grid RowDefinitions="*,50,30">
 
       <GraphicsView Grid.Row="0" 
-                    x:Name="GraphicsArea"
+                    x:Name="Speedometer"
                     Drawable="{StaticResource drawable}"
                     HeightRequest="1000"
                     WidthRequest="1000" 
