@@ -4,7 +4,7 @@ public class Speedometer : IDrawable
 {
   public Random random = new();
 
- 
+  public float odometer;
   public float speed { get; set; }
 
   public Speedometer()
@@ -63,6 +63,10 @@ public class Speedometer : IDrawable
       DrawSpeedArmMPH(canvas, speed);
     }
 
+    //Draw odometer -
+    //TODO how to update this yet
+    odometer = float.Parse(Preferences.Get("TripMemoriesOdometer", "0"));
+    DrawOdometer(canvas, odometer);
   }
 
   //-----------KPH------------------------------------
@@ -103,13 +107,13 @@ public class Speedometer : IDrawable
 
     if (speed >= 0.0f && speed < preSpeedLimit)
     {
-      canvas.StrokeColor = Colors.Green;
+      canvas.StrokeColor = Colors.SpringGreen;
       canvas.DrawArc(60, 60, 280, 280, angle0, angle, true, false);
     }
 
     if (speed >= preSpeedLimit && speed < speedLimit)
     {
-      canvas.StrokeColor = Colors.Green;
+      canvas.StrokeColor = Colors.SpringGreen;
       canvas.DrawArc(60, 60, 280, 280, angle0, angleA, true, false);
 
       canvas.StrokeColor = Colors.Yellow;
@@ -118,7 +122,7 @@ public class Speedometer : IDrawable
 
     if (speed >= speedLimit && speed < postSpeedLimit)
     {
-      canvas.StrokeColor = Colors.Green;
+      canvas.StrokeColor = Colors.SpringGreen;
       canvas.DrawArc(60, 60, 280, 280, angle0, angleA, true, false);
 
       canvas.StrokeColor = Colors.Yellow;
@@ -130,7 +134,7 @@ public class Speedometer : IDrawable
 
     if (speed >= postSpeedLimit)
     {
-      canvas.StrokeColor = Colors.Green;
+      canvas.StrokeColor = Colors.SpringGreen;
       canvas.DrawArc(60, 60, 280, 280, angle0, angleA, true, false);
 
       canvas.StrokeColor = Colors.Yellow;
@@ -144,12 +148,27 @@ public class Speedometer : IDrawable
     }
 
     //Draw speed in units
-    canvas.FontColor = Colors.White;
-    canvas.FontSize = 30;
+    canvas.FontSize = 40;
     canvas.Font = Font.Default;
     //canvas.Font = Font.DefaultBold;
+    if (speed >= 0.0f && speed < preSpeedLimit)
+    {
+      canvas.FontColor = Colors.SpringGreen;
+    }
+    if (speed >= preSpeedLimit && speed < speedLimit)
+    {
+      canvas.FontColor = Colors.Yellow;
+    }
+    if (speed >= speedLimit && speed < postSpeedLimit)
+    {
+      canvas.FontColor = Colors.Orange;
+    }
+    if (speed >= postSpeedLimit)
+    {
+      canvas.FontColor = Colors.Red;
+    }
 
-    canvas.DrawString(speedOriginal.ToString("F0"), 168, 250, 70, 40, HorizontalAlignment.Center, VerticalAlignment.Top);
+    canvas.DrawString(speedOriginal.ToString("F0"), 168, 245, 70, 40, HorizontalAlignment.Center, VerticalAlignment.Top);
   }
 
   public void DrawSpeedArmKPH(ICanvas canvas, float speed)
@@ -259,13 +278,13 @@ public class Speedometer : IDrawable
 
     if (speed >= 0.0f && speed < preSpeedLimit)
     {
-      canvas.StrokeColor = Colors.Green;
+      canvas.StrokeColor = Colors.SpringGreen;
       canvas.DrawArc(60, 60, 280, 280, angle0, angle, true, false);
     }
 
     if (speed >= preSpeedLimit && speed < speedLimit)
     {
-      canvas.StrokeColor = Colors.Green;
+      canvas.StrokeColor = Colors.SpringGreen;
       canvas.DrawArc(60, 60, 280, 280, angle0, angleA, true, false);
 
       canvas.StrokeColor = Colors.Yellow;
@@ -274,7 +293,7 @@ public class Speedometer : IDrawable
 
     if (speed >= speedLimit && speed < postSpeedLimit)
     {
-      canvas.StrokeColor = Colors.Green;
+      canvas.StrokeColor = Colors.SpringGreen;
       canvas.DrawArc(60, 60, 280, 280, angle0, angleA, true, false);
 
       canvas.StrokeColor = Colors.Yellow;
@@ -285,7 +304,7 @@ public class Speedometer : IDrawable
     }
     if (speed >= postSpeedLimit)
     {
-      canvas.StrokeColor = Colors.Green;
+      canvas.StrokeColor = Colors.SpringGreen;
       canvas.DrawArc(60, 60, 280, 280, angle0, angleA, true, false);
 
       canvas.StrokeColor = Colors.Yellow;
@@ -299,13 +318,27 @@ public class Speedometer : IDrawable
     }
 
     //Draw speed in units
-    canvas.FontColor = Colors.White;
-    canvas.FontSize = 30;
+    canvas.FontSize = 40;
     canvas.Font = Font.Default;
     //canvas.Font = Font.DefaultBold;
+    if (speed >= 0.0f && speed < preSpeedLimit)
+    {
+      canvas.FontColor = Colors.SpringGreen;
+    }
+    if (speed >= preSpeedLimit && speed < speedLimit)
+    {
+      canvas.FontColor = Colors.Yellow;
+    }
+    if (speed >= speedLimit && speed < postSpeedLimit)
+    {
+      canvas.FontColor = Colors.Orange;
+    }
+    if (speed >= postSpeedLimit)
+    {
+      canvas.FontColor = Colors.Red;
+    }
 
-    canvas.DrawString(speedOriginal.ToString("F0"), 168, 250, 70, 40, HorizontalAlignment.Center, VerticalAlignment.Top);
-
+    canvas.DrawString(speedOriginal.ToString("F0"), 168, 245, 70, 40, HorizontalAlignment.Center, VerticalAlignment.Top);
 
   }
 
@@ -370,6 +403,26 @@ public class Speedometer : IDrawable
   {
     float angle = -140.0f - (260.0f / 50.0f * speed);
     return angle;
+  }
+
+  public void DrawOdometer(ICanvas canvas, float odometer)
+  {
+    canvas.StrokeColor = Colors.Blue;
+    canvas.StrokeSize = 1;
+    canvas.DrawRectangle(131, 300, 130, 35);
+
+    canvas.FontColor = Colors.White;
+    canvas.FontSize = 30;
+    canvas.Font = Font.Default;
+    if (Preferences.Get("VariousUnits", "Metric") == "Metric")
+    {
+      canvas.DrawString(odometer.ToString("00000.0"), 125, 300, 150, 100, HorizontalAlignment.Center, VerticalAlignment.Top);
+    }
+    else
+    {
+      odometer = odometer * 0.6214f;
+      canvas.DrawString(odometer.ToString("00000.0"), 125, 300, 150, 100, HorizontalAlignment.Center, VerticalAlignment.Top);
+    }
   }
 }
 
