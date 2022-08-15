@@ -1,8 +1,8 @@
 ﻿namespace TSDZ2Monitor.ViewModels;
 
-public partial class Display2PageViewModel : ObservableObject
+public partial class Display2ViewModel : ObservableObject
 {
-  public Display2PageViewModel()
+  public Display2ViewModel()
   {
     BTData = new BluetoothData();
 

@@ -82,6 +82,11 @@
     </DataTemplate>
   </Shell.MenuItemTemplate>
 
+  <ShellContent 
+    Title=""
+    Icon=""
+    Shell.FlyoutItemIsVisible="False"
+    ContentTemplate="{DataTemplate pages:StartPage}" />
 
   <ShellContent 
     Title="Display"

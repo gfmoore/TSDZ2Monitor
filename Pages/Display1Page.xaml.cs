@@ -39,10 +39,10 @@ public partial class Display1Page : ContentPage
   private static readonly System.Timers.Timer timer = new(200);
   private static readonly System.Timers.Timer clock = new(1000);
 
-  public static int i = 0;  //for looping through speeds array
+  private static int i = 0;  //for looping through speeds array
   public int assistLevels;
 
-  public Display1Page(Display1PageViewModel viewModel)
+  public Display1Page(Display1ViewModel viewModel)
 	{
 		InitializeComponent();
     this.BindingContext = viewModel;

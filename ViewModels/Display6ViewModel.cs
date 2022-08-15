@@ -1,8 +1,8 @@
 ﻿namespace TSDZ2Monitor.ViewModels;
 
-public partial class Display6PageViewModel : ObservableObject
+public partial class Display6ViewModel : ObservableObject
 {
-  public Display6PageViewModel()
+  public Display6ViewModel()
   {
  
   }

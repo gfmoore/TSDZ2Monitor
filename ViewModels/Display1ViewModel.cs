@@ -1,9 +1,9 @@
 ﻿namespace TSDZ2Monitor.ViewModels;
 
-public partial class Display1PageViewModel : ObservableObject
+public partial class Display1ViewModel : ObservableObject
 {
   public int assistLevels;
-  public Display1PageViewModel()
+  public Display1ViewModel()
   {
     assistLevels = int.Parse( Preferences.Get("AssistLevelsNumberOfAssistLe", "9"));
 

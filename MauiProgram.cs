@@ -18,6 +18,8 @@ public static class MauiProgram
     //dependency injection
     builder.Services.AddSingleton<IGeolocation>(Geolocation.Default);
 
+    builder.Services.AddTransient<StartPage>();
+    builder.Services.AddTransient<StartViewModel>();
 
     builder.Services.AddTransient<Display1Page>();
     builder.Services.AddTransient<Display2Page>();
@@ -26,12 +28,12 @@ public static class MauiProgram
     builder.Services.AddTransient<Display5Page>();
     builder.Services.AddTransient<Display6Page>();
 
-    builder.Services.AddTransient<Display1PageViewModel>();
-    builder.Services.AddTransient<Display2PageViewModel>();
-    builder.Services.AddTransient<Display3PageViewModel>();
-    builder.Services.AddTransient<Display4PageViewModel>();
-    builder.Services.AddTransient<Display5PageViewModel>();
-    builder.Services.AddTransient<Display6PageViewModel>();
+    builder.Services.AddTransient<Display1ViewModel>();
+    builder.Services.AddTransient<Display2ViewModel>();
+    builder.Services.AddTransient<Display3ViewModel>();
+    builder.Services.AddTransient<Display4ViewModel>();
+    builder.Services.AddTransient<Display5ViewModel>();
+    builder.Services.AddTransient<Display6ViewModel>();
 
 
     builder.Services.AddTransient<BluetoothPage>();

@@ -8,7 +8,7 @@
              Title="Display Page">
   
   <ContentPage.BindingContext>
-    <local:Display1PageViewModel />
+    <local:Display1ViewModel />
   </ContentPage.BindingContext>
 
   <ContentPage.Resources>

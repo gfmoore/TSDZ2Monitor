@@ -2,7 +2,7 @@ namespace TSDZ2Monitor.Pages;
 
 public partial class Display4Page : ContentPage
 {
-	public Display4Page(Display4PageViewModel viewModel)
+	public Display4Page(Display4ViewModel viewModel)
 	{
 		InitializeComponent();
     this.BindingContext = viewModel;

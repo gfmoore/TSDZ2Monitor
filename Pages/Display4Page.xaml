@@ -7,7 +7,7 @@
              Title="Display 4">
   
   <ContentPage.BindingContext>
-    <local:Display4PageViewModel />
+    <local:Display4ViewModel />
   </ContentPage.BindingContext>
 
   <local2:SwipeContainer Swipe="OnSwiped">

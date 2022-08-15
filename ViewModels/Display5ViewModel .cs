@@ -1,12 +1,11 @@
 ﻿namespace TSDZ2Monitor.ViewModels;
 
-public partial class Display3PageViewModel : ObservableObject
+public partial class Display5ViewModel : ObservableObject
 {
-  public Display3PageViewModel()
+  public Display5ViewModel()
   {
  
   }
-
 
   [RelayCommand]
   public async void PrevPage()
@@ -22,6 +21,6 @@ public partial class Display3PageViewModel : ObservableObject
     {
         { "TestData", "Test Data" }
     };
-    await Shell.Current.GoToAsync(nameof(Display4Page), true, navigationParameter);
+    await Shell.Current.GoToAsync(nameof(Display6Page), true, navigationParameter);
   }
 }
