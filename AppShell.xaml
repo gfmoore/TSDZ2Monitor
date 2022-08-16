@@ -106,6 +106,12 @@
     Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
     ContentTemplate="{DataTemplate pages:BluetoothPage}" />
 
+  <ShellContent 
+    Title="Settings"
+    Icon="settings.svg"
+    Shell.FlyoutItemIsVisible="{Binding ShowMainMenu}"
+    ContentTemplate="{DataTemplate pages:SettingsPage}" />
+
   <MenuItem 
     Text="Parameters"
     IconImageSource="parameters.svg"

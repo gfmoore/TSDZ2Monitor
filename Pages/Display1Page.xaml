@@ -119,15 +119,15 @@
         <ImageButton Grid.Column="0"
                      x:Name="RideStatus"
                      Source="playsvgrepocom.svg"
-                     WidthRequest="70"
-                     HeightRequest="70"
+                     WidthRequest="50"
+                     HeightRequest="50"
                      Clicked="StartRide"/>
 
         <ImageButton Grid.Column="1"
                      x:Name="RideStop"
                      Source="stopsvgrepocom.svg"
-                     WidthRequest="70"
-                     HeightRequest="70"
+                     WidthRequest="50"
+                     HeightRequest="750"
                      Clicked="StopRide"/>
 
       </Grid>

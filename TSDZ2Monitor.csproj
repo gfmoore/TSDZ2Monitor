@@ -87,9 +87,6 @@
 	  <Compile Update="Pages\Display1Page.xaml.cs">
 	    <DependentUpon>Display1Page.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\Dummy.xaml.cs">
-	    <DependentUpon>Dummy.xaml</DependentUpon>
-	  </Compile>
 	  <Compile Update="Pages\Parameters\AssistLevels\AssistLevelEMTBPage.xaml.cs">
 	    <DependentUpon>AssistLevelEMTBPage.xaml</DependentUpon>
 	  </Compile>
@@ -98,6 +95,9 @@
 	  </Compile>
 	  <Compile Update="Pages\Parameters\GraphVariables\VarsWattsPerKmPage.xaml.cs">
 	    <DependentUpon>VarsWattsPerKmPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\ParametersListPage.xaml.cs">
+	    <DependentUpon>ParametersListPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\TracksPage.xaml.cs">
 	    <DependentUpon>TracksPage.xaml</DependentUpon>
@@ -130,9 +130,6 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Display1Page.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\Dummy.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\ParametersPage.xaml">
@@ -229,6 +226,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Parameters\WheelPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\ParametersListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\SettingsPage.xaml">

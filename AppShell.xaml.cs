@@ -15,6 +15,8 @@ public partial class AppShell : Shell
 
     Routing.RegisterRoute(nameof(BluetoothDetailPage), typeof(BluetoothDetailPage));
     Routing.RegisterRoute(nameof(TracksListPage), typeof(TracksListPage));
+    
+    Routing.RegisterRoute(nameof(ParametersListPage), typeof(ParametersListPage));
   }
 
 }

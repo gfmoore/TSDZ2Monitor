@@ -31,11 +31,10 @@ public partial class BluetoothPage : ContentPage
   {
     if (!await BluetoothPage.CheckBluetoothAccessAsync())
     {
-      //bool blePermissionGranted = await App.Current.MainPage.DisplayAlert("Alert", "Allow use of bluetooth for scanning for your peripheral devices such as heart rate monitor etc?", "Allow", "Deny");
+      bool blePermissionGranted = await App.Current.MainPage.DisplayAlert("Alert", "Allow use of bluetooth for scanning for your peripheral devices such as heart rate monitor etc?", "Allow", "Deny");
 
-//TODO Remove Testing
-
-bool blePermissionGranted = true;
+      //TODO use this line when testing
+      //bool blePermissionGranted = true;
 
       if (blePermissionGranted)
       {

@@ -2,21 +2,21 @@ namespace TSDZ2Monitor.Pages;
 
 public partial class SettingsPage : ContentPage
 {
-	public SettingsPage()
-	{
-		InitializeComponent();
-	}
+  public SettingsPage()
+  {
+    InitializeComponent();
+  }
 
-	public static ParametersData p = new();
+  private static ParametersData p = new();
   readonly string fileName = "TSDZ2ParameterData.json";
 
   private async void SaveParameters(object sender, EventArgs e)
-	{
+  {
     bool doit = await DisplayAlert("Danger", "You are about to overwrite the default parameters file. \nAre you sure? \nThere is no going back!!!", "Sure", "Cancel");
     if (!doit) return;
     Debug.WriteLine("Save Parameters");
 
-		p.BatteryMaxCurrent = Preferences.Get("BatteryMaxCurrent", "11");
+    p.BatteryMaxCurrent = Preferences.Get("BatteryMaxCurrent", "11");
     p.BatteryLowCutOff = Preferences.Get("BatteryLowCutOff", "39");
     p.BatteryResistance = Preferences.Get("BatteryResistance", "200");
     p.BatteryVoltageEstimate = Preferences.Get("BatteryVoltageEstimate", "0");
@@ -56,7 +56,7 @@ public partial class SettingsPage : ContentPage
     Preferences.Get("BatteryVoltageEstimate", p.BatteryVoltageEstimate);
     Preferences.Get("BatteryResistanceEstimate", p.BatteryResistanceEstimate);
     Preferences.Get("PowerLossEstimate", p.BatteryPowerLossEstimate);
-    
+
     Preferences.Get("MotorVoltage", p.MotorVoltage);
     Preferences.Get("MotorPowerMax", p.MotorPowerMax);
     Preferences.Get("MotorAcceleration", p.MotorAcceleration);
@@ -124,10 +124,10 @@ public partial class SettingsPage : ContentPage
     Preferences.Get("TripMemoriesOdometer", p.TripMemoriesOdometer);
     Preferences.Get("TripMemoriesTripA", p.TripMemoriesTripA);
     Preferences.Get("TripMemoriesTripB", p.TripMemoriesTripB);
-    Preferences.Get("TripMemoriesTripAReset", p.TripMemoriesTripAAutoReset);
+    Preferences.Get("TripMemoriesTripAAutoReset", p.TripMemoriesTripAAutoReset);
     Preferences.Get("TripMemoriesTripAAutoResetHours", p.TripMemoriesTripAAutoResetHours);
-    Preferences.Get("TripMemoriesTripBReset", p.TripMemoriesTripBAutoReset);
-    Preferences.Get("TripMemoriesTripBResetHours", p.TripMemoriesTripBAutoResetHours);
+    Preferences.Get("TripMemoriesTripBAutoReset", p.TripMemoriesTripBAutoReset);
+    Preferences.Get("TripMemoriesTripBAutoResetHours", p.TripMemoriesTripBAutoResetHours);
 
     Preferences.Get("AssistLevelsNumberOfAssistLevels", p.AssistLevelsNumberOfAssistLevels);
 
@@ -182,7 +182,7 @@ public partial class SettingsPage : ContentPage
     Preferences.Get("AssistLevelWalk8", p.AssistLevelWalk8);
     Preferences.Get("AssistLevelWalk9", p.AssistLevelWalk9);
     Preferences.Get("AssistLevelWalkCruiseControl", p.AssistLevelWalkCruiseControl);
-    
+
     Preferences.Get("GraphBatteryCurrentAutoMaxMin", p.GraphBatteryCurrentAutoMaxMin);
     Preferences.Get("GraphBatteryCurrentMin", p.GraphBatteryCurrentMin);
     Preferences.Get("GraphBatteryCurrentMax", p.GraphBatteryCurrentMax);
@@ -281,5 +281,14 @@ public partial class SettingsPage : ContentPage
     Preferences.Get("GraphWattsPerKmYellowMaxThreshold", p.GraphWattsPerKmYellowMaxThreshold);
     Preferences.Get("GraphWattsPerKmRedMaxThreshold", p.GraphWattsPerKmRedMaxThreshold);
 
+  }
+
+  private async void ListParameters(object sender, EventArgs e)
+  {
+    var navigationParameter = new Dictionary<string, object>
+    {
+      { "TestData", "Test Data" }
+    };
+    await Shell.Current.GoToAsync(nameof(ParametersListPage), true, navigationParameter);
   }
 }

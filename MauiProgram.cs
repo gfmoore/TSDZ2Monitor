@@ -51,7 +51,13 @@ public static class MauiProgram
 
 
     builder.Services.AddTransient<ParametersPage>();
+
     builder.Services.AddTransient<SettingsPage>();
+
+    builder.Services.AddTransient<ParametersListPage>();
+    builder.Services.AddTransient<ParametersListViewModel>();
+
+
     builder.Services.AddTransient<AboutPage>();
 
     builder.Services.AddTransient<ControlMenuViewModel>();

@@ -114,8 +114,11 @@ public partial class Display1Page : ContentPage
     }
   }
 
-  private void StopRide(object sender, EventArgs e)
+  private async void StopRide(object sender, EventArgs e)
   {
+    bool doit = await DisplayAlert("Warning", "You are about to Stope your trip. \nAre you sure? \nThere is no going back!!!", "Sure", "Cancel");
+    if (!doit) return;
+
     timer.Stop();
     runSpeedo = false;
     RideStatus.Source = "playsvgrepocom.svg";

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TSDZ2Monitor.Pages.ParametersListPage"
+             xmlns:local="clr-namespace:TSDZ2Monitor.ViewModels"
+             xmlns:local2="clr-namespace:TSDZ2Monitor.Classes"
+             Title="List Parameters">
+
+  <ScrollView>
+    <VerticalStackLayout x:Name="Parameters" />
+  </ScrollView>
+  
+</ContentPage>
